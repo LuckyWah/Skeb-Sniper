@@ -480,7 +480,7 @@
       <div class="info-section">
         <h2>Payment</h2>
         <p>Skeb Sniper is currently in its testing phase. The lifetime purchase is <strong>$50</strong>. If you are interested, please complete the form below to receive an invoice.</p>
-        <form id="paymentForm" action="https://formspree.io/f/myzkjbda" method="POST">
+        <form id="paymentForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required>
           <label for="request">Your Request:</label>
@@ -524,6 +524,36 @@
       });
     </script>
 
+    <!-- FAQ Tab with Collapsible Items -->
+    <div id="faq" class="tabcontent">
+      <div class="info-section">
+        <h2>Frequently Asked Questions</h2>
+        <details>
+          <summary>What amount should I enter for a commission?</summary>
+          <p>Please enter an amount that meets or exceeds the recommended value. Use the provided multiplier if necessary.</p>
+        </details>
+        <details>
+          <summary>How should I compose my request text?</summary>
+          <p>Compose your request in clear, straightforward language. Avoid idioms or overly complex expressions to ensure accurate translation.</p>
+        </details>
+        <details>
+          <summary>How do I include a reference URL?</summary>
+          <p>Make sure your reference URL is publicly accessible. For example, if using Google Drive, set the sharing settings to "Anyone with the link can view."</p>
+        </details>
+        <details>
+          <summary>What if my request involves NSFW content?</summary>
+          <p>If your request includes NSFW material, please toggle the NSFW setting to "On" during submission and follow Skeb's guidelines.</p>
+        </details>
+        <details>
+          <summary>What should I do regarding Skeb points?</summary>
+          <p>Ensure you have sufficient Skeb points, as the tool requires them to process commission requests. Insufficient points will prevent the request from being sent.</p>
+        </details>
+        <details>
+          <summary>How can I run Skeb Sniper on different platforms?</summary>
+          <p>For Windows, use the GUI version. For Linux, follow the command-line instructions provided in the tutorial.</p>
+        </details>
+      </div>
+    </div>
     <!-- Terms of Service Tab (Static) -->
     <div id="tos" class="tabcontent">
       <div class="info-section">
