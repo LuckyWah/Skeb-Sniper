@@ -18,13 +18,13 @@
       color: #333;
     }
     a {
-      color: #007acc; /* Light blue for links */
+      color: #007acc;
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
-    /* Navigation Bar with Branding and Tabs */
+    /* Navigation Bar with Branding and Tabs in One Row */
     .nav-bar {
       display: flex;
       align-items: center;
@@ -90,7 +90,17 @@
     }
     @keyframes fadeIn {
       from { opacity: 0; }
-      to   { opacity: 1; }
+      to { opacity: 1; }
+    }
+    /* Advertisement Block in Introduction Tab */
+    .advertisement {
+      background: #e0e0e0;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      color: #333;
+      font-size: 1.1em;
+      line-height: 1.6;
     }
     /* Carousel Styles for Introduction Tab */
     .carousel-container {
@@ -195,6 +205,10 @@
       border-color: #007acc;
       outline: none;
     }
+    /* Restrict textarea resizing to vertical only */
+    form textarea {
+      resize: vertical;
+    }
     form button {
       display: block;
       margin: auto;
@@ -257,7 +271,7 @@
   </style>
 </head>
 <body>
-  <!-- Navigation Bar with Branding and Tabs in One Row -->
+  <!-- Navigation Bar with Branding (non-clickable) and Tabs (clickable) -->
   <div class="nav-bar">
     <div class="branding">
       <img src="Kasora.ico" alt="Logo">
@@ -278,56 +292,189 @@
   </div>
   <!-- Main Content Container -->
   <div class="container">
-    <!-- Introduction Tab with Carousel -->
+    <!-- Introduction Tab with Advertisement and Interactive Carousel -->
     <div id="intro" class="tabcontent active">
-      <h2 style="text-align:center; color:#007acc;">Discover the Advanced Features of Skeb Sniper</h2>
-      <div class="carousel-container">
-        <!-- Slide 1 -->
-        <div class="slide active">
-          <h2>100% Event-Driven Commission Monitoring</h2>
-          <div class="detail">The tool responds exclusively when Skeb sends an email notification that an artist has opened commissions.</div>
-          <div class="detail">It reacts instantly—logging in and submitting a commission request before manual intervention is possible.</div>
-          <div class="detail">Only one visit per commission opening minimizes unnecessary server load.</div>
+      <!-- Wrapper for advertisement and carousel with dynamic height -->
+      <div id="adAndCarousel" style="overflow: hidden; transition: max-height 0.5s ease; max-height: 300px;">
+        <!-- Advertisement Block with slideUp animation -->
+        <div class="advertisement" style="transform: translateY(20px); opacity: 0; animation: slideUp 1s forwards;">
+          <p>Ever wake up to find that your favorite artist’s commission slot has vanished? We know how frustrating it is to wait for months—only to miss your chance because the slot filled up while you were asleep.</p>
+          <p>Worry no more! Skeb Sniper levels the playing field for Western users by automating the commission request process for Japanese artists who often open slots while you sleep. By acting only when Skeb sends an email notification, Skeb Sniper ensures you never miss that coveted commission—all while remaining efficient, ethical, and fully compliant with Skeb’s Terms of Service.</p>
         </div>
-        <!-- Slide 2 -->
-        <div class="slide">
-          <h2>Fully Automated Request Submission</h2>
-          <div class="detail">User authentication is fully automated via Twitter login.</div>
-          <div class="detail">The tool manages Skeb’s email verification by detecting and processing verification codes automatically.</div>
-          <div class="detail">A locking mechanism ensures that each commission request is sent only once.</div>
-        </div>
-        <!-- Slide 3 -->
-        <div class="slide">
-          <h2>100% ToS-Compliant & Safe from Detection</h2>
-          <div class="detail">Only a single HTTP request is made per artist, ensuring minimal server impact.</div>
-          <div class="detail">The tool interacts solely via official channels, eliminating any risk of ban or detection.</div>
-        </div>
-        <!-- Slide 4 -->
-        <div class="slide">
-          <h2>User-Centric Designs</h2>
-          <div class="detail">An installer facilitates easy setup and uninstallation, automatically downloading Firefox and creating shortcuts.</div>
-          <div class="detail">The entire process is managed through a clear GUI or command-line interface—no manual intervention is required after configuration.</div>
-        </div>
-        <!-- Slide 5 -->
-        <div class="slide">
-          <h2>Privacy Protection</h2>
-          <div class="detail">Robust encryption protects sensitive details such as Twitter credentials and payment information.</div>
-          <div class="detail">No personal data is collected—the Gmail listener operates exclusively in read-only mode.</div>
-          <div class="detail">The application runs only with a designated 'gui' tag, keeping its functionality discreet.</div>
-        </div>
-        <!-- Carousel Navigation -->
-        <button class="nav-btn prev" onclick="changeSlide(-1)">&lt;</button>
-        <button class="nav-btn next" onclick="changeSlide(1)">&gt;</button>
-        <!-- Carousel Dots -->
-        <div class="carousel-dots" id="carousel-dots">
-          <span class="dot active" onclick="jumpToSlide(0)"></span>
-          <span class="dot" onclick="jumpToSlide(1)"></span>
-          <span class="dot" onclick="jumpToSlide(2)"></span>
-          <span class="dot" onclick="jumpToSlide(3)"></span>
-          <span class="dot" onclick="jumpToSlide(4)"></span>
+        <!-- Interactive Heading that triggers the carousel -->
+        <h2 id="featureHeading" style="text-align:center; color:#007acc; font-size:2.5em; cursor: pointer;">
+          Discover the Advanced Features of Skeb Sniper
+        </h2>
+        <!-- Feature Carousel (initially hidden off to the right) -->
+        <div id="featureCarousel" class="carousel-container" 
+            style="opacity:0; transform: translateX(100%); pointer-events: none; transition: all 0.5s ease;">
+          <!-- Slide 1 -->
+          <div class="slide active">
+            <h2>100% Event-Driven Commission Monitoring</h2>
+            <div class="detail">The tool responds exclusively when Skeb sends an email notification that an artist has opened commissions.</div>
+            <div class="detail">It reacts instantly—logging in and submitting a commission request before manual intervention is possible.</div>
+            <div class="detail">Only one visit per commission opening minimizes unnecessary server load.</div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="slide">
+            <h2>Fully Automated Request Submission</h2>
+            <div class="detail">User authentication is fully automated via Twitter login.</div>
+            <div class="detail">The tool manages Skeb’s email verification by detecting and processing verification codes automatically.</div>
+            <div class="detail">A locking mechanism ensures that each commission request is sent only once.</div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="slide">
+            <h2>100% ToS-Compliant & Safe from Detection</h2>
+            <div class="detail">Only a single HTTP request is made per artist, ensuring minimal server impact.</div>
+            <div class="detail">The tool interacts solely via official channels, eliminating any risk of ban or detection.</div>
+          </div>
+          <!-- Slide 4 -->
+          <div class="slide">
+            <h2>User-Centric Designs</h2>
+            <div class="detail">An installer facilitates easy setup and uninstallation, automatically downloading Firefox and creating shortcuts.</div>
+            <div class="detail">The entire process is managed through a clear GUI or command-line interface—no manual intervention is required after configuration.</div>
+          </div>
+          <!-- Slide 5 -->
+          <div class="slide">
+            <h2>Privacy Protection</h2>
+            <div class="detail">Robust encryption protects sensitive details such as Twitter credentials and payment information.</div>
+            <div class="detail">No personal data is collected—the Gmail listener operates exclusively in read-only mode.</div>
+            <div class="detail">The application runs only with a designated 'gui' tag, keeping its functionality discreet.</div>
+          </div>
+          <!-- Carousel Navigation -->
+          <button class="nav-btn prev" onclick="changeSlide(-1)">&lt;</button>
+          <button class="nav-btn next" onclick="changeSlide(1)">&gt;</button>
+          <!-- Carousel Dots -->
+          <div class="carousel-dots" id="carousel-dots">
+            <span class="dot active" onclick="jumpToSlide(0)"></span>
+            <span class="dot" onclick="jumpToSlide(1)"></span>
+            <span class="dot" onclick="jumpToSlide(2)"></span>
+            <span class="dot" onclick="jumpToSlide(3)"></span>
+            <span class="dot" onclick="jumpToSlide(4)"></span>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Animation for advertisement -->
+    <style>
+      @keyframes slideUp {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
+
+    <script>
+      // Global flag to lock the feature carousel when clicked.
+      var featureLocked = false;
+      var featureHeading = document.getElementById("featureHeading");
+      var featureCarousel = document.getElementById("featureCarousel");
+      var adAndCarousel = document.getElementById("adAndCarousel");
+
+      // Function to expand container to show full content
+      function expandContainer() {
+      // Wait 500ms for the carousel to animate in, then update max-height to reveal all content.
+      setTimeout(function() {
+        adAndCarousel.style.maxHeight = adAndCarousel.scrollHeight + "px";
+      }, 500);
+    }
+
+      // Function to collapse container to a fixed height (e.g. 300px)
+      function collapseContainer() {
+        adAndCarousel.style.maxHeight = "300px";
+      }
+
+      // On hover over the heading, expand the container and slide in the carousel.
+      featureHeading.addEventListener("mouseenter", function() {
+        if (!featureLocked) {
+          expandContainer();
+          featureCarousel.style.pointerEvents = "auto";
+          featureCarousel.style.opacity = "1";
+          featureCarousel.style.transform = "translateX(0)";
+        }
+      });
+
+      // On mouse leave, collapse the container and hide the carousel if not locked.
+      featureHeading.addEventListener("mouseleave", function() {
+        if (!featureLocked) {
+          collapseContainer();
+          featureCarousel.style.opacity = "0";
+          featureCarousel.style.transform = "translateX(100%)";
+          featureCarousel.style.pointerEvents = "none";
+        }
+      });
+
+      // On click, lock the carousel so that it remains visible and expand the container.
+      featureHeading.addEventListener("click", function() {
+        featureLocked = true;
+        expandContainer();
+        featureCarousel.style.pointerEvents = "auto";
+        featureCarousel.style.opacity = "1";
+        featureCarousel.style.transform = "translateX(0)";
+      });
+    </script>
+
+    <!-- Animation for advertisement -->
+    <style>
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .slide .detail {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.5s forwards;
+      }
+      .slide .detail:nth-of-type(1) {
+        animation-delay: 0.3s;
+      }
+      .slide .detail:nth-of-type(2) {
+        animation-delay: 0.6s;
+      }
+      .slide .detail:nth-of-type(3) {
+        animation-delay: 0.9s;
+      }
+    </style>
+
+    <script>
+      // Global flag to "lock" the feature carousel when clicked.
+      var featureLocked = false;
+      var featureHeading = document.getElementById("featureHeading");
+      var featureCarousel = document.getElementById("featureCarousel");
+      var adAndCarousel = document.getElementById("adAndCarousel");
+
+      // On hover over the heading, expand the container and slide in the carousel.
+      featureHeading.addEventListener("mouseenter", function() {
+        if (!featureLocked) {
+          adAndCarousel.style.maxHeight = "600px"; // expand container height
+          featureCarousel.style.pointerEvents = "auto";
+          featureCarousel.style.opacity = "1";
+          featureCarousel.style.transform = "translateX(0)";
+        }
+      });
+
+      // On mouse leave, collapse the container and hide the carousel if not locked.
+      featureHeading.addEventListener("mouseleave", function() {
+        if (!featureLocked) {
+          adAndCarousel.style.maxHeight = "300px"; // collapse container height
+          featureCarousel.style.opacity = "0";
+          featureCarousel.style.transform = "translateX(100%)";
+          featureCarousel.style.pointerEvents = "none";
+        }
+      });
+
+      // On click, lock the carousel so it remains visible and the container stays expanded.
+      featureHeading.addEventListener("click", function() {
+        featureLocked = true;
+        adAndCarousel.style.maxHeight = "600px";
+        featureCarousel.style.pointerEvents = "auto";
+        featureCarousel.style.opacity = "1";
+        featureCarousel.style.transform = "translateX(0)";
+      });
+    </script>
+
     <!-- Payment Tab -->
     <div id="payment" class="tabcontent">
       <div class="info-section">
