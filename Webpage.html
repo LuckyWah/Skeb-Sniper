@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skeb Sniper – Automated Skeb Commission Tool</title>
+  <!-- Set the website icon -->
+  <link rel="icon" type="image/x-icon" href="Kasora.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Light Theme Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+    a {
+      color: #007acc; /* Light blue for links */
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Navigation Bar with Branding and Tabs */
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f5f5f5;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 20px;
+    }
+    .branding {
+      display: flex;
+      align-items: center;
+    }
+    .branding img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    .branding .branding-text h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #222;
+    }
+    .branding .branding-text p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+      color: #555;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 10px;
+    }
+    .nav-tabs button {
+      background: none;
+      border: none;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 500;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-tabs button:hover,
+    .nav-tabs button.active {
+      background: #007acc;
+      color: #fff;
+    }
+    /* Main Content Container with 50% Transparent Gray Background */
+    .container {
+      padding: 30px 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      background-color: rgba(128, 128, 128, 0.5);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .tabcontent {
+      display: none;
+      animation: fadeIn 0.5s ease;
+      padding: 20px;
+    }
+    .tabcontent.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    /* Carousel Styles for Introduction Tab */
+    .carousel-container {
+      position: relative;
+      margin: 40px auto;
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      background: #e0e0e0;
+    }
+    .slide {
+      display: none;
+      padding: 40px;
+    }
+    .slide.active {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    .slide h2 {
+      margin-bottom: 20px;
+      font-size: 2em;
+      color: #007acc;
+      text-align: center;
+    }
+    .slide .detail {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 3px solid #007acc;
+      background: #f9f9f9;
+      text-align: left;
+      color: #333;
+    }
+    /* Carousel Navigation Buttons */
+    .carousel-container .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1.5em;
+      border-radius: 5px;
+    }
+    .carousel-container .prev {
+      left: 10px;
+    }
+    .carousel-container .next {
+      right: 10px;
+    }
+    /* Carousel Dots */
+    .carousel-dots {
+      text-align: center;
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+    }
+    .carousel-dots .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .carousel-dots .dot.active {
+      background: #007acc;
+    }
+    /* Payment Form Styles */
+    form {
+      width: 90%;
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fafafa;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      color: #333;
+    }
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      text-align: center;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+    }
+    form input:focus, form textarea:focus {
+      border-color: #007acc;
+      outline: none;
+    }
+    form button {
+      display: block;
+      margin: auto;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #007acc, #66b3ff);
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+    form button:hover {
+      background: linear-gradient(135deg, #66b3ff, #007acc);
+    }
+    /* Info Section Styles for static pages */
+    .info-section {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      color: #333;
+    }
+    .info-section h2, .info-section h3, .info-section h4 {
+      color: #007acc;
+    }
+    .info-section p {
+      line-height: 1.6;
+    }
+    /* Developer Image – Show full image without cropping */
+    .developer-img {
+      max-width: 100%;
+      display: block;
+      margin: 20px auto;
+    }
+    /* Release Log Module Styling */
+    .release-log details {
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .release-log summary {
+      font-size: 1.3em;
+      font-weight: 500;
+      cursor: pointer;
+      outline: none;
+      color: #007acc;
+    }
+    .release-log p {
+      margin: 10px 0 0 20px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-size: 1.2em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar with Branding and Tabs in One Row -->
+  <div class="nav-bar">
+    <div class="branding">
+      <img src="Kasora.ico" alt="Logo">
+      <div class="branding-text">
+        <h1>Skeb Sniper</h1>
+        <p>Send instant request to your favorite Skeb artist</p>
+      </div>
+    </div>
+    <div class="nav-tabs">
+      <button class="tablinks active" onclick="openTab(event, 'intro')">Introduction</button>
+      <button class="tablinks" onclick="openTab(event, 'payment')">Payment</button>
+      <button class="tablinks" onclick="openTab(event, 'faq')">FAQ</button>
+      <button class="tablinks" onclick="openTab(event, 'tos')">ToS</button>
+      <button class="tablinks" onclick="openTab(event, 'privacy')">Privacy Policy</button>
+      <button class="tablinks" onclick="openTab(event, 'release')">Release Log</button>
+      <button class="tablinks" onclick="openTab(event, 'about')">About Developer</button>
+    </div>
+  </div>
+  <!-- Main Content Container -->
+  <div class="container">
+    <!-- Introduction Tab with Carousel -->
+    <div id="intro" class="tabcontent active">
+      <h2 style="text-align:center; color:#007acc;">Discover the Advanced Features of Skeb Sniper</h2>
+      <div class="carousel-container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+          <h2>100% Event-Driven Commission Monitoring</h2>
+          <div class="detail">The tool responds exclusively when Skeb sends an email notification that an artist has opened commissions.</div>
+          <div class="detail">It reacts instantly—logging in and submitting a commission request before manual intervention is possible.</div>
+          <div class="detail">Only one visit per commission opening minimizes unnecessary server load.</div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+          <h2>Fully Automated Request Submission</h2>
+          <div class="detail">User authentication is fully automated via Twitter login.</div>
+          <div class="detail">The tool manages Skeb’s email verification by detecting and processing verification codes automatically.</div>
+          <div class="detail">A locking mechanism ensures that each commission request is sent only once.</div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <h2>100% ToS-Compliant & Safe from Detection</h2>
+          <div class="detail">Only a single HTTP request is made per artist, ensuring minimal server impact.</div>
+          <div class="detail">The tool interacts solely via official channels, eliminating any risk of ban or detection.</div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide">
+          <h2>User-Centric Designs</h2>
+          <div class="detail">An installer facilitates easy setup and uninstallation, automatically downloading Firefox and creating shortcuts.</div>
+          <div class="detail">The entire process is managed through a clear GUI or command-line interface—no manual intervention is required after configuration.</div>
+        </div>
+        <!-- Slide 5 -->
+        <div class="slide">
+          <h2>Privacy Protection</h2>
+          <div class="detail">Robust encryption protects sensitive details such as Twitter credentials and payment information.</div>
+          <div class="detail">No personal data is collected—the Gmail listener operates exclusively in read-only mode.</div>
+          <div class="detail">The application runs only with a designated 'gui' tag, keeping its functionality discreet.</div>
+        </div>
+        <!-- Carousel Navigation -->
+        <button class="nav-btn prev" onclick="changeSlide(-1)">&lt;</button>
+        <button class="nav-btn next" onclick="changeSlide(1)">&gt;</button>
+        <!-- Carousel Dots -->
+        <div class="carousel-dots" id="carousel-dots">
+          <span class="dot active" onclick="jumpToSlide(0)"></span>
+          <span class="dot" onclick="jumpToSlide(1)"></span>
+          <span class="dot" onclick="jumpToSlide(2)"></span>
+          <span class="dot" onclick="jumpToSlide(3)"></span>
+          <span class="dot" onclick="jumpToSlide(4)"></span>
+        </div>
+      </div>
+    </div>
+    <!-- Payment Tab -->
+    <div id="payment" class="tabcontent">
+      <div class="info-section">
+        <h2>Payment</h2>
+        <p>Skeb Sniper is currently in its testing phase. The lifetime purchase is <strong>$50</strong>. If you are interested, please complete the form below to receive an invoice.</p>
+        <form id="paymentForm">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <label for="request">Your Request:</label>
+          <textarea id="request" name="request" rows="4" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+        <p id="paymentResponse" style="text-align:center; font-weight:500;"></p>
+      </div>
+    </div>
+    <!-- FAQ Tab with Collapsible Items -->
+    <div id="faq" class="tabcontent">
+      <div class="info-section">
+        <h2>Frequently Asked Questions</h2>
+        <details>
+          <summary>What amount should I enter for a commission?</summary>
+          <p>Please enter an amount that meets or exceeds the recommended value. Use the provided multiplier if necessary.</p>
+        </details>
+        <details>
+          <summary>How should I compose my request text?</summary>
+          <p>Compose your request in clear, straightforward language. Avoid idioms or overly complex expressions to ensure accurate translation.</p>
+        </details>
+        <details>
+          <summary>How do I include a reference URL?</summary>
+          <p>Make sure your reference URL is publicly accessible. For example, if using Google Drive, set the sharing settings to "Anyone with the link can view."</p>
+        </details>
+        <details>
+          <summary>What if my request involves NSFW content?</summary>
+          <p>If your request includes NSFW material, please toggle the NSFW setting to "On" during submission and follow Skeb's guidelines.</p>
+        </details>
+        <details>
+          <summary>What should I do regarding Skeb points?</summary>
+          <p>Ensure you have sufficient Skeb points, as the tool requires them to process commission requests. Insufficient points will prevent the request from being sent.</p>
+        </details>
+        <details>
+          <summary>How can I run Skeb Sniper on different platforms?</summary>
+          <p>For Windows, use the GUI version. For Linux, follow the command-line instructions provided in the tutorial.</p>
+        </details>
+      </div>
+    </div>
+    <!-- Terms of Service Tab (Static) -->
+    <div id="tos" class="tabcontent">
+      <div class="info-section">
+        <h2>Terms of Service for Skeb Sniper</h2>
+        <p><strong>Effective Date:</strong> 01/30/2025</p>
+        <h3>1. Acceptance of Terms</h3>
+        <p>By using Skeb Sniper, you agree to these Terms of Service. If you do not agree, you must discontinue use of the application.</p>
+        <h3>2. License</h3>
+        <p>This software is licensed, not sold. You are granted a non-exclusive, non-transferable license to use the application solely for its intended purpose of monitoring Skeb commissions.</p>
+        <h3>3. Restrictions</h3>
+        <p>You agree not to share, redistribute, modify, decompile, or reverse-engineer the software; to monetize the software or its components; or to use the software in any manner that violates applicable laws.</p>
+        <h3>4. Disclaimer of Liability</h3>
+        <p>The software is provided "as is" without any warranties. The developer is not liable for any damages or losses arising from its use.</p>
+        <h3>5. Contact</h3>
+        <p>For any questions or concerns, please contact us:</p>
+        <p>Twitter: <a href="https://twitter.com/kasora_shibainu" target="_blank">@kasora_shibainu</a><br>
+           Email: <a href="mailto:danestylewis@gmail.com">danestylewis@gmail.com</a></p>
+      </div>
+    </div>
+    <!-- Privacy Policy Tab (Detailed) -->
+    <div id="privacy" class="tabcontent">
+      <div class="info-section">
+        <h2>Privacy Policy</h2>
+        <p><strong>Last updated:</strong> January 31, 2025</p>
+        <p>This Privacy Policy (“Policy”) explains how Skeb Sniper (“Application”) is designed with your privacy in mind. Our Application does not collect, store, or share any personal information from its users. The Gmail listener is configured exclusively in a read-only mode to detect commission notification emails from Skeb and does not extract or retain any data.</p>
+        <p><strong>Information Collection:</strong> The Application accesses your Gmail account only to monitor for specific emails from Skeb. This transient access is used solely to trigger the commission request process, and no personal data is gathered or stored.</p>
+        <p><strong>Use of Data:</strong> Since no personal information is collected, the Application does not analyze or share user data. The read-only Gmail listener functions only to identify commission notifications and immediately discards any accessed information.</p>
+        <p><strong>Data Security:</strong> Even though no personal data is stored, robust security measures protect any information that may be momentarily processed. All communications occur over encrypted channels, and any temporary data is promptly discarded.</p>
+        <p><strong>Third-Party Services:</strong> The Application does not share any user data with third parties. Its functionality is entirely self-contained, interacting solely with Gmail in a secure, read-only manner.</p>
+        <p><strong>Data Retention:</strong> Since no personal data is collected, there is no ongoing data retention policy. Any information accessed during processing is used only momentarily and is not saved after the necessary action is completed.</p>
+        <p><strong>Changes to This Policy:</strong> We reserve the right to update this Privacy Policy at any time. Any modifications will be posted on this page with an updated effective date. We encourage you to review this Policy periodically.</p>
+        <p><strong>Contact Us:</strong> If you have any questions or concerns regarding this Privacy Policy, please contact us at <a href="mailto:danestylewis@gmail.com">danestylewis@gmail.com</a>.</p>
+      </div>
+    </div>
+    <!-- Release Log Tab with Collapsible Modules -->
+    <div id="release" class="tabcontent">
+      <div class="info-section release-log">
+        <h2>Release Log</h2>
+        <details>
+          <summary>Version 1.0 (December 27, 2024)</summary>
+          <p>
+This initial release introduced the core functionality of Skeb Sniper for Windows servers and provided a comprehensive tutorial for first-time users.
+          </p>
+        </details>
+        <details>
+          <summary>Version 1.1 (December 28, 2024)</summary>
+          <p>
+This update provided a dedicated version for Linux servers along with extensive guidance for setting up remote or cloud servers, including detailed instructions for using Google Cloud Platform.
+          </p>
+        </details>
+        <details>
+          <summary>Version 1.2 (December 29, 2024)</summary>
+          <p>
+Anti-detection measures were introduced to avoid bot detection by Skeb. This update implements a randomized User-Agent with fallback, disables headless mode for enhanced stealth, activates privacy features such as tracking protection, and randomizes page check intervals between 5 seconds and 10 minutes. Stability for remote server deployments was also improved.
+          </p>
+        </details>
+        <details>
+          <summary>Version 1.3 (December 30, 2024)</summary>
+          <p>
+A streamlined setup process for both Windows and Linux servers was implemented, simplifying the tutorial and making the Application more accessible for non-technical users.
+          </p>
+        </details>
+        <details>
+          <summary>Version 1.4 (December 31, 2024)</summary>
+          <p>
+Bug fixes were applied to the Windows setup batch file, the tutorial was refined for clarity, and additional procedures were added to secure your Twitter credentials.
+          </p>
+        </details>
+        <details>
+          <summary>Version 1.5 (January 1, 2025)</summary>
+          <p>
+A graphical user interface (GUI) was implemented for secure user input with robust data encryption replacing hardcoded sensitive information. Users can now safely enter their Twitter credentials and commission details via the GUI, and a log file is provided for monitoring program status. (Note: The Linux version is temporarily discontinued due to GUI challenges.)
+          </p>
+        </details>
+        <details>
+          <summary>Version 1.6 (January 2, 2025)</summary>
+          <p>
+The Linux version became fully operational with data encryption, although it does not include a GUI (user input is handled via the command prompt). Enhancements include an improved manual, bug fixes, logging, and a locking mechanism to prevent duplicate requests. This version is fully functional.
+          </p>
+        </details>
+        <details>
+          <summary>Version 1.7 (January 3, 2025)</summary>
+          <p>
+Toggle functionality was refined for reliable detection and interaction. The Windows GUI now includes an email input field for feature parity with the Linux version, and users can create multiple artist-specific Python files—named after each artist—to monitor commission statuses simultaneously.
+          </p>
+        </details>
+        <details>
+          <summary>Version 1.8 (January 29, 2025)</summary>
+          <p>
+Significant enhancements were made to the Windows GUI, enabling users to manage tasks entirely through the graphical interface and integrating relevant information to reduce the need for external tutorials.
+          </p>
+        </details>
+        <details>
+          <summary>Version 1.9 (February 2, 2025)</summary>
+          <p>
+Skeb Sniper now operates as a fully event-driven tool. It sends a single, timely HTTP request when an artist opens a commission slot—triggered by Skeb’s email notifications—thus eliminating the need for web scraping and ensuring full compliance with Skeb’s Terms of Service. Additionally, the Application automatically handles verification codes by detecting and processing them from your email.
+          </p>
+        </details>
+      </div>
+    </div>
+    <!-- About Developer Tab -->
+    <div id="about" class="tabcontent">
+      <div class="info-section">
+        <h2>About Developer</h2>
+        <p>Developer: カソラ (Kasora), a fursuiter and Skeb commissioner.</p>
+        <p>Twitter: <a href="https://twitter.com/kasora_shibainu" target="_blank">@kasora_shibainu</a></p>
+        <p>Telegram: <a href="https://t.me/Lucky_RedPanda" target="_blank">@Lucky_RedPanda</a></p>
+        <p>Email: <a href="mailto:danestylewis@gmail.com">danestylewis@gmail.com</a></p>
+        <img src="Skeb_Sniper_Developer_Intro.png" alt="Developer Introduction" class="developer-img">
+      </div>
+    </div>
+  </div>
+  <script>
+    // Tab Switching Function
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+    // Carousel Functionality
+    var currentSlide = 0;
+    var slides = document.getElementsByClassName("slide");
+    var dots = document.getElementsByClassName("dot");
+    
+    function showSlide(index) {
+      if (index >= slides.length) { currentSlide = 0; }
+      else if (index < 0) { currentSlide = slides.length - 1; }
+      else { currentSlide = index; }
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+        if (dots[i]) { dots[i].classList.remove("active"); }
+      }
+      slides[currentSlide].classList.add("active");
+      if (dots[currentSlide]) { dots[currentSlide].classList.add("active"); }
+    }
+    
+    function changeSlide(n) {
+      showSlide(currentSlide + n);
+    }
+    
+    // Allow dot-click navigation
+    function jumpToSlide(n) {
+      showSlide(n);
+    }
+    
+    // Payment Form Demo Submission
+    document.getElementById("paymentForm") && document.getElementById("paymentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("paymentResponse").innerText = "Thank you! Your request has been submitted.";
+      this.reset();
+    });
+  </script>
+</body>
+</html>
