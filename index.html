@@ -277,7 +277,7 @@
       <img src="Kasora.ico" alt="Logo">
       <div class="branding-text">
         <h1>Skeb Sniper</h1>
-        <p>Send instant request to your favorite Skeb artist</p>
+        <p>Send instant requests to your favorite artist on Skeb</p>
       </div>
     </div>
     <div class="nav-tabs">
@@ -303,43 +303,42 @@
         </div>
         <!-- Interactive Heading that triggers the carousel -->
         <h2 id="featureHeading" style="text-align:center; color:#007acc; font-size:2.5em; cursor: pointer;">
-          Discover the Advanced Features of Skeb Sniper
+          Discover Advanced Features of Skeb Sniper
         </h2>
         <!-- Feature Carousel (initially hidden off to the right) -->
         <div id="featureCarousel" class="carousel-container" 
             style="opacity:0; transform: translateX(100%); pointer-events: none; transition: all 0.5s ease;">
           <!-- Slide 1 -->
           <div class="slide active">
-            <h2>100% Event-Driven Commission Monitoring</h2>
-            <div class="detail">The tool responds exclusively when Skeb sends an email notification that an artist has opened commissions.</div>
-            <div class="detail">It reacts instantly—logging in and submitting a commission request before manual intervention is possible.</div>
-            <div class="detail">Only one visit per commission opening minimizes unnecessary server load.</div>
+            <h2>Event-Driven Commission Status Monitoring</h2>
+            <div class="detail">Instantly sends a request to your artist when Skeb sends an email notification to you.</div>
+            <div class="detail">No persistent data extraction from Skeb.</div>
+            <div class="detail">Visits Skeb only once after commission opening.</div>
           </div>
           <!-- Slide 2 -->
           <div class="slide">
             <h2>Fully Automated Request Submission</h2>
-            <div class="detail">User authentication is fully automated via Twitter login.</div>
-            <div class="detail">The tool manages Skeb’s email verification by detecting and processing verification codes automatically.</div>
-            <div class="detail">A locking mechanism ensures that each commission request is sent only once.</div>
+            <div class="detail">Automated user authentication and log in with Gmail and Twitter.</div>
+            <div class="detail">Automated verification with Skeb by extracting verification codes from Skeb through emails.</div>
+            <div class="detail">Embedded locking mechanism ensuring that each request is sent only once.</div>
           </div>
           <!-- Slide 3 -->
           <div class="slide">
-            <h2>100% ToS-Compliant & Safe from Detection</h2>
-            <div class="detail">Only a single HTTP request is made per artist, ensuring minimal server impact.</div>
-            <div class="detail">The tool interacts solely via official channels, eliminating any risk of ban or detection.</div>
+            <h2>ToS-Compliant and Ethical</h2>
+            <div class="detail">Only a single HTTP request is made per commission opening ensuring minimal server impact on Skeb.</div>
+            <div class="detail">Works with emails sent from Skeb ensuring no risk of ban.</div>
           </div>
           <!-- Slide 4 -->
           <div class="slide">
             <h2>User-Centric Designs</h2>
-            <div class="detail">An installer facilitates easy setup and uninstallation, automatically downloading Firefox and creating shortcuts.</div>
-            <div class="detail">The entire process is managed through a clear GUI or command-line interface—no manual intervention is required after configuration.</div>
+            <div class="detail">Comes with an installer that facilitates easy setup and uninstallation.</div>
+            <div class="detail">Comes with a GUI ensuring no manual intervention after configuration.</div>
           </div>
           <!-- Slide 5 -->
           <div class="slide">
             <h2>Privacy Protection</h2>
-            <div class="detail">Robust encryption protects sensitive details such as Twitter credentials and payment information.</div>
-            <div class="detail">No personal data is collected—the Gmail listener operates exclusively in read-only mode.</div>
-            <div class="detail">The application runs only with a designated 'gui' tag, keeping its functionality discreet.</div>
+            <div class="detail">Protects user data with multi-layer encryption.</div>
+            <div class="detail">No collection of user data.</div>
           </div>
           <!-- Carousel Navigation -->
           <button class="nav-btn prev" onclick="changeSlide(-1)">&lt;</button>
@@ -480,7 +479,7 @@
       <div class="info-section">
         <h2>Payment</h2>
         <p>Skeb Sniper is currently in its testing phase. The lifetime purchase is <strong>$50</strong>. If you are interested, please complete the form below to receive an invoice.</p>
-        <form id="paymentForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form id="paymentForm" action="https://formspree.io/f/myzkjbda" method="POST">
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required>
           <label for="request">Your Request:</label>
@@ -492,33 +491,46 @@
     </div>
 
     <script>
-      // Attach an AJAX form submission listener on DOMContentLoaded
+      // Attach an AJAX form submission listener when the DOM is fully loaded.
       document.addEventListener("DOMContentLoaded", function() {
         var paymentForm = document.getElementById("paymentForm");
+        var paymentResponseEl = document.getElementById("paymentResponse");
+        
         paymentForm.addEventListener("submit", function(e) {
           e.preventDefault();
           var formData = new FormData(paymentForm);
+          
           fetch(paymentForm.action, {
             method: "POST",
-            body: formData,
             headers: {
               'Accept': 'application/json'
-            }
-          }).then(function(response) {
+            },
+            body: formData
+          })
+          .then(function(response) {
+            console.log("Response received:", response);
+            // Formspree may or may not return JSON; check response.ok first.
             if (response.ok) {
-              document.getElementById("paymentResponse").innerText = "Thank you! Your request has been submitted.";
-              paymentForm.reset();
+              paymentResponseEl.innerText = "Thank you! Your request has been submitted.";
+              // Delay resetting the form so the message remains visible.
+              setTimeout(function() {
+                paymentForm.reset();
+              }, 3000);
             } else {
+              // Try to parse JSON error message
               response.json().then(function(data) {
-                if (Object.hasOwn(data, 'errors')) {
-                  document.getElementById("paymentResponse").innerText = data["errors"].map(function(error) { return error["message"]; }).join(", ");
+                console.log("Data received:", data);
+                if (data.errors) {
+                  paymentResponseEl.innerText = data.errors.map(function(error) { return error.message; }).join(", ");
                 } else {
-                  document.getElementById("paymentResponse").innerText = "Oops! There was a problem submitting your form.";
+                  paymentResponseEl.innerText = "Oops! There was a problem submitting your form.";
                 }
               });
             }
-          }).catch(function(error) {
-            document.getElementById("paymentResponse").innerText = "Oops! There was a problem submitting your form.";
+          })
+          .catch(function(error) {
+            console.error("Submission error:", error);
+            paymentResponseEl.innerText = "Oops! There was a problem submitting your form.";
           });
         });
       });
