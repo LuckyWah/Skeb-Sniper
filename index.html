@@ -541,28 +541,26 @@
       <div class="info-section">
         <h2>Frequently Asked Questions</h2>
         <details>
-          <summary>What amount should I enter for a commission?</summary>
-          <p>Please enter an amount that meets or exceeds the recommended value. Use the provided multiplier if necessary.</p>
+          <summary>What are the requirements for running this application?</summary>
+            <ul>
+              <li>Ensure you have sufficient Skeb points for the request or that your bank does not require authentication. Otherwise, the program will fail to submit your request.</li>
+              <li>Make sure you are using your Gmail account to receive emails from Skeb. If not, update your email to your Gmail account in your Skeb account settings.</li>
+              <li>Confirm that you have enabled notifications for the artist. If not, visit the artist's Skeb page and click "Notify on seeking started."</li>
+              <li>Test the program and successfully activate the Gmail listener before running the task in the background.</li>
+              <li>When running the task in the background, ensure the Gmail listener is activated successfully.</li>
+          </ul>        
         </details>
         <details>
-          <summary>How should I compose my request text?</summary>
-          <p>Compose your request in clear, straightforward language. Avoid idioms or overly complex expressions to ensure accurate translation.</p>
+          <summary>Are my Twitter credentials safe?</summary>
+          <p>Yes, your Twitter credentials are safe because they are encrypted using a machine-specific and user-specific key. The encryption key is derived using PBKDF2 with SHA-256 and a 16-byte user-specific salt, and this key encrypts your data using AES-128 in CBC mode with HMAC-SHA256 authentication, ensuring that only your user account and your device can decrypt the stored data.</p>
         </details>
         <details>
-          <summary>How do I include a reference URL?</summary>
-          <p>Make sure your reference URL is publicly accessible. For example, if using Google Drive, set the sharing settings to "Anyone with the link can view."</p>
+          <summary>Do you collect any data from us?</summary>
+          <p>No, the developer never collects any data from you, including your Gmail account or Twitter credentials. To ensure your privacy and security, all sensitive data is first encrypted and then securely stored locally on your device in compliance with our no-data-collection policy.</p>
         </details>
         <details>
-          <summary>What if my request involves NSFW content?</summary>
-          <p>If your request includes NSFW material, please toggle the NSFW setting to "On" during submission and follow Skeb's guidelines.</p>
-        </details>
-        <details>
-          <summary>What should I do regarding Skeb points?</summary>
-          <p>Ensure you have sufficient Skeb points, as the tool requires them to process commission requests. Insufficient points will prevent the request from being sent.</p>
-        </details>
-        <details>
-          <summary>How can I run Skeb Sniper on different platforms?</summary>
-          <p>For Windows, use the GUI version. For Linux, follow the command-line instructions provided in the tutorial.</p>
+          <summary>My Windows PC flags the application as a security concern. Is this application a security threat?</summary>
+          <p>No, this happens because Windows does not trust unsigned executables and may flag them as potential malware. The warning appears because my executable lacks a valid certificate authority (CA), which requires a costly certification process that is not necessary for this software. You can manually trust the executable, as it is safe and not malware.</p>          
         </details>
       </div>
     </div>
@@ -572,7 +570,7 @@
         <h2>Terms of Service for Skeb Sniper</h2>
         <p><strong>Effective Date:</strong> 01/30/2025</p>
         <h3>1. Acceptance of Terms</h3>
-        <p>By using Skeb Sniper, you agree to these Terms of Service. If you do not agree, you must discontinue use of the application.</p>
+        <p>By using Skeb Sniper, you agree to these Terms of Service.</p>
         <h3>2. License</h3>
         <p>This software is licensed, not sold. You are granted a non-exclusive, non-transferable license to use the application solely for its intended purpose of monitoring Skeb commissions.</p>
         <h3>3. Restrictions</h3>
@@ -585,18 +583,18 @@
            Email: <a href="mailto:danestylewis@gmail.com">danestylewis@gmail.com</a></p>
       </div>
     </div>
-    <!-- Privacy Policy Tab (Detailed) -->
+    <!-- Privacy Policy Tab -->
     <div id="privacy" class="tabcontent">
       <div class="info-section">
         <h2>Privacy Policy</h2>
-        <p><strong>Last updated:</strong> January 31, 2025</p>
-        <p>This Privacy Policy (“Policy”) explains how Skeb Sniper (“Application”) is designed with your privacy in mind. Our Application does not collect, store, or share any personal information from its users. The Gmail listener is configured exclusively in a read-only mode to detect commission notification emails from Skeb and does not extract or retain any data.</p>
-        <p><strong>Information Collection:</strong> The Application accesses your Gmail account only to monitor for specific emails from Skeb. This transient access is used solely to trigger the commission request process, and no personal data is gathered or stored.</p>
-        <p><strong>Use of Data:</strong> Since no personal information is collected, the Application does not analyze or share user data. The read-only Gmail listener functions only to identify commission notifications and immediately discards any accessed information.</p>
-        <p><strong>Data Security:</strong> Even though no personal data is stored, robust security measures protect any information that may be momentarily processed. All communications occur over encrypted channels, and any temporary data is promptly discarded.</p>
+        <p><strong>Last updated:</strong> March 2, 2025</p>
+        <p>This Privacy Policy (“Policy”) explains how Skeb Sniper (“Application”) is designed with your privacy in mind. Our Application does not collect, store, or share any personal information from its users.</p>
+        <p><strong>Information Collection:</strong> The Application accesses your Gmail account only to receive specific emails from Skeb. This access is used solely to send a signal to the application to submit a request to the artist, and no personal data is gathered or stored.</p>
+        <p><strong>Use of Data:</strong> Since no personal information is collected, the Application does not analyze or share user data.</p>
+        <p><strong>Data Security:</strong> The application implements robust security measures to protect user's sensitive information.</p>
         <p><strong>Third-Party Services:</strong> The Application does not share any user data with third parties. Its functionality is entirely self-contained, interacting solely with Gmail in a secure, read-only manner.</p>
         <p><strong>Data Retention:</strong> Since no personal data is collected, there is no ongoing data retention policy. Any information accessed during processing is used only momentarily and is not saved after the necessary action is completed.</p>
-        <p><strong>Changes to This Policy:</strong> We reserve the right to update this Privacy Policy at any time. Any modifications will be posted on this page with an updated effective date. We encourage you to review this Policy periodically.</p>
+        <p><strong>Changes to This Policy:</strong> We reserve the right to update this Privacy Policy at any time. Any modifications will be posted on this page with an updated effective date.</p>
         <p><strong>Contact Us:</strong> If you have any questions or concerns regarding this Privacy Policy, please contact us at <a href="mailto:danestylewis@gmail.com">danestylewis@gmail.com</a>.</p>
       </div>
     </div>
@@ -607,75 +605,79 @@
         <details>
           <summary>Version 1.0 (December 27, 2024)</summary>
           <p>
-This initial release introduced the core functionality of Skeb Sniper for Windows servers and provided a comprehensive tutorial for first-time users.
+            This initial release includes a basic Python script with the core functionality of automation for Windows servers and provided a tutorial for first-time users.
           </p>
         </details>
         <details>
           <summary>Version 1.1 (December 28, 2024)</summary>
           <p>
-This update provided a dedicated version for Linux servers along with extensive guidance for setting up remote or cloud servers, including detailed instructions for using Google Cloud Platform.
+            This update provided a dedicated version for Linux servers along with extensive guidance for setting up cloud servers.
           </p>
         </details>
         <details>
           <summary>Version 1.2 (December 29, 2024)</summary>
           <p>
-Anti-detection measures were introduced to avoid bot detection by Skeb. This update implements a randomized User-Agent with fallback, disables headless mode for enhanced stealth, activates privacy features such as tracking protection, and randomizes page check intervals between 5 seconds and 10 minutes. Stability for remote server deployments was also improved.
+            Anti-detection measures were introduced to avoid bot detection. This update implements a randomized User-Agent with fallback mechanism, disables headless mode, activates privacy protection such as tracking protection, and randomizes page check intervals between 5 seconds and 10 minutes.
           </p>
         </details>
         <details>
           <summary>Version 1.3 (December 30, 2024)</summary>
           <p>
-A streamlined setup process for both Windows and Linux servers was implemented, simplifying the tutorial and making the Application more accessible for non-technical users.
+            Created Windows and Linux setup scripts, simplifying the application’s installation for non-technical users.
           </p>
         </details>
         <details>
           <summary>Version 1.4 (December 31, 2024)</summary>
           <p>
-Bug fixes were applied to the Windows setup batch file, the tutorial was refined for clarity, and additional procedures were added to secure your Twitter credentials.
+            Added encryption mechanism to ensure security of Twitter credentials.
           </p>
         </details>
         <details>
           <summary>Version 1.5 (January 1, 2025)</summary>
           <p>
-A graphical user interface (GUI) was implemented for secure user input with robust data encryption replacing hardcoded sensitive information. Users can now safely enter their Twitter credentials and commission details via the GUI, and a log file is provided for monitoring program status. (Note: The Linux version is temporarily discontinued due to GUI challenges.)
+            A graphical user interface (GUI) was implemented with data encryption for usability and security. Users can now safely enter their Twitter credentials and commission details via the GUI.
           </p>
         </details>
         <details>
           <summary>Version 1.6 (January 2, 2025)</summary>
           <p>
-The Linux version became fully operational with data encryption, although it does not include a GUI (user input is handled via the command prompt). Enhancements include an improved manual, bug fixes, logging, and a locking mechanism to prevent duplicate requests. This version is fully functional.
+            The Linux version became fully operational with data encryption, using the command prompt for user input instead of a GUI. Enhancements include an improved manual, bug fixes, logging, and a locking mechanism to prevent duplicate requests.
           </p>
         </details>
         <details>
           <summary>Version 1.7 (January 3, 2025)</summary>
           <p>
-Toggle functionality was refined for reliable detection and interaction. The Windows GUI now includes an email input field for feature parity with the Linux version, and users can create multiple artist-specific Python files—named after each artist—to monitor commission statuses simultaneously.
+            Bug fixes for selecting toggles. The users can now create multiple artist-specific Python files named after each artist to monitor commission statuses simultaneously.
           </p>
         </details>
         <details>
           <summary>Version 1.8 (January 29, 2025)</summary>
           <p>
-Significant enhancements were made to the Windows GUI, enabling users to manage tasks entirely through the graphical interface and integrating relevant information to reduce the need for external tutorials.
+            Significant enhancements were made to the Windows GUI, enabling users to manage tasks entirely through the graphical interface and integrating relevant information to reduce the need for tutorials.
           </p>
         </details>
         <details>
-          <summary>Version 1.9 (February 2, 2025)</summary>
+          <summary>Version 1.9 (March 2, 2025)</summary>
           <p>
-Skeb Sniper now operates as a fully event-driven tool. It sends a single, timely HTTP request when an artist opens a commission slot—triggered by Skeb’s email notifications—thus eliminating the need for web scraping and ensuring full compliance with Skeb’s Terms of Service. Additionally, the Application automatically handles verification codes by detecting and processing them from your email.
+            The applcation now operates as a fully event-driven tool. It sends a single request to Skeb when an artist opens requests, which is triggered by Skeb’s email notifications thus eliminating the need for unethical web scraping.
           </p>
         </details>
       </div>
     </div>
-    <!-- About Developer Tab -->
+    <!-- Developer Tab -->
     <div id="about" class="tabcontent">
-      <div class="info-section">
-        <h2>About Developer</h2>
-        <p>Developer: カソラ (Kasora), a fursuiter and Skeb commissioner.</p>
-        <p>Twitter: <a href="https://twitter.com/kasora_shibainu" target="_blank">@kasora_shibainu</a></p>
-        <p>Telegram: <a href="https://t.me/Lucky_RedPanda" target="_blank">@Lucky_RedPanda</a></p>
-        <p>Email: <a href="mailto:danestylewis@gmail.com">danestylewis@gmail.com</a></p>
-        <img src="Skeb_Sniper_Developer_Intro.png" alt="Developer Introduction" class="developer-img">
-      </div>
+      <div class="info-section" style="display: flex; align-items: flex-start; gap: 20px;">
+        <div style="flex: 1;">
+          <h2>About Developer</h2>
+          <p>Developer: カソラ (Kasora), a fursuiter and Skeb commissioner.</p>
+          <p>Twitter: <a href="https://twitter.com/kasora_shibainu" target="_blank">@kasora_shibainu</a></p>
+          <p>Telegram: <a href="https://t.me/Lucky_RedPanda" target="_blank">@Lucky_RedPanda</a></p>
+          <p>Email: <a href="mailto:danestylewis@gmail.com">danestylewis@gmail.com</a></p>
+          <p>Art: Icon and background: とおぼえふうすけ(tooboefuusuke). Portrait: がみ(gami)</p>
+        </div>
+        <img src="Skeb_Sniper_Developer_Intro.png" alt="Developer Introduction" class="developer-img" 
+             style="max-width: 200px; height: auto; border-radius: 10px; flex-shrink: 0;">
+      </div>      
     </div>
   </div>
   <script>
