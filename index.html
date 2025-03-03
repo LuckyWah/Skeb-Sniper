@@ -541,6 +541,10 @@
       <div class="info-section">
         <h2>Frequently Asked Questions</h2>
         <details>
+          <summary>My Windows PC flags the application as a security concern. Is this application a security threat?</summary>
+          <p>No, this happens because Windows does not trust unsigned executables and may flag them as potential malware. The warning appears because my executable lacks a valid certificate authority (CA), which requires a costly certification process that is not necessary for this software. You can manually trust the executable, as it is safe and not malware.</p>          
+        </details>
+        <details>
           <summary>What are the requirements for running this application?</summary>
             <ul>
               <li>Ensure you have sufficient Skeb points for the request or that your bank does not require authentication. Otherwise, the program will fail to submit your request.</li>
@@ -559,8 +563,16 @@
           <p>No, the developer never collects any data from you, including your Gmail account or Twitter credentials. To ensure your privacy and security, all sensitive data is first encrypted and then securely stored locally on your device in compliance with our no-data-collection policy.</p>
         </details>
         <details>
-          <summary>My Windows PC flags the application as a security concern. Is this application a security threat?</summary>
-          <p>No, this happens because Windows does not trust unsigned executables and may flag them as potential malware. The warning appears because my executable lacks a valid certificate authority (CA), which requires a costly certification process that is not necessary for this software. You can manually trust the executable, as it is safe and not malware.</p>          
+          <summary>Do I have to input my Twitter credentials?</summary>
+          <p>Yes, the program requires your credentials to log in. However, it will first attempt to use cookies. If that fails, it will fall back to using your password.</p>          
+        </details>
+        <details>
+          <summary>How do I test the program?</summary>
+          <p>You can test the program by clicking on "Test Run." The program will send you an automated email, which will trigger the automation tool to send a request to the artist. We recommend selecting an artist currently open for requests to confirm that the program can log into your account. If login fails, ensure that Two-Factor Authentication is disabled on Twitter. If you prefer not to send a request right now, set the amount to a value below the minimum requirement (e.g., 500). If test run fails, please contact the developer.</p>          
+        </details>
+        <details>
+          <summary>What does "Run in Background" in task manager do?</summary>
+          <p>When you click on "Run in Background," the program starts a background process that runs continuously, allowing you to safely disconnect from your server. On Windows, it uses a Windows service, while on Linux, it runs as a daemon managed by systemd, so you need admin/root privileges to run. The background process automatically shuts down when no tasks are running.</p>          
         </details>
       </div>
     </div>
