@@ -1,0 +1,61 @@
+<div id="home" class="tabcontent active">
+    <!-- Wrapper for advertisement and carousel with dynamic height -->
+    <div id="adAndCarousel" style="overflow: hidden; transition: max-height 0.5s ease; max-height: 300px;">
+      <!-- Advertisement Block with slideUp animation -->
+      <div class="advertisement" style="transform: translateY(20px); opacity: 0; animation: slideUp 1s forwards;">
+        <p>Ever wake up to find that your favorite artist’s commission slot has vanished? We know how frustrating it is to wait for months only to miss your chance because the slot filled up while you were asleep.</p>
+        <p>Worry no more! Skeb Sniper levels the playing field for Western users by automating the commission request process for Japanese artists who often open slots while you sleep. By acting only when Skeb sends an email notification, Skeb Sniper ensures you never miss that coveted commission!</p>
+      </div>
+      <!-- Interactive Heading that triggers the carousel -->
+      <h2 id="featureHeading" style="text-align:center; color:#007acc; font-size:2.5em; cursor: pointer;">
+        Discover Advanced Features of Skeb Sniper
+      </h2>
+      <!-- Feature Carousel (initially hidden off to the right) -->
+      <div id="featureCarousel" class="carousel-container" 
+          style="opacity:0; transform: translateX(100%); pointer-events: none; transition: all 0.5s ease;">
+        <!-- Slide 1 -->
+        <div class="slide active">
+          <h2>Event-Driven Commission Status Monitoring</h2>
+          <div class="detail">Instantly sends a request to your artist when Skeb sends an email notification to you.</div>
+          <div class="detail">No persistent data extraction from Skeb.</div>
+          <div class="detail">Visits Skeb only once after commission opening.</div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+          <h2>Fully Automated Request Submission</h2>
+          <div class="detail">Automated user authentication and log in with Gmail and Twitter.</div>
+          <div class="detail">Automated verification with Skeb by extracting verification codes from Skeb through emails.</div>
+          <div class="detail">Embedded locking mechanism ensuring that each request is sent only once.</div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <h2>ToS-Compliant and Ethical</h2>
+          <div class="detail">Only a single HTTP request is made per commission opening ensuring minimal server impact on Skeb.</div>
+          <div class="detail">Works with emails sent from Skeb ensuring no risk of ban.</div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide">
+          <h2>User-Centric Designs</h2>
+          <div class="detail">Comes with an installer that facilitates easy setup and uninstallation.</div>
+          <div class="detail">Comes with a GUI ensuring no manual intervention after configuration.</div>
+        </div>
+        <!-- Slide 5 -->
+        <div class="slide">
+          <h2>Privacy Protection</h2>
+          <div class="detail">Protects user data with enterprise-level encryption.</div>
+          <div class="detail">No collection of user data.</div>
+        </div>
+        <!-- Carousel Navigation -->
+        <button class="nav-btn prev" onclick="changeSlide(-1)">&lt;</button>
+        <button class="nav-btn next" onclick="changeSlide(1)">&gt;</button>
+        <!-- Carousel Dots -->
+        <div class="carousel-dots" id="carousel-dots">
+          <span class="dot active" onclick="jumpToSlide(0)"></span>
+          <span class="dot" onclick="jumpToSlide(1)"></span>
+          <span class="dot" onclick="jumpToSlide(2)"></span>
+          <span class="dot" onclick="jumpToSlide(3)"></span>
+          <span class="dot" onclick="jumpToSlide(4)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
