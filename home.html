@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        // If this page is loaded directly, load index.html
+        if (window.location === window.parent.location) {
+            window.location.replace("/index.html#home");
+        }
+    </script>
+</head>
+<body>
 <div id="home" class="tabcontent active">
     <!-- Wrapper for advertisement and carousel with dynamic height -->
     <div id="adAndCarousel" style="overflow: hidden; transition: max-height 0.5s ease; max-height: 300px;">
@@ -78,3 +89,5 @@
       </div>
     </div>
   </div>
+</body>
+</html>

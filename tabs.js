@@ -64,15 +64,13 @@ function openTab(evt, tabName) {
 
 // Load correct tab on page load with redirect check
 window.onload = function () {
-    // Check if the current page is a standalone tab file (e.g., contact.html loaded directly)
-    const isStandaloneTab = window.location.pathname.includes(".html") && !window.location.pathname.includes("index.html");
-    if (isStandaloneTab) {
-        // Redirect to the same path without .html to load index.html
-        window.location.href = window.location.pathname.replace(".html", "");
+    // If the page is loaded with a direct URL (e.g., /contact), ensure index.html is loaded first
+    if (!document.querySelector(".container")) {
+        window.location.replace("/index.html" + window.location.hash);
         return;
     }
 
-    let path = window.location.pathname.substring(1) || "home"; // Default to "home"
+    let path = window.location.hash.substring(1) || "home"; // Default to "home"
     const validTabs = ["home", "contact", "faq", "tos", "privacy", "release", "about"];
     openTab(null, validTabs.includes(path) ? path : "home");
 };

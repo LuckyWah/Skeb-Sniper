@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        // If this page is loaded directly, load index.html
+        if (window.location === window.parent.location) {
+            window.location.replace("/index.html#release");
+        }
+    </script>
+</head>
+<body>
 <div id="release" class="tabcontent">
     <div class="info-section release-log">
         <h2>Release Log</h2>
@@ -43,3 +54,5 @@
         </details>
     </div>
 </div>
+</body>
+</html>
