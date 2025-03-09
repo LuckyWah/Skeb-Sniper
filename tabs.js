@@ -68,6 +68,15 @@ function openTab(evt, tabName) {
             homeBtn.classList.add("active");
         }
     }
+
+    // Load the tab using a new URL
+    window.onload = function () {
+        const path = window.location.pathname;
+        if (path) {
+            openTab(null, path);
+        }
+    };
+
 }
 
 // Carousel Initialization
