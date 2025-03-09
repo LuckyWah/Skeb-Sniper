@@ -16,34 +16,51 @@
         <!-- Slide 1 -->
         <div class="slide active">
           <h2>Event-Driven Commission Status Monitoring</h2>
-          <div class="detail">Instantly sends a request to your artist when Skeb sends an email notification to you.</div>
-          <div class="detail">No persistent data extraction from Skeb.</div>
-          <div class="detail">Visits Skeb only once after commission opening.</div>
+          <div class="detail">Never visits Skeb to monitor the artist's commission status.</div>
+          <div class="detail">Only visits Skeb once to submit your request after your artist opens requests.</div>
+          <div class="detail">Instantly sends a request to your artist right after Skeb sends an email notification to your inbox.</div>
         </div>
         <!-- Slide 2 -->
         <div class="slide">
           <h2>Fully Automated Request Submission</h2>
-          <div class="detail">Automated user authentication and log in with Gmail and Twitter.</div>
+          <div class="detail">Automated user authentication and log-in with Gmail and Twitter.</div>
           <div class="detail">Automated verification with Skeb by extracting verification codes from Skeb through emails.</div>
           <div class="detail">Embedded locking mechanism ensuring that each request is sent only once.</div>
         </div>
         <!-- Slide 3 -->
         <div class="slide">
           <h2>ToS-Compliant and Ethical</h2>
-          <div class="detail">Only a single HTTP request is made per commission opening ensuring minimal server impact on Skeb.</div>
-          <div class="detail">Works with emails sent from Skeb ensuring no risk of ban.</div>
+          <div class="detail">Only one HTTP request is made per commission opening ensuring no server impact on Skeb.</div>
+          <div class="detail">Only official emails from Skeb are processed.</div>
+          <div class="detail">No data is collected from Skeb.</div>
         </div>
         <!-- Slide 4 -->
         <div class="slide">
           <h2>User-Centric Designs</h2>
-          <div class="detail">Comes with an installer that facilitates easy setup and uninstallation.</div>
-          <div class="detail">Comes with a GUI ensuring no manual intervention after configuration.</div>
+          <div class="detail">Distribution includes an installer for Windows and a prebuilt Docker image for Linux.</div>
+          <div class="detail">A user-friendly GUI is included in the app to handle every task.</div>
+          <div class="detail">Instructions are included in the GUI's "Help" tab.</div>
         </div>
         <!-- Slide 5 -->
         <div class="slide">
-          <h2>Privacy Protection</h2>
-          <div class="detail">Protects user data with enterprise-level encryption.</div>
-          <div class="detail">No collection of user data.</div>
+          <h2>Privacy and Security</h2>
+          <div class="detail">Your data is encrypted with user-specific and machine-specific encryption mechanism to prevent any possible attacks.</div>
+          <div class="detail">Your data is only stored in your local machine.</div>
+          <div class="detail">Your data is never collected or transmitted.</div>
+        </div>
+        <!-- Slide 6 -->
+        <div class="slide">
+          <h2>Reliable Background Operation</h2>
+          <div class="detail">Runs as a Windows Service on Windows and a Daemon on Linux, ensuring continuous operation after disconnecting from the server.</div>
+          <div class="detail">Automatically restarts after failures, including network issues and system reboots.</div>
+          <div class="detail">Automatically refreshes the Gmail token if it expires.</div>          
+        </div>
+        <!-- Slide 7 -->
+        <div class="slide">
+          <h2>Ultra-Lightweight Design</h2>
+          <div class="detail">No webpage is launched to monitor artists.</div>
+          <div class="detail">Only emails from Skeb are processed.</div>
+          <div class="detail">Remains idle most of the time and activates only when an email from Skeb is received.</div>          
         </div>
         <!-- Carousel Navigation -->
         <button class="nav-btn prev" onclick="changeSlide(-1)">&lt;</button>
