@@ -18,7 +18,15 @@ function openTab(evt, tabName) {
         targetTab.classList.add("tabcontent");
         var container = document.querySelector(".container");
         if (container) container.appendChild(targetTab);
+        else {
+            console.error("Container element not found!");
+            return;
+        }
     }
+
+    // Add a loading message while fetching
+    targetTab.innerHTML = `<p>Loading ${tabName}...</p>`;
+    targetTab.classList.add("active");
 
     fetch(tabName + ".html", { cache: "no-cache" })
         .then(response => {
@@ -33,12 +41,16 @@ function openTab(evt, tabName) {
                 targetTab.innerHTML = fetchedContent.innerHTML;
                 targetTab.classList.add("active");
                 if (tabName === "home") initializeCarousel();
-                if (tabName === "contact") attachFormHandler(); // Attach form handler after content loads
+                if (tabName === "contact") attachFormHandler();
             } else {
-                console.error(`Tab content not found in ${tabName}.html`);
+                throw new Error(`Tab content not found in ${tabName}.html`);
             }
         })
-        .catch(error => console.error(`Error loading tab '${tabName}':`, error));
+        .catch(error => {
+            console.error(`Error loading tab '${tabName}':`, error);
+            targetTab.innerHTML = `<p>Failed to load ${tabName} content. Please try again later.</p>`;
+            targetTab.classList.add("active");
+        });
 
     if (evt?.currentTarget) {
         evt.currentTarget.classList.add("active");
@@ -50,10 +62,18 @@ function openTab(evt, tabName) {
     history.pushState(null, "", `/${tabName}`);
 }
 
-// Load correct tab on page load
+// Load correct tab on page load with redirect check
 window.onload = function () {
+    // Check if the current page is a standalone tab file (e.g., contact.html loaded directly)
+    const isStandaloneTab = window.location.pathname.includes(".html") && !window.location.pathname.includes("index.html");
+    if (isStandaloneTab) {
+        // Redirect to the same path without .html to load index.html
+        window.location.href = window.location.pathname.replace(".html", "");
+        return;
+    }
+
     let path = window.location.pathname.substring(1) || "home"; // Default to "home"
-    const validTabs = ["home", "contact", "faq", "tos", "privacy-policy", "release", "about"];
+    const validTabs = ["home", "contact", "faq", "tos", "privacy", "release", "about"];
     openTab(null, validTabs.includes(path) ? path : "home");
 };
 
@@ -152,7 +172,6 @@ function attachFormHandler() {
                             Form.reset(); // Reset the form but do not reload the page
                             submitButton.disabled = false;
                             submitButton.innerText = "Submit";
-                            // Removed openTab(null, "contact") to avoid reloading
                         }, 3000);
                     });
                 } else {
@@ -183,5 +202,5 @@ function attachFormHandler() {
 
 // Initial page load
 document.addEventListener("DOMContentLoaded", function() {
-    openTab(null, "home"); // Start on "home" tab
+    // Already handled by window.onload
 });
