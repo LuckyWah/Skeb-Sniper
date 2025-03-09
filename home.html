@@ -52,15 +52,15 @@
         <div class="slide">
           <h2>Reliable Background Operation</h2>
           <div class="detail">Runs as a Windows Service on Windows and a Daemon on Linux, ensuring continuous operation after disconnecting from the server.</div>
-          <div class="detail">Automatically restarts after failures, including network issues and system reboots.</div>
-          <div class="detail">Automatically refreshes the Gmail token if it expires.</div>          
+          <div class="detail">Automatically restarts after crashes, network issues, or system reboots.</div>
+          <div class="detail">Automatically refreshes the Gmail token if it expires.</div>
         </div>
         <!-- Slide 7 -->
         <div class="slide">
           <h2>Ultra-Lightweight Design</h2>
-          <div class="detail">No webpage is launched to monitor artists.</div>
-          <div class="detail">Only emails from Skeb are processed.</div>
-          <div class="detail">Remains idle most of the time and activates only when an email from Skeb is received.</div>          
+          <div class="detail">No webpage is launched to monitor artists, ensuring minimal network usage.</div>
+          <div class="detail">Only processes emails from Skeb, ignoring all irrelevant emails.</div>
+          <div class="detail">Stays idle most of the time and only activates when a Skeb email is received.</div>           
         </div>
         <!-- Carousel Navigation -->
         <button class="nav-btn prev" onclick="changeSlide(-1)">&lt;</button>
