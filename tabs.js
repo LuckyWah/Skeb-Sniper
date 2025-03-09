@@ -69,15 +69,37 @@ function openTab(evt, tabName) {
         }
     }
 
-    // Load the tab using a new URL
-    window.onload = function () {
-        const path = window.location.pathname;
-        if (path) {
-            openTab(null, path);
-        }
-    };
-
+    // Update the URL without reloading the page
+    history.pushState(null, "", `/${tabName}`);
 }
+
+// Load the correct tab if accessed directly
+window.onload = function () {
+    let path = window.location.pathname.substring(1); // Remove leading "/"
+
+    // Default to "home" if path is empty
+    if (path === "") {
+        path = "home";
+    }
+
+    // Ensure tab exists before opening
+    const validTabs = ["home", "payment", "faq", "tos", "privacy-policy", "release", "about"];
+    if (validTabs.includes(path)) {
+        openTab(null, path);
+    } else {
+        console.error(`Invalid tab: '${path}' does not exist.`);
+        openTab(null, "home"); // Redirect to home if invalid
+    }
+};
+
+// Handle back/forward browser navigation
+window.onpopstate = function () {
+    let path = window.location.pathname.substring(1); // Get new URL path
+    if (path === "") {
+        path = "home";
+    }
+    openTab(null, path);
+};
 
 // Carousel Initialization
 function initializeCarousel() {
