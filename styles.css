@@ -1,284 +1,375 @@
 /* Global Light Theme Styles */
 body {
-margin: 0;
-padding: 0;
-font-family: 'Roboto', sans-serif;
-background: url('background.png') no-repeat center center fixed;
-background-size: cover;
-color: #333;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background: url("background.png") no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
 }
+
 a {
-color: #007acc;
-text-decoration: none;
+  color: #007acc;
+  text-decoration: none;
 }
+
 a:hover {
-text-decoration: underline;
+  text-decoration: underline;
 }
-/* Navigation Bar with Branding and Tabs in One Row */
+
+/* Navigation Bar */
 .nav-bar {
-display: flex;
-align-items: center;
-justify-content: space-between;
-background: #f5f5f5;
-border-bottom: 1px solid #ddd;
-padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 10px;
+  position: relative;
 }
+
+/* Navigation Tabs (Horizontal for PC) */
+.nav-tabs {
+  display: flex; /* Horizontal bar on PC */
+}
+
+/* Nav Buttons */
+.tablinks {
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  color: #333;
+  border-radius: 10px;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Hover and Active Effects */
+.tablinks:hover,
+.tablinks.active {
+  background: #007acc;
+  color: #fff;
+}
+
+/* Hamburger Menu Button */
+.menu-toggle {
+  display: none; /* Hidden by default on PC */
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* Branding */
 .branding {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .branding img {
-width: 50px;
-height: 50px;
-margin-right: 10px;
+  width: 70px;
+  height: 70px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .branding .branding-text h1 {
-margin: 0;
-font-size: 2.5em;
-color: #222;
+  margin: 0;
+  font-size: 2.5em;
+  color: #222;
 }
 .branding .branding-text p {
-margin: 5px 0 0;
-font-size: 1.2em;
-color: #555;
+  margin: 5px 0 0;
+  font-size: 1.2em;
+  color: #555;
 }
-.nav-tabs {
-display: flex;
-gap: 10px;
+
+/* Mobile Styles: Hide nav tabs and display hamburger button */
+@media (max-width: 768px) {
+  .nav-tabs {
+    display: none; /* Hide nav links by default */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Positions the dropdown directly below the nav-bar */
+    left: 0;
+    background: white;
+    width: 200px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    z-index: 1;
+  }
+
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    padding: 10px; 
+    position: relative;
+  }
+
+  .nav-tabs.show {
+    display: flex; /* Show nav links when toggled */
+  }
+
+  .menu-toggle {
+    display: block; /* Show hamburger menu button */
+  }
 }
-.nav-tabs button {
-background: none;
-border: none;
-padding: 15px 20px;
-cursor: pointer;
-font-size: 1em;
-font-weight: 500;
-color: #333;
-transition: background 0.3s, color 0.3s;
-}
-.nav-tabs button:hover,
-.nav-tabs button.active {
-background: #007acc;
-color: #fff;
-}
+
 /* Main Content Container with 50% Transparent Gray Background */
 .container {
-padding: 30px 20px;
-max-width: 1200px;
-margin: 20px auto;
-background-color: rgba(128, 128, 128, 0.5);
-border-radius: 10px;
-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 30px 20px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(128, 128, 128, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
 .tabcontent {
-display: none;
-animation: fadeIn 0.5s ease;
-padding: 20px;
+  display: none;
+  animation: fadeIn 0.5s ease;
+  padding: 20px;
 }
 .tabcontent.active {
-display: block;
+  display: block;
 }
 @keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
+
 /* Advertisement Block in Introduction Tab */
 .advertisement {
-background: #e0e0e0;
-padding: 15px;
-margin-bottom: 20px;
-border-radius: 5px;
-color: #333;
-font-size: 1.1em;
-line-height: 1.6;
+  background: #e0e0e0;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  color: #333;
+  font-size: 1.1em;
+  line-height: 1.6;
 }
+
 /* Carousel Styles for Introduction Tab */
 .carousel-container {
-position: relative;
-margin: 40px auto;
-width: 90%;
-max-width: 1000px;
-border-radius: 10px;
-overflow: hidden;
-box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-background: #e0e0e0;
-}
-.slide {
-display: none;
-padding: 40px;
-}
-.slide.active {
-display: block;
-animation: fadeIn 0.5s;
-}
-.slide h2 {
-margin-bottom: 20px;
-font-size: 2em;
-color: #007acc;
-text-align: center;
-}
-.slide .detail {
-font-size: 1.1em;
-line-height: 1.6;
-margin: 10px 0;
-padding: 10px;
-border-left: 3px solid #007acc;
-background: #f9f9f9;
-text-align: left;
-color: #333;
+  position: relative;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background: #e0e0e0;
 }
 /* Carousel Navigation Buttons */
 .carousel-container .nav-btn {
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-background: rgba(0,0,0,0.3);
-color: #fff;
-border: none;
-padding: 10px 20px;
-cursor: pointer;
-font-size: 1.5em;
-border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.5em;
+  border-radius: 5px;
 }
 .carousel-container .prev {
-left: 10px;
+  left: 10px;
 }
 .carousel-container .next {
-right: 10px;
+  right: 10px;
 }
 /* Carousel Dots */
 .carousel-dots {
-text-align: center;
-position: absolute;
-bottom: 15px;
-width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
 }
 .carousel-dots .dot {
-display: inline-block;
-width: 12px;
-height: 12px;
-margin: 0 5px;
-background: #ccc;
-border-radius: 50%;
-cursor: pointer;
-transition: background 0.3s ease;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 .carousel-dots .dot.active {
-background: #007acc;
+  background: #007acc;
 }
+
+/* Feature Carousel (initially hidden) */
+#featureCarousel {
+  opacity: 0;
+  transform: translateY(20px); /* Move slightly down initially */
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* When carousel appears */
+.show-carousel {
+  opacity: 1;
+  transform: translateY(0); /* Moves back up smoothly */
+  pointer-events: auto;
+}
+
+/* Handles slides */
+.slide {
+  display: none;
+  padding: 40px;
+}
+.slide.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+.slide h2 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #007acc;
+  text-align: center;
+}
+.slide .detail {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin: 10px 0;
+  padding: 10px;
+  border-left: 3px solid #007acc;
+  background: #f9f9f9;
+  text-align: left;
+  color: #333;
+}
+
 /* Form Styles */
 form {
-width: 90%;
-max-width: 600px;
-margin: 20px auto;
-background: #fafafa;
-padding: 20px 40px;
-border-radius: 10px;
-box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-color: #333;
+  margin: 20px auto;
+  background: #fafafa;
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  color: #333;
 }
 form label {
-display: block;
-margin-bottom: 5px;
-font-weight: 500;
-text-align: center;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  text-align: center;
 }
-form input, form textarea {
-width: 100%;
-padding: 10px;
-margin-bottom: 15px;
-border: 1px solid #ccc;
-border-radius: 5px;
-transition: border-color 0.3s;
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s;
 }
-form input:focus, form textarea:focus {
-border-color: #007acc;
-outline: none;
+form input:focus,
+form textarea:focus {
+  border-color: #007acc;
+  outline: none;
 }
 /* Restrict textarea resizing to vertical only */
 form textarea {
-resize: vertical;
+  resize: vertical;
 }
 form button {
-display: block;
-margin: auto;
-padding: 10px 20px;
-background: linear-gradient(135deg, #007acc, #66b3ff);
-border: none;
-color: #fff;
-border-radius: 5px;
-cursor: pointer;
-font-size: 1em;
-transition: background 0.3s;
+  display: block;
+  margin: auto;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #007acc, #66b3ff);
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s;
 }
 form button:hover {
-background: linear-gradient(135deg, #66b3ff, #007acc);
+  background: linear-gradient(135deg, #66b3ff, #007acc);
 }
 /* Info Section Styles for static pages */
 .info-section {
-background: #f9f9f9;
-padding: 20px;
-border-radius: 10px;
-margin-bottom: 20px;
-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-color: #333;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
 }
-.info-section h2, .info-section h3, .info-section h4 {
-color: #007acc;
+.info-section h2,
+.info-section h3,
+.info-section h4 {
+  color: #007acc;
 }
 .info-section p {
-line-height: 1.6;
+  line-height: 1.6;
 }
 /* Developer Image – Show full image without cropping */
 .developer-img {
-max-width: 100%;
-display: block;
-margin: 20px auto;
+  max-width: 100%;
+  display: block;
+  margin: 20px auto;
 }
 /* Release Log Module Styling */
 .release-log details {
-background: #f0f0f0;
-padding: 15px;
-border-radius: 10px;
-margin-bottom: 10px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .release-log summary {
-font-size: 1.3em;
-font-weight: 500;
-cursor: pointer;
-outline: none;
-color: #007acc;
+  font-size: 1.3em;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  color: #007acc;
 }
 .release-log p {
-margin: 10px 0 0 20px;
-line-height: 1.6;
-white-space: pre-wrap;
-font-family: monospace;
-font-size: 1.2em;
-color: #333;
+  margin: 10px 0 0 20px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 1.2em;
+  color: #333;
 }
 @keyframes fadeInUp {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes slideUp {
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
+}
 .slide .detail {
-opacity: 0;
-transform: translateY(20px);
-animation: fadeInUp 0.5s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
 }
 .slide .detail:nth-of-type(1) {
-animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
 .slide .detail:nth-of-type(2) {
-animation-delay: 0.6s;
+  animation-delay: 0.6s;
 }
 .slide .detail:nth-of-type(3) {
-animation-delay: 0.9s;
+  animation-delay: 0.9s;
 }

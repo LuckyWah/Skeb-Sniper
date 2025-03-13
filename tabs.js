@@ -1,3 +1,25 @@
+// Show navigation bar
+document.addEventListener("DOMContentLoaded", () => {
+    // Show/hide navigation bar on click
+    function toggleMenu() {
+        const navTabs = document.querySelector(".nav-tabs");
+        navTabs.classList.toggle("show");
+    }
+
+    // Add event listener to the hamburger menu button
+    document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
+
+    // Automatically close menu when clicking a nav link (on mobile)
+    document.querySelectorAll(".nav-tabs button").forEach(button => {
+        button.addEventListener("click", () => {
+            const navTabs = document.querySelector(".nav-tabs");
+            if (navTabs.classList.contains("show")) {
+                navTabs.classList.remove("show"); // Hide menu after clicking
+            }
+        });
+    });
+});
+
 // Tab switching
 function openTab(evt, tabName) {
     var tabcontent = document.getElementsByClassName("tabcontent");
@@ -109,20 +131,11 @@ function initializeCarousel() {
         function expandContainer() {
             setTimeout(() => adAndCarousel.style.maxHeight = adAndCarousel.scrollHeight + "px", 500);
         }
-        function collapseContainer() {
-            adAndCarousel.style.maxHeight = "300px";
-        }
 
         featureHeading.addEventListener("mouseenter", () => {
             if (!featureLocked) {
                 expandContainer();
                 featureCarousel.style.cssText = "pointer-events: auto; opacity: 1; transform: translateX(0);";
-            }
-        });
-        featureHeading.addEventListener("mouseleave", () => {
-            if (!featureLocked) {
-                collapseContainer();
-                featureCarousel.style.cssText = "pointer-events: none; opacity: 0; transform: translateX(100%);";
             }
         });
         featureHeading.addEventListener("click", () => {

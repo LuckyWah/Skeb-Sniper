@@ -9,8 +9,12 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <script src="tabs.js"></script>
+  <!-- Navigation Bar -->
   <div class="nav-bar">
+    <!-- Hamburger Menu Button (Only for Mobile) -->
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <!-- Branding -->
     <div class="branding">
       <img src="Kasora.ico" alt="Logo">
       <div class="branding-text">
@@ -18,6 +22,8 @@
         <p>Send instant requests to your favorite artist on Skeb</p>
       </div>
     </div>
+
+    <!-- Navigation Tabs -->
     <div class="nav-tabs">
       <button class="tablinks active" onclick="openTab(event, 'home')">Home</button>
       <button class="tablinks" onclick="openTab(event, 'contact')">Contact Us</button>
@@ -28,7 +34,9 @@
       <button class="tablinks" onclick="openTab(event, 'about')">About Developer</button>
     </div>
   </div>
+
   <!-- Main Content Container -->
   <div class="container"></div>
+  <script src="tabs.js"></script>
 </body>
 </html>
