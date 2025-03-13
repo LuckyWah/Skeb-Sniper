@@ -122,7 +122,6 @@ a:hover {
 
 /* Main Content Container with 50% Transparent Gray Background */
 .container {
-  padding: 30px 20px;
   width: 100%;
   min-height: 100vh;
   background-color: rgba(128, 128, 128, 0.5);
