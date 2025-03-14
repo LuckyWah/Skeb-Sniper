@@ -88,17 +88,17 @@ a:hover {
   color: #555;
 }
 
-/* Video wrapper for responsive scaling */
+/* Desktop styles */
 .video-wrapper {
   position: relative;
-  width: 80%; /* Default for PC: 80% of parent container or viewport */
-  max-width: 100%; /* Prevents overflow beyond container */
+  width: 80%;
+  max-width: 100%;
   height: 0;
-  padding-bottom: 45%; /* Adjusted 16:9 ratio (9/16 * 80% ≈ 45%) */
-  margin: 0 auto; /* Centers the video */
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* Iframe fills the wrapper */
 .youtube-video {
   position: absolute;
   top: 0;
@@ -107,62 +107,59 @@ a:hover {
   height: 100%;
 }
 
-/* Mobile Styles: Hide nav tabs and display hamburger button */
+/* Mobile Styles */
 @media (max-width: 768px) {
   body {
-    font-size: 14px;
+      font-size: 14px;
   }
   .nav-tabs {
-    display: none; /* Hide nav links by default */
-    flex-direction: column;
-    position: absolute;
-    top: 100%; /* Positions the dropdown directly below the nav-bar */
-    left: 0;
-    background: white;
-    width: 200px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
-    z-index: 1;
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      width: 200px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+      z-index: 1;
   }
 
   .nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background: #f5f5f5;
-    border-bottom: 1px solid #ddd;
-    padding: 10px; 
-    position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: #f5f5f5;
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+      position: relative;
   }
 
   .nav-tabs.show {
-    display: flex; /* Show nav links when toggled */
+      display: flex;
   }
 
   .menu-toggle {
-    display: block; /* Show hamburger menu button */
-    font-size: 2.5em;
-    margin: 0px 0px;
+      display: block;
+      font-size: 2.5em;
+      margin: 0px 0px;
   }
 
   .branding img {
-    width: 50px;
-    height: 50px;
-    margin-left: 5px;
-    margin-right: 5px;
+      width: 50px;
+      height: 50px;
+      margin-left: 5px;
+      margin-right: 5px;
   }
   .branding .branding-text h1 {
-    margin: 0;
-    font-size: 1.6em;
-    color: #222;
+      margin: 0;
+      font-size: 1.6em;
+      color: #222;
   }
   .branding .branding-text p {
-    margin: 5px 0 0;
-    font-size: 1em;
-    color: #555;
-  }
-  .video-wrapper {
-    width: 100%; /* Full width on mobile */
+      margin: 5px 0 0;
+      font-size: 1em;
+      color: #555;
   }
 }
 

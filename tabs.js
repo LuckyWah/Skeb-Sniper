@@ -127,13 +127,24 @@ function initializeCarousel() {
     var adAndCarousel = document.getElementById("adAndCarousel");
 
     if (featureHeading && featureCarousel && adAndCarousel) {
-        // Show and animate carousel immediately
+        // Function to set height
+        function setContainerHeight() {
+            adAndCarousel.getBoundingClientRect(); // Force reflow
+            const newHeight = adAndCarousel.scrollHeight + "px";
+            adAndCarousel.style.maxHeight = newHeight;
+        }
+
+        // Wait for advertisement animation to complete
         setTimeout(() => {
-            adAndCarousel.style.maxHeight = adAndCarousel.scrollHeight + "px";
+            setContainerHeight();
+            // Animate carousel into view
             featureCarousel.style.opacity = "1";
-            featureCarousel.style.transform = "translateY(0)";
+            featureCarousel.style.transform = "translateX(0)";
             featureCarousel.style.pointerEvents = "auto";
-        }, 100); // Small delay to ensure DOM is ready and animation triggers
+
+            // Recheck height after another delay to catch late renders
+            setTimeout(setContainerHeight, 500);
+        }, 1500); // Increased delay to 1.5s for safety
 
         showSlide(0);
     } else {
