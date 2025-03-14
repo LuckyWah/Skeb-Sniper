@@ -123,6 +123,7 @@ a:hover {
   .menu-toggle {
     display: block; /* Show hamburger menu button */
     font-size: 2.5em;
+    margin: 5px;
   }
 
   .branding img {
