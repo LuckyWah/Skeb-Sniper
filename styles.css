@@ -121,18 +121,17 @@ a:hover {
 
   .menu-toggle {
     display: block; /* Show hamburger menu button */
-    font-size: 20px;
   }
 
   .branding img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     margin-left: 5px;
     margin-right: 5px;
   }
   .branding .branding-text h1 {
     margin: 0;
-    font-size: 1.4em;
+    font-size: 1.6em;
     color: #222;
   }
   .branding .branding-text p {
