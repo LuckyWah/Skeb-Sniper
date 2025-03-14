@@ -88,6 +88,25 @@ a:hover {
   color: #555;
 }
 
+/* Video wrapper for responsive scaling */
+.video-wrapper {
+  position: relative;
+  width: 80%; /* Default for PC: 80% of parent container or viewport */
+  max-width: 100%; /* Prevents overflow beyond container */
+  height: 0;
+  padding-bottom: 45%; /* Adjusted 16:9 ratio (9/16 * 80% ≈ 45%) */
+  margin: 0 auto; /* Centers the video */
+}
+
+/* Iframe fills the wrapper */
+.youtube-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* Mobile Styles: Hide nav tabs and display hamburger button */
 @media (max-width: 768px) {
   body {
@@ -123,7 +142,7 @@ a:hover {
   .menu-toggle {
     display: block; /* Show hamburger menu button */
     font-size: 2.5em;
-    margin: 5px 5px; /* 5px top & bottom, 5px left & right */
+    margin: 0px 0px;
   }
 
   .branding img {
@@ -141,6 +160,9 @@ a:hover {
     margin: 5px 0 0;
     font-size: 1em;
     color: #555;
+  }
+  .video-wrapper {
+    width: 100%; /* Full width on mobile */
   }
 }
 

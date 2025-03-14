@@ -104,7 +104,6 @@ window.onpopstate = function () {
 };
 
 // Carousel Initialization
-// Carousel Initialization
 function initializeCarousel() {
     var currentSlide = 0;
     var slides = document.getElementsByClassName("slide");
