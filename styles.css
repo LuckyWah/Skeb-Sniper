@@ -78,7 +78,7 @@ a:hover {
 }
 .branding .branding-text h1 {
   margin: 0;
-  font-size: 2.5em;
+  font-size: 1.6em;
   color: #222;
 }
 .branding .branding-text p {
@@ -89,6 +89,9 @@ a:hover {
 
 /* Mobile Styles: Hide nav tabs and display hamburger button */
 @media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
   .nav-tabs {
     display: none; /* Hide nav links by default */
     flex-direction: column;
@@ -118,6 +121,24 @@ a:hover {
 
   .menu-toggle {
     display: block; /* Show hamburger menu button */
+    font-size: 20px;
+  }
+
+  .branding img {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .branding .branding-text h1 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #222;
+  }
+  .branding .branding-text p {
+    margin: 5px 0 0;
+    font-size: 1em;
+    color: #555;
   }
 }
 
@@ -153,7 +174,7 @@ a:hover {
   margin-bottom: 20px;
   border-radius: 10px;
   color: #333;
-  font-size: 1.1em;
+  font-size: 1.2em;
   line-height: 1.6;
 }
 
@@ -234,12 +255,12 @@ a:hover {
 }
 .slide h2 {
   margin-bottom: 20px;
-  font-size: 2em;
+  font-size: 1.4em;
   color: #007acc;
   text-align: center;
 }
 .slide .detail {
-  font-size: 1.1em;
+  font-size: 1em;
   line-height: 1.6;
   margin: 10px 0;
   padding: 10px;
@@ -329,7 +350,7 @@ form button:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .release-log summary {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 500;
   cursor: pointer;
   outline: none;
@@ -340,7 +361,7 @@ form button:hover {
   line-height: 1.6;
   white-space: pre-wrap;
   font-family: monospace;
-  font-size: 1.2em;
+  font-size: 1em;
   color: #333;
 }
 @keyframes fadeInUp {
