@@ -104,6 +104,7 @@ window.onpopstate = function () {
 };
 
 // Carousel Initialization
+// Carousel Initialization
 function initializeCarousel() {
     var currentSlide = 0;
     var slides = document.getElementsByClassName("slide");
@@ -122,27 +123,18 @@ function initializeCarousel() {
     window.changeSlide = n => showSlide(currentSlide + n);
     window.jumpToSlide = n => showSlide(n);
 
-    var featureLocked = false;
     var featureHeading = document.getElementById("featureHeading");
     var featureCarousel = document.getElementById("featureCarousel");
     var adAndCarousel = document.getElementById("adAndCarousel");
 
     if (featureHeading && featureCarousel && adAndCarousel) {
-        function expandContainer() {
-            setTimeout(() => adAndCarousel.style.maxHeight = adAndCarousel.scrollHeight + "px", 500);
-        }
-
-        featureHeading.addEventListener("mouseenter", () => {
-            if (!featureLocked) {
-                expandContainer();
-                featureCarousel.style.cssText = "pointer-events: auto; opacity: 1; transform: translateX(0);";
-            }
-        });
-        featureHeading.addEventListener("click", () => {
-            featureLocked = true;
-            expandContainer();
-            featureCarousel.style.cssText = "pointer-events: auto; opacity: 1; transform: translateX(0);";
-        });
+        // Show and animate carousel immediately
+        setTimeout(() => {
+            adAndCarousel.style.maxHeight = adAndCarousel.scrollHeight + "px";
+            featureCarousel.style.opacity = "1";
+            featureCarousel.style.transform = "translateY(0)";
+            featureCarousel.style.pointerEvents = "auto";
+        }, 100); // Small delay to ensure DOM is ready and animation triggers
 
         showSlide(0);
     } else {
