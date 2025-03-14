@@ -58,11 +58,6 @@ a:hover {
 /* Hamburger Menu Button */
 .menu-toggle {
   display: none; /* Hidden by default on PC */
-  background: none;
-  border: none;
-  font-size: 40px;
-  cursor: pointer;
-  color: #007acc;
 }
 
 /* Branding */
@@ -140,9 +135,16 @@ a:hover {
   }
 
   .menu-toggle {
-      display: block;
-      font-size: 2.5em;
-      margin: 0px 0px;
+    display: block;
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #007acc;
+    min-width: 40px;
+    text-align: center;
   }
 
   .branding img {
