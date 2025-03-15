@@ -138,7 +138,7 @@ a:hover {
     display: block;
     font-size: 2em;
     margin: 0;
-    padding: 0;
+    padding: 5px 0;
     background: none;
     border: none;
     cursor: pointer;
