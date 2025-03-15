@@ -373,7 +373,7 @@ form button:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .release-log summary {
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 500;
   cursor: pointer;
   outline: none;
@@ -384,7 +384,7 @@ form button:hover {
   line-height: 1.6;
   white-space: pre-wrap;
   font-family: monospace;
-  font-size: 1em;
+  font-size: 1.2em;
   color: #333;
 }
 @keyframes fadeInUp {
