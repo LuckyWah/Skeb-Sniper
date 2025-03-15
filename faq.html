@@ -14,49 +14,75 @@
     <h2>Frequently Asked Questions</h2>
     <details>
       <summary>My Windows PC flags the application as a security concern. Is this application a security threat?</summary>
-      <p>No, this happens because Windows does not trust unsigned executables and may flag them as potential malware. The warning appears because our executable lacks a valid certificate authority (CA), which requires a costly certification process that is not necessary for this software. You can manually trust the executable, as it is safe and not malware.</p>          
+      <p>No, this happens because Windows does not trust unsigned executables and may flag them as potential malware. 
+        The warning appears because our executable lacks a valid certificate authority (CA), 
+        which requires a costly certification process that is not necessary for this software. 
+        You can manually trust the executable, as it is safe and not malware.</p>          
     </details>
     <details>
       <summary>What are the requirements for running this application?</summary>
         <ul>
-          <li>Ensure you have sufficient Skeb points for the request or that your bank does not require authentication. Otherwise, the program will fail to submit your request.</li>
-          <li>Make sure you are using your Gmail account to receive emails from Skeb. If not, update your email to your Gmail account in your Skeb account settings.</li>
-          <li>Confirm that you have enabled notifications for the artist. If not, visit the artist's Skeb page and click "Notify on seeking started."</li>
+          <li>Ensure you have sufficient Skeb points for the request or that your bank does not require authentication.
+             Otherwise, the program will fail to submit your request.</li>
+          <li>Make sure you are using your Gmail account to receive emails from Skeb. 
+            If not, update your email to your Gmail account in your Skeb account settings.</li>
+          <li>Confirm that you have enabled notifications for the artist. 
+            If not, visit the artist's Skeb page and click "Notify on seeking started."</li>
           <li>Test the program and successfully activate the Gmail listener before running the task in the background.</li>
           <li>When running the task in the background, ensure the Gmail listener is activated successfully.</li>
       </ul>        
     </details>
     <details>
       <summary>Are my Twitter credentials safe?</summary>
-      <p>Yes, your Twitter credentials are safe because they are encrypted using a machine-specific and user-specific key. The encryption key is derived using PBKDF2 with SHA-256 and a 16-byte user-specific salt at each runtime, and this key encrypts your data using AES-128 in CBC mode with HMAC-SHA256 authentication, ensuring that only your user account and your device can decrypt the stored data.</p>
+      <p>Yes, your Twitter credentials are safe because they are encrypted using a machine-specific and user-specific key. 
+        The encryption key is derived using PBKDF2 with SHA-256 and a 16-byte user-specific salt at each runtime, 
+        and this key encrypts your data using AES-128 in CBC mode with HMAC-SHA256 authentication, 
+        ensuring that only your user account and your device can decrypt the stored data.</p>
     </details>
     <details>
       <summary>Do you collect any data from us?</summary>
-      <p>No, we never collect any data from you, including your Gmail account or Twitter credentials. To protect your privacy, all sensitive data is first encrypted and then securely stored locally on your device.</p>
+      <p>No, we never collect any data from you, including your Gmail account or Twitter credentials. 
+        To protect your privacy, all sensitive data is first encrypted and then securely stored locally on your device.</p>
     </details>
     <details>
       <summary>How does this program work?</summary>
-      <p>Skeb Sniper is an email driven program, meaning that only when you receive an email from Skeb stating that the artist is open for requests, the program will send a request to the artist.</p>          
+      <p>Skeb Sniper is an email driven program, meaning that only when you receive an email from Skeb stating that the artist is open 
+        for requests, the program will send a request to the artist.</p>          
     </details>
     <details>
       <summary>Do I have to input my Twitter credentials?</summary>
-      <p>Yes, the program requires your credentials to log in. However, it will first attempt to use cookies. If that fails, it will fall back to using your Twitter credentials.</p>          
+      <p>Yes, the program requires your credentials to log in. However, it will first attempt to use cookies. 
+        If that fails, it will fall back to using your Twitter credentials.</p>          
     </details>
     <details>
       <summary>How do I test the program?</summary>
-      <p>You can test the program by clicking on "Test Run." The program will send you an automated email, which will trigger the automation tool to send a request to the artist. We recommend selecting an artist currently open for requests to confirm that the program can log into your account. If login fails, ensure that Two-Factor Authentication is disabled on Twitter. If you prefer not to send a request right now, set the amount to a value below the minimum requirement (e.g., 500). If test run fails, please contact the developer.</p>          
+      <p>You can test the program by clicking on "Test Run." The program will send you an automated email, 
+        which will trigger the automation tool to send a request to the artist. 
+        We recommend selecting an artist currently open for requests to confirm that the program can log into your account. 
+        If login fails, ensure that Two-Factor Authentication is disabled on Twitter. If you prefer not to send a request right now, 
+        set the amount to a value below the minimum requirement (e.g., 500). If test run fails, please contact the developer.</p>          
     </details>
     <details>
       <summary>What does "Run in Background" in task manager do?</summary>
-      <p>You use "Run in Background" when you genuinely want to send a request to the artist. Do NOT use it for testing because no fake email will be sent to you to trigger the automation tool. Automation will only be triggered by the email sent from Skeb. When you click on "Run in Background," the program starts a background process that runs continuously, allowing you to safely disconnect from your server. On Windows, it uses a Windows service, while on Linux, it runs as a daemon managed by systemd, so you need admin/root privileges to run. The background process automatically shuts down when no tasks are running.</p>          
+      <p>You use "Run in Background" when you genuinely want to send a request to the artist. 
+        Do <strong>not</strong> use it for testing because no fake email will be sent to you to trigger the automation tool. 
+        Automation will only be triggered by the email sent from Skeb. When you click on "Run in Background," 
+        the program starts a background process that runs continuously, allowing you to safely disconnect from your server. 
+        On Windows, it uses a Windows service, while on Linux, it runs as a daemon managed by systemd, so you need admin/root privileges to run. 
+        The background process automatically shuts down when no tasks are running.</p>          
     </details>
     <details>
-      <summary>I am running a task for an artist that is currently open in background, but the program does not send a request to the artist. Why is that?</summary>
-      <p>Skeb Sniper is an email driven program, so if the artist is currently open, no email will be sent to you from Skeb, thus nothing will trigger the automation tool and no request will be sent. Only use "Run in Background" for artists that are currently closed and ensure that you have reserved email notification from Skeb.</p>          
+      <summary>I am running a task for an artist that is currently open in background, but the program does not send a request to the artist. 
+        Why is that?</summary>
+      <p>Skeb Sniper is an email driven program, so if the artist is currently open, no email will be sent to you from Skeb, 
+        thus nothing will trigger the automation tool and no request will be sent. 
+        Only use "Run in Background" for artists that are currently closed and ensure that you have reserved email notification from Skeb.</p>          
     </details>
     <details>
       <summary>I do not use Gmail to receive emails from Skeb. Can I not use Gmail?</summary>
-      <p>Unfortunately, as of now, Skeb Sniper only works with Gmail. Every email API is different and implementing different email APIs requires lots of time and effort. We use Gmail API because it is the most popular choice. If you prefer not using Gmail, this program will not work for you.</p>
+      <p>Unfortunately, as of now, Skeb Sniper only works with Gmail. Every email API is different and implementing different email APIs 
+        requires lots of time and effort. We use Gmail API because it is the most popular choice. If you prefer not using Gmail, 
+        this program will not work for you.</p>
     </details>
   </div>
 </div>
