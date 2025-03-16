@@ -34,24 +34,31 @@
       </ul>
     
       <h3>Google Data We Access</h3>
-      <p>The Application requires access to Google user data through the Gmail API. Specifically, we request the following scope:</p>
+      <p>The Application requires access to Google user data through the Gmail API. We use the Gmail <strong>Read-Only</strong> scope to access 
+        the following email information:</p>
       <ul>
-        <li><strong>Gmail Read-Only Access:</strong> 
-          This allows us to retrieve the contents of emails after detecting new emails via Pub/Sub notifications. 
-          This scope does not permit modification, deletion, or sending of emails.</li>
+        <li><strong>History ID:</strong> Prevents processing old emails by ensuring only emails received after the app starts are accessed.</li>
+        <li><strong>Recipient:</strong> Filters out emails intended for others by verifying that the recipient matches your email address, 
+          as multiple users may share the same subscription.</li>
+        <li><strong>Sender:</strong> Filters emails based on the sender by allowing only those from our predefined list.</li>
+        <li><strong>Body:</strong> Retrieves the body of filtered emails for interpretation.</li>
       </ul>
-      <p>We do <strong>not</strong> use any other Google API scopes.</p>
+      <p>This ensures that email content is retrieved only after detecting new emails via Pub/Sub notifications. This scope 
+        does not permit modification, deletion, or sending of emails.</p>      
+      <p>We do <strong>not</strong> use any other Google API scopes. Therefore, we do <strong>not</strong> modify, delete, or send emails 
+        as it is not permitted in the Read-Only scope.</p>
     
       <h3>How We Use Your Data</h3>
-      <p>The Application processes your Gmail data strictly for the following purposes:</p>
+      <p>The Application only accesses and processes your Gmail data in <strong>real-time</strong> for the following purposes:</p>
       <ul>
         <li>Detecting new emails by monitoring Gmail metadata via Pub/Sub notifications.</li>
         <li>Retrieving new emails upon receiving a Pub/Sub notification.</li>
         <li>Filtering out irrelevant emails by checking if the sender is in the predefined list. If not, the email is ignored.</li>
         <li>Extracting the subject and body only from relevant emails.</li>
-        <li>Analyzing the email subject and body to interpret its content and categorize it appropriately.</li>
+        <li>Analyzing the email subject and body to interpret its content and categorize it based on the content.</li>
       </ul>
-      <p>We do <strong>not</strong> modify, delete, or send emails.</p>
+      <p>The Application does <strong>not</strong> write, store, or transfer your data as the emails are processed in real-time and discarded 
+      after the above process is complete.</p>
 
       <h3>Data Retention and Deletion</h3>
       <p>Our application does <strong>not</strong> retain any data, including information about your Gmail account or email contents.</p>
