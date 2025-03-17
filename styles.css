@@ -361,7 +361,7 @@ a:hover {
 
 .button {
   display: inline-block;
-  margin: 0;
+  margin: 5px;
   padding: 10px 20px;
   background: linear-gradient(135deg, #007acc, #66b3ff);
   border: none;
@@ -412,8 +412,9 @@ a:hover {
 /* PayPal Button Container */
 .purchase-button {
   display: block;
-  margin-top: 20px;
   width: 100%;
+  max-width: 100%;
+  margin-top: 20px;
 }
 
 /* Ensure tabcontent */
