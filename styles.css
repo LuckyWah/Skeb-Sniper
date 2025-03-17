@@ -376,12 +376,13 @@ a:hover {
   background: linear-gradient(135deg, #66b3ff, #007acc);
 }
 
-/* Optional: Specific styling for download button */
-#download-btn.button {
+/* Styling for both download buttons */
+#download-btn-windows, #download-btn-linux {
   background: linear-gradient(135deg, #28a745, #66ff99);
 }
 
-#download-btn.button:hover {
+/* Hover effect for both download buttons */
+#download-btn-windows:hover, #download-btn-linux:hover {
   background: linear-gradient(135deg, #66ff99, #28a745);
 }
 

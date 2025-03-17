@@ -251,12 +251,23 @@ function markCouponAsUsed(couponCode) {
 function renderDownloadSection(downloadContainer, downloadLinks) {
     if (!downloadContainer) return;
 
-    const downloadBtn = downloadContainer.querySelector("#download-btn");
-    if (downloadBtn) {
-        downloadBtn.onclick = () => {
-            window.location.href = downloadLinks.installerUrl;
+    const downloadBtnWindows = downloadContainer.querySelector("#download-btn-windows");
+    const downloadBtnLinux = downloadContainer.querySelector("#download-btn-linux");
+
+    // Show both download buttons
+    if (downloadBtnWindows) {
+        downloadBtnWindows.onclick = () => {
+            window.location.href = downloadLinks.windows;
         };
+        downloadBtnWindows.style.display = "inline-block";
     }
+    if (downloadBtnLinux) {
+        downloadBtnLinux.onclick = () => {
+            window.location.href = downloadLinks.linux;
+        };
+        downloadBtnLinux.style.display = "inline-block";
+    }
+
     downloadContainer.style.display = "block";
     const purchaseButtonContainer = document.getElementById("purchase-button");
     if (purchaseButtonContainer) {
