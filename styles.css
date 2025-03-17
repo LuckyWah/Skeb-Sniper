@@ -361,7 +361,7 @@ a:hover {
 
 .button {
   display: inline-block;
-  margin: 5px;
+  margin: 5px 5px 5px 0;
   padding: 10px 20px;
   background: linear-gradient(135deg, #007acc, #66b3ff);
   border: none;
