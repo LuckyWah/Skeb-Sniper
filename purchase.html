@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        // If this page is loaded directly, load index.html
+        if (window.location === window.parent.location) {
+            window.location.replace("/index.html#purchase");
+        }
+    </script>
+</head>
+<body>
+    <div id="purchase" class="tabcontent">
+        <div class="info-section">
+            <h2>Purchase Lifetime Access</h2>
+            <p>
+                Interested in our software? We offer lifetime purchase, which gives you lifetime access to our software for Windows and Linux!
+            </p>
+            <p>
+                Current price: <span id="price" class="price"><strong>$50.00</strong></span>
+            </p>
+            <!-- Purchase button to start the process -->
+            <button id="purchase-btn" class="button purchase-btn">Purchase</button>
+            
+            <!-- Coupon section, hidden by default -->
+            <div id="coupon-section" style="display: none;">
+                <label for="coupon" class="coupon-label">Have a coupon?</label><br>
+                <input type="text" id="coupon" class="coupon" placeholder="Enter coupon code"><br>
+                <button id="apply-coupon" class="button apply-coupon">Apply Coupon</button>
+                <button id="proceed-checkout" class="button proceed-checkout">Proceed to Checkout</button>
+                <p id="discount-message" class="discount-message"></p>
+            </div>
+            
+            <!-- PayPal Purchase Button Container, hidden until proceed is clicked -->
+            <div id="purchase-button" class="purchase-button" style="display: none;"></div>
+            
+            <!-- Container for download button, hidden by default -->
+            <div id="download-container" class="download-container" style="display: none;">
+                <h3>Download Your Software</h3>
+                <p>Click the button below to download your software:</p>
+                <button id="download-btn" class="button">Download Now</button>
+                <p>Link expires in 1 hour. Contact support if you encounter issues.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

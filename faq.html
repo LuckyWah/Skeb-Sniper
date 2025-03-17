@@ -43,7 +43,23 @@
     <details>
       <summary>Do you collect any data from us?</summary>
       <p>No, we never collect any data from you, including your Gmail account or Twitter credentials. 
-        To protect your privacy, all sensitive data is first encrypted and then securely stored locally on your device.</p>
+        To protect your privacy, all sensitive data is first encrypted and then securely stored locally on your device. For details, 
+        see our Privacy Policy.</p>
+    </details>
+    <details>
+      <summary>When I try to authenticate using Gmail OAuth, I get a warning that says Google hasn't verified this app. How can I use it?</summary>
+      <p>
+        Our application requires read-only access to Gmail, which triggers Google's security verification process. Unfortunately, 
+        Google mandates a CASA (Cloud Application Security Assessment) verification for applications requesting sensitive scopes, such as 
+        the Read-Only scope. CASA verification is a <strong>very costly</strong> security assessment that must be completed annually, 
+        and we currently do not have sufficient funds to cover the verification cost.
+      </p>
+      <p>
+        Because of this, our application cannot be verified and Google will always display a warning when you try to use it. To proceed, 
+        click on <u>Advanced</u> and select <u>Go to Skeb Sniper (unsafe)</u>. If you want to learn how your data is processed, 
+        we encourage you to read our Privacy Policy. If you are not comfortable using our software, you may request a refund. 
+        Once the refund is processed, your usage privileges will be revoked.
+      </p>      
     </details>
     <details>
       <summary>How does this program work?</summary>
@@ -69,7 +85,7 @@
         Do <strong>not</strong> use it for testing because no fake email will be sent to you to trigger the automation tool. 
         Automation will only be triggered by the email sent from Skeb. When you click on "Run in Background," 
         the program starts a background process that runs continuously, allowing you to safely disconnect from your server. 
-        On Windows, it uses a Windows service, while on Linux, it runs as a daemon managed by systemd, so you need admin/root privileges to run. 
+        On Windows, it uses a Windows service, while on Linux, it runs as a daemon managed by supervisord, so you need admin/root privileges to run. 
         The background process automatically shuts down when no tasks are running.</p>          
     </details>
     <details>

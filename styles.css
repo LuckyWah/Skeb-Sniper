@@ -17,7 +17,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Navigation Bar */
+/* ----------------------------- Navigation Bar ----------------------------- */
 .nav-bar {
   display: flex;
   align-items: center;
@@ -60,7 +60,7 @@ a:hover {
   display: none; /* Hidden by default on PC */
 }
 
-/* Branding */
+/* ----------------------------- Branding ----------------------------- */
 .branding {
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@ a:hover {
   color: #555;
 }
 
-/* Desktop styles */
+/* ----------------------------- Youtube Video ----------------------------- */
 .video-wrapper {
   position: relative;
   width: 80%;
@@ -102,7 +102,7 @@ a:hover {
   height: 100%;
 }
 
-/* Mobile Styles */
+/* ----------------------------- Mobile styles using media query ----------------------------- */
 @media (max-width: 768px) {
   body {
       font-size: 14px;
@@ -165,7 +165,7 @@ a:hover {
   }
 }
 
-/* Main Content Container with 50% Transparent Gray Background */
+/* ----------------------------- Content Container with 50% Transparent Gray Background ----------------------------- */
 .container {
   width: 100%;
   min-height: 100vh;
@@ -190,7 +190,7 @@ a:hover {
   }
 }
 
-/* Advertisement Block in Introduction Tab */
+/* ----------------------------- Advertisement Block in Introduction Tab ----------------------------- */
 .advertisement {
   background: #e0e0e0;
   padding: 15px;
@@ -201,7 +201,7 @@ a:hover {
   line-height: 1.6;
 }
 
-/* Carousel Styles for Introduction Tab */
+/* ----------------------------- Carousel Styles for Introduction Tab ----------------------------- */
 .carousel-container {
   position: relative;
   margin: 40px auto;
@@ -267,7 +267,7 @@ a:hover {
   pointer-events: auto;
 }
 
-/* Handles slides */
+/* ----------------------------- Slides ----------------------------- */
 .slide {
   display: none;
   padding: 40px;
@@ -291,9 +291,138 @@ a:hover {
   background: #f9f9f9;
   text-align: left;
   color: #333;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+}
+.slide .detail:nth-of-type(1) {
+  animation-delay: 0.3s;
+}
+.slide .detail:nth-of-type(2) {
+  animation-delay: 0.6s;
+}
+.slide .detail:nth-of-type(3) {
+  animation-delay: 0.9s;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* Form Styles */
+/* ----------------------------- Purchase Section Styles ----------------------------- */
+.coupon-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.coupon {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.coupon:focus {
+  border-color: #007acc;
+  outline: none;
+}
+
+/* Coupon container */
+.coupon-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.coupon-input-wrapper {
+  flex: 1;
+  min-width: 200px;
+}
+
+.button {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #007acc, #66b3ff);
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #66b3ff, #007acc);
+}
+
+/* Optional: Specific styling for download button */
+#download-btn.button {
+  background: linear-gradient(135deg, #28a745, #66ff99);
+}
+
+#download-btn.button:hover {
+  background: linear-gradient(135deg, #66ff99, #28a745);
+}
+
+/* Download Container */
+.download-container {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+/* Discount Message */
+.discount-message {
+  font-size: 1em;
+  margin-top: 10px;
+  color: green;
+  text-align: left;
+}
+
+/* Price Display */
+.price {
+  font-size: 1.5em;
+  color: #007acc;
+}
+
+/* PayPal Button Container */
+.purchase-button {
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Ensure tabcontent */
+.tabcontent, .info-section {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ----------------------------- Form Styles ----------------------------- */
 form {
   margin: 20px auto;
   background: #fafafa;
@@ -306,7 +435,7 @@ form label {
   display: block;
   margin-bottom: 5px;
   font-weight: 500;
-  text-align: center;
+  text-align: left;
 }
 form input,
 form textarea {
@@ -341,7 +470,8 @@ form button {
 form button:hover {
   background: linear-gradient(135deg, #66b3ff, #007acc);
 }
-/* Info Section Styles for static pages */
+
+/* ----------------------------- Info Section Styles for static pages ----------------------------- */
 .info-section {
   background: #f9f9f9;
   padding: 20px;
@@ -358,13 +488,15 @@ form button:hover {
 .info-section p {
   line-height: 1.6;
 }
-/* Developer Image – Show full image without cropping */
+
+/* ----------------------------- Developer Image ----------------------------- */
 .developer-img {
   max-width: 100%;
   display: block;
   margin: 20px auto;
 }
-/* Release Log Module Styling */
+
+/* ----------------------------- Release Log Module Styling ----------------------------- */
 .release-log details {
   background: #f0f0f0;
   padding: 15px;
@@ -386,34 +518,4 @@ form button:hover {
   font-family: monospace;
   font-size: 1.1em;
   color: #333;
-}
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes slideUp {
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-.slide .detail {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s forwards;
-}
-.slide .detail:nth-of-type(1) {
-  animation-delay: 0.3s;
-}
-.slide .detail:nth-of-type(2) {
-  animation-delay: 0.6s;
-}
-.slide .detail:nth-of-type(3) {
-  animation-delay: 0.9s;
 }

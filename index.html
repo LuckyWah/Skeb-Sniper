@@ -12,7 +12,7 @@
   <!-- Navigation Bar -->
   <div class="nav-bar">
     <!-- Hamburger Menu Button (Only for Mobile) -->
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <button class="menu-toggle">☰</button>
 
     <!-- Branding -->
     <div class="branding">
@@ -26,6 +26,7 @@
     <!-- Navigation Tabs -->
     <div class="nav-tabs">
       <button class="tablinks active" onclick="openTab(event, 'home')">Home</button>
+      <button class="tablinks" onclick="openTab(event, 'purchase')">Purchase</button>
       <button class="tablinks" onclick="openTab(event, 'contact')">Contact Us</button>
       <button class="tablinks" onclick="openTab(event, 'faq')">FAQ</button>
       <button class="tablinks" onclick="openTab(event, 'tos')">ToS</button>
@@ -38,5 +39,7 @@
   <!-- Main Content Container -->
   <div class="container"></div>
   <script src="tabs.js"></script>
+  <!-- Ensure PayPal SDK is included -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AeyNLvH79wMrreXOad2Tnjzjn_qcVxkv1oLvtJUajAbaB4Rd1WmE_Qk0Y6Y08LnHk6u_4C7HSALHJnMt&currency=USD"></script>
 </body>
 </html>
