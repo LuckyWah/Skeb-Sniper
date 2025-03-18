@@ -359,6 +359,33 @@ a:hover {
   min-width: 200px;
 }
 
+/* Email container */
+.email-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 15px; /* Space after buttons */
+}
+
+/* Email message styling */
+.email-message {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Ensure consistency with coupon input focus */
+#email-input:focus {
+  border-color: #007acc;
+  outline: none;
+}
+
 .button {
   display: inline-block;
   margin: 5px 5px 5px 0;
@@ -374,6 +401,15 @@ a:hover {
 
 .button:hover {
   background: linear-gradient(135deg, #66b3ff, #007acc);
+}
+
+/* Styling for the Enter button (optional specific styling) */
+.enter-button {
+  background: linear-gradient(135deg, #28a745, #66ff99); /* Green gradient to distinguish */
+}
+
+.enter-button:hover {
+  background: linear-gradient(135deg, #66ff99, #28a745);
 }
 
 /* Styling for both download buttons */
@@ -394,6 +430,39 @@ a:hover {
   border-radius: 5px;
   background-color: #f9f9f9;
   text-align: center;
+}
+
+/* License Section */
+.license-section {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* License Label (child of license-section) */
+.license-section span {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Copy Button (child of license-section) */
+.license-section button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.license-section button:hover {
+  background-color: #45a049;
 }
 
 /* Discount Message */
@@ -507,17 +576,12 @@ form button:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .release-log summary {
-  font-size: 1em;
   font-weight: 500;
   cursor: pointer;
   outline: none;
   color: #007acc;
 }
 .release-log p {
-  margin: 10px 0 0 20px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  font-family: monospace;
-  font-size: 1.1em;
-  color: #333;
+  white-space: normal;
+  word-wrap: break-word;
 }

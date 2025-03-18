@@ -218,7 +218,9 @@ const purchaseState = {
     originalPrice: 50,
     discountedPrice: 50,
     couponCode: null, // Store the applied coupon code
-    downloadLinks: null // Store download links after successful payment/free access
+    downloadLinks: null, // Store download links after successful payment/free access
+    licenseKey: null, // Store the license key after successful payment/free access
+    email: null // Store the user's email for free access
 };
 
 // Update the price display element
@@ -247,12 +249,13 @@ function markCouponAsUsed(couponCode) {
     }
 }
 
-// Render the download section with the provided links
-function renderDownloadSection(downloadContainer, downloadLinks) {
+// Render the download section with the provided links and license key
+function renderDownloadSection(downloadContainer, downloadLinks, licenseKey) {
     if (!downloadContainer) return;
 
     const downloadBtnWindows = downloadContainer.querySelector("#download-btn-windows");
     const downloadBtnLinux = downloadContainer.querySelector("#download-btn-linux");
+    const instructions = downloadContainer.querySelector("p");
 
     // Show both download buttons
     if (downloadBtnWindows) {
@@ -267,6 +270,36 @@ function renderDownloadSection(downloadContainer, downloadLinks) {
         };
         downloadBtnLinux.style.display = "inline-block";
     }
+
+    // Add license key display section
+    const licenseSection = document.createElement("div");
+    licenseSection.id = "license-section";
+    licenseSection.className = "license-section"; // Apply CSS class
+
+    const licenseLabel = document.createElement("span");
+    licenseLabel.innerText = `Your License Key: ${licenseKey}`;
+
+    const copyButton = document.createElement("button");
+    copyButton.innerText = "Copy";
+    copyButton.onclick = () => {
+        navigator.clipboard.writeText(licenseKey).then(() => {
+            copyButton.innerText = "Copied!";
+            // CSS handles the background color change on hover, so we only need to update the text
+            setTimeout(() => {
+                copyButton.innerText = "Copy";
+            }, 2000);
+        }).catch(err => {
+            console.error("Failed to copy license key:", err);
+            alert("Failed to copy license key. Please copy it manually.");
+        });
+    };
+
+    licenseSection.appendChild(licenseLabel);
+    licenseSection.appendChild(copyButton);
+    downloadContainer.appendChild(licenseSection);
+
+    // Update instructions to include license key usage
+    instructions.innerHTML = 'Download the Windows or the Linux version below. For Linux users, after downloading the tar file, load it with docker load -i skeb-sniper-linux.tar, then run it with docker run -d skeb-sniper:latest. Ensure Docker is installed. Use the license key above to activate the software.';
 
     downloadContainer.style.display = "block";
     const purchaseButtonContainer = document.getElementById("purchase-button");
@@ -301,16 +334,18 @@ function renderPayPalButton(purchaseButtonContainer, discountedPrice) {
                     const response = await fetch('https://download.kasorashibainu.com/api/validate-payment', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ orderId: details.id, couponCode: purchaseState.couponCode || "" })
+                        body: JSON.stringify({ orderId: details.id, couponCode: purchaseState.couponCode || "", details })
                     });
                     const data = await response.json();
                     if (data.success) {
                         purchaseState.downloadLinks = data.downloadLinks;
+                        purchaseState.licenseKey = data.license_key;
                         sessionStorage.setItem("paymentCompleted", "true");
                         sessionStorage.setItem("downloadLinks", JSON.stringify(data.downloadLinks));
+                        sessionStorage.setItem("licenseKey", data.license_key);
                         const downloadContainer = document.getElementById("download-container");
-                        renderDownloadSection(downloadContainer, purchaseState.downloadLinks);
-                        updateDiscountMessage(document.getElementById("discount-message"), "Payment successful! Click the button below to download.", "green");
+                        renderDownloadSection(downloadContainer, purchaseState.downloadLinks, purchaseState.licenseKey);
+                        updateDiscountMessage(document.getElementById("discount-message"), "Payment successful! Click the button below to download and use the license key to activate.", "green");
                     } else {
                         updateDiscountMessage(document.getElementById("discount-message"), "Payment validation failed: " + data.message, "red");
                     }
@@ -327,22 +362,55 @@ function renderPayPalButton(purchaseButtonContainer, discountedPrice) {
     }).render("#purchase-button");
 }
 
+// Handle free access submission (shared logic for both Enter and Proceed to Checkout)
+async function handleFreeAccessSubmission() {
+    const emailInput = document.getElementById("email-input");
+    const email = emailInput ? emailInput.value.trim() : "";
+    const discountMessage = document.getElementById("discount-message");
+    const downloadContainer = document.getElementById("download-container");
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        updateDiscountMessage(discountMessage, "Please enter a valid email address.", "red");
+        return;
+    }
+    purchaseState.email = email;
+
+    try {
+        const response = await fetch('https://download.kasorashibainu.com/api/free-access', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ couponCode: purchaseState.couponCode, email: purchaseState.email })
+        });
+        const data = await response.json();
+        if (data.success) {
+            purchaseState.downloadLinks = data.downloadLinks;
+            purchaseState.licenseKey = data.license_key;
+            sessionStorage.setItem("paymentCompleted", "true");
+            sessionStorage.setItem("downloadLinks", JSON.stringify(data.downloadLinks));
+            sessionStorage.setItem("licenseKey", data.license_key);
+            renderDownloadSection(downloadContainer, purchaseState.downloadLinks, purchaseState.licenseKey);
+            updateDiscountMessage(discountMessage, "Free access granted! Click the button below to download and use the license key to activate.", "green");
+        } else {
+            updateDiscountMessage(discountMessage, "Error granting free access: " + data.message, "red");
+        }
+    } catch (error) {
+        console.error("Error granting free access:", error);
+        updateDiscountMessage(discountMessage, "An error occurred while granting free access.", "red");
+    }
+}
+
 // Handle the coupon application
 async function handleCouponClick() {
     const couponInput = document.getElementById("coupon");
     const priceDisplay = document.getElementById("price");
     const discountMessage = document.getElementById("discount-message");
+    const proceedCheckoutButton = document.getElementById("proceed-checkout");
 
     const couponCode = couponInput.value.trim();
-
-    // Store the coupon code in the state for later use
     purchaseState.couponCode = couponCode;
 
     if (couponCode) {
-        // Show a loading message while validating
         updateDiscountMessage(discountMessage, "Validating coupon...", "gray");
-
-        // Validate coupon with the server
         try {
             const response = await fetch('https://download.kasorashibainu.com/api/validate-coupon', {
                 method: 'POST',
@@ -350,63 +418,112 @@ async function handleCouponClick() {
                 body: JSON.stringify({ couponCode })
             });
             const data = await response.json();
-
             if (data.valid) {
                 purchaseState.discountedPrice = purchaseState.originalPrice - data.discount;
                 updatePriceDisplay(priceDisplay, purchaseState.discountedPrice);
                 if (purchaseState.discountedPrice === 0) {
                     updateDiscountMessage(discountMessage, "Coupon applied: Free access granted!", "green");
+                    // Hide the Proceed to Checkout button
+                    if (proceedCheckoutButton) {
+                        proceedCheckoutButton.style.display = "none";
+                    }
+                    // Add email input field only when free access is granted
+                    const couponSection = document.getElementById("coupon-section");
+                    if (couponSection && !document.getElementById("email-container")) {
+                        const emailContainer = document.createElement("div");
+                        emailContainer.className = "email-container";
+                        emailContainer.id = "email-container";
+
+                        const emailLabel = document.createElement("label");
+                        emailLabel.htmlFor = "email-input";
+                        emailLabel.className = "coupon-label";
+                        emailLabel.innerText = "Email:";
+
+                        const emailInput = document.createElement("input");
+                        emailInput.id = "email-input";
+                        emailInput.type = "email";
+                        emailInput.className = "coupon";
+                        emailInput.placeholder = "Enter your email";
+
+                        const emailMessage = document.createElement("p");
+                        emailMessage.className = "email-message";
+                        emailMessage.innerText = "To obtain a license key and software, please enter your email.";
+
+                        const enterButton = document.createElement("button");
+                        enterButton.className = "button enter-button";
+                        enterButton.innerText = "Enter";
+                        enterButton.onclick = handleFreeAccessSubmission;
+
+                        emailContainer.appendChild(emailLabel);
+                        emailContainer.appendChild(document.createElement("br")); // For layout consistency
+                        emailContainer.appendChild(emailInput);
+                        emailContainer.appendChild(emailMessage);
+                        emailContainer.appendChild(enterButton);
+
+                        // Insert after the buttons, before discount-message
+                        const discountMessageElement = document.getElementById("discount-message");
+                        couponSection.insertBefore(emailContainer, discountMessageElement);
+                    }
                 } else {
                     updateDiscountMessage(discountMessage, `Coupon applied: -$${data.discount.toFixed(2)}!`, "green");
+                    // Show the Proceed to Checkout button
+                    if (proceedCheckoutButton) {
+                        proceedCheckoutButton.style.display = "inline-block";
+                    }
+                    // Remove email container if it exists and price is not $0
+                    const emailContainer = document.getElementById("email-container");
+                    if (emailContainer) {
+                        emailContainer.remove();
+                    }
                 }
-                // Optional: Mark as used client-side (redundant with server, but kept for offline fallback)
                 markCouponAsUsed(couponCode);
             } else {
                 purchaseState.discountedPrice = purchaseState.originalPrice;
                 updatePriceDisplay(priceDisplay, purchaseState.discountedPrice);
                 updateDiscountMessage(discountMessage, data.message || "Invalid coupon code.", "red");
+                // Show the Proceed to Checkout button
+                if (proceedCheckoutButton) {
+                    proceedCheckoutButton.style.display = "inline-block";
+                }
+                // Remove email container if it exists
+                const emailContainer = document.getElementById("email-container");
+                if (emailContainer) {
+                    emailContainer.remove();
+                }
             }
         } catch (error) {
             console.error("Error validating coupon:", error);
             updateDiscountMessage(discountMessage, "Error validating coupon. Try again.", "red");
+            // Show the Proceed to Checkout button
+            if (proceedCheckoutButton) {
+                proceedCheckoutButton.style.display = "inline-block";
+            }
+            // Remove email container if it exists
+            const emailContainer = document.getElementById("email-container");
+            if (emailContainer) {
+                emailContainer.remove();
+            }
         }
     } else {
         purchaseState.discountedPrice = purchaseState.originalPrice;
         updatePriceDisplay(priceDisplay, purchaseState.discountedPrice);
         updateDiscountMessage(discountMessage, "No coupon applied.", "black");
+        // Show the Proceed to Checkout button
+        if (proceedCheckoutButton) {
+            proceedCheckoutButton.style.display = "inline-block";
+        }
+        // Remove email container if it exists
+        const emailContainer = document.getElementById("email-container");
+        if (emailContainer) {
+            emailContainer.remove();
+        }
     }
 }
 
-// Handle proceeding to checkout
+// Handle proceeding to checkout (only for non-free access)
 async function handleProceedCheckout() {
     const purchaseButtonContainer = document.getElementById("purchase-button");
-    
-    if (purchaseState.discountedPrice === 0) {
-        // Skip payment for $0 and grant access directly
-        try {
-            const response = await fetch('https://download.kasorashibainu.com/api/free-access', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ couponCode: purchaseState.couponCode })
-            });
-            const data = await response.json();
-            if (data.success) {
-                purchaseState.downloadLinks = data.downloadLinks;
-                sessionStorage.setItem("paymentCompleted", "true");
-                sessionStorage.setItem("downloadLinks", JSON.stringify(data.downloadLinks));
-                const downloadContainer = document.getElementById("download-container");
-                renderDownloadSection(downloadContainer, purchaseState.downloadLinks);
-                updateDiscountMessage(document.getElementById("discount-message"), "Free access granted! Click the button below to download.", "green");
-            } else {
-                updateDiscountMessage(document.getElementById("discount-message"), "Error granting free access: " + data.message, "red");
-            }
-        } catch (error) {
-            console.error("Error granting free access:", error);
-            updateDiscountMessage(document.getElementById("discount-message"), "An error occurred while granting free access.", "red");
-        }
-    } else {
-        renderPayPalButton(purchaseButtonContainer, purchaseState.discountedPrice);
-    }
+    renderPayPalButton(purchaseButtonContainer, purchaseState.discountedPrice);
 }
 
 // Initialize the Purchase tab
@@ -419,6 +536,8 @@ function initializePurchaseTab() {
     purchaseState.discountedPrice = 50;
     purchaseState.couponCode = null;
     purchaseState.downloadLinks = null;
+    purchaseState.licenseKey = null;
+    purchaseState.email = null;
 
     const priceDisplay = document.getElementById("price");
     updatePriceDisplay(priceDisplay, purchaseState.discountedPrice);
