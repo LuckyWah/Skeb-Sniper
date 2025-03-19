@@ -134,6 +134,13 @@
     </details>
 
     <details>
+      <summary>How do I confirm that the program is listening for my emails?</summary>
+      <p>You can verify this by checking the log file named "GmailListener.log" in your working directory after running a task.  
+        If you see the messages "Gmail authentication successful!", "Gmail Watch Started!", and "Listening for messages...", 
+        the program is actively listening for new emails.</p>
+    </details>      
+
+    <details>
       <summary>What does "Run in Background" in task manager do?</summary>
       <p>You use "Run in Background" when you genuinely want to send a request to the artist. 
         Do <strong>not</strong> use it for testing because no fake email will be sent to you to trigger the automation tool. 
@@ -163,7 +170,8 @@
       <p>According to the developer's tests, using the "Run in Background" feature (not "Test Run," which may take longer to 
         distinguish scenarios), from the time the artist opens requests on Skeb to the time when the application successfully 
         sends a request, it takes about 8 seconds. However, the response time may vary depending on factors such as server latency 
-        on Skeb and Google, computer performance, and other external factors.</p>
+        on Skeb and Google, computer performance, and other external factors. If no errors occur, your request should be sent well 
+        under 1 minute.</p>
     </details>
 
     <details>
@@ -189,13 +197,6 @@
       the server yourself, as we do not provide server hosting.</p>        
     </details>
 
-    <details> 
-      <summary>Do I need to run the application on a server?</summary>  
-      <p>Not necessarily, but we strongly recommend running it on a server since it is a long-running program.  
-      You can run the application on a server or on your PC. If you choose to use a server, you will need to set up 
-      the server yourself, as we do not provide server hosting.</p>        
-    </details>  
-
     <details>  
       <summary>How do I choose the right server to run the application?</summary>  
       <p>Your choice of server depends on your technical expertise and budget:</p>  
@@ -210,7 +211,7 @@
 
     <details> 
       <summary>What are the minimum server requirements?</summary>  
-      <p>Assuming no other programs are running on your server, the minimum requirements for running the program are:</p>
+      <p>Assuming no resource-intensive programs are running on your server, the minimum requirements for running the program are:</p>
       <ul>  
         <li><strong>Linux:</strong> 2GB of RAM and a 10GB persistent disk.</li>  
         <li><strong>Windows:</strong> 4GB of RAM and a 50GB persistent disk.</li>  
@@ -225,17 +226,36 @@
         whereas Linux is significantly more affordable.</p>  
       <p>For example, on Google Cloud Platform as of March 18, 2025, running the program on Linux requires 2GB of RAM 
         and a 10GB persistent disk, costing approximately <strong>$13</strong> per month. In contrast, a Windows setup requires 
-        4GB of RAM and a 50GB persistent disk, costing <strong>$63</strong> per month. This means that using Linux reduces costs to 
-        about <strong>20%</strong> of the Windows equivalent.</p>  
+        4GB of RAM and a 50GB persistent disk, costing <strong>$63</strong> per month. This means that using a Linux server reduces 
+        costs to about <strong>20%</strong> of a Windows server.</p>  
       <p>Therefore, Linux is the preferred choice for server deployments due to its cost efficiency.</p>  
     </details>    
 
     <details>
-      <summary>How do I run the application for Linux?</summary>
-      <p>Before you run the application, ensure that Docker is installed and running on your Linux server. After downloading the 
-        tar file, load it with the command <code>docker load -i skeb-sniper-linux.tar</code>, then run it with 
-        <code>docker run -d skeb-sniper:latest</code>.</p>
-    </details>
+      <summary>How do I run the application on a Linux server?</summary>
+      <p>Before running the application, ensure that Docker is installed and running on your Linux server. After downloading 
+        the tar file, load it using the following command:</p>
+      <p><code>docker load -i skeb-sniper-linux.tar</code></p>
+      <p>We recommend using the following command to run your Docker container:</p>
+      <p><code>sudo docker run -d --user root --name skeb-sniper-container -e DISPLAY=$DISPLAY --network host 
+        -v $HOME/.Xauthority:/root/.Xauthority -v $HOME/skeb_sniper_data:/app 
+        -v $HOME/skeb_sniper_firefox:/root/.mozilla/firefox -it skeb-sniper:latest</code></p>
+        <p>In this command, root privilege is granted to run the program. Xauthority is mounted to enable X11 forwarding, 
+          which allows GUI to be displayed remotely. Files written to the working directory and Firefox cookies are also 
+          mounted to your user directory, so you will not lose data after running the container. You may rename the container 
+          name and directories as needed.</p>
+      <p>Since GUI forwarding is required when running the application on a Linux server, the Docker image includes X11 forwarding, 
+        which allows you to display GUI on your local PC. If you are using a Windows PC, we recommend using PuTTY for GUI forwarding. 
+        Note that X11 forwarding can be slow, so expect some delay after running the program.</p>
+    </details>    
+
+    <details>  
+      <summary>Do you have a tutorial on running the program on a Linux server?</summary>  
+      <p>Currently, we do not provide a tutorial for running our software on a Linux server, as we expect Linux users to be 
+        familiar with basic commands and GUI forwarding. If you are unsure how to set up GUI forwarding, there are video 
+        tutorials available on YouTube that can guide you through the process. If you are unable to get GUI forwarding to 
+        work, consider using the Windows version instead.</p>  
+    </details>    
 
     <h3>Tips for How to Send A successful Request</h3>
 
