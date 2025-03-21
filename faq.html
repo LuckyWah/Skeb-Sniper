@@ -228,7 +228,9 @@
         and a 10GB persistent disk, costing approximately <strong>$13</strong> per month. In contrast, a Windows setup requires 
         4GB of RAM and a 50GB persistent disk, costing <strong>$63</strong> per month. This means that using a Linux server reduces 
         costs to about <strong>20%</strong> of a Windows server.</p>  
-      <p>Therefore, Linux is the preferred choice for server deployments due to its cost efficiency.</p>  
+      <p>Therefore, Linux is the preferred choice for server deployments due to its cost efficiency. However, if you are not 
+        familiar with Linux, we recommend using Windows, as Linux requires more technical knowledge to set up and manage.
+      </p>  
     </details>    
 
     <details>
@@ -237,13 +239,22 @@
         the tar file, load it using the following command:</p>
       <p><code>docker load -i skeb-sniper-linux.tar</code></p>
       <p>We recommend using the following command to run your Docker container:</p>
-      <p><code>sudo docker run -d --user root --name skeb-sniper-container -e DISPLAY=$DISPLAY --network host 
-        -v $HOME/.Xauthority:/root/.Xauthority -v $HOME/skeb_sniper_data:/app 
-        -v $HOME/skeb_sniper_firefox:/root/.mozilla/firefox -it skeb-sniper:latest</code></p>
-        <p>In this command, root privilege is granted to run the program. Xauthority is mounted to enable X11 forwarding, 
-          which allows GUI to be displayed remotely. Files written to the working directory and Firefox cookies are also 
-          mounted to your user directory, so you will not lose data after running the container. You may rename the container 
-          name and directories as needed.</p>
+      <p><code>sudo docker run -d --user root --name skeb-sniper-container -e DISPLAY=$DISPLAY --network host -v $HOME/.Xauthority:/root/.Xauthority 
+        -v "$HOME/skeb_sniper_data:/app" -v "$HOME/skeb_sniper_firefox:/root/.mozilla/firefox" -v "$HOME/skeb_sniper_config:/root/.config/skebsniper" 
+        -v /etc/machine-id:/etc/machine-id:ro skeb-sniper</code></p>
+        <p>In this command, <code>sudo</code> grants root privilege to run the program. The <code>-d</code> flag runs the container in detached mode. 
+          <code>--user root</code> sets the container user as root. <code>--name skeb-sniper-container</code> names the container. 
+          <code>-e DISPLAY=$DISPLAY</code> passes the display environment variable, and <code>--network host</code> gives the container full access 
+          to the host network, useful for GUI apps. <code>-v $HOME/.Xauthority:/root/.Xauthority</code> enables X11 forwarding for remote GUI display. 
+          The volumes <code>-v "$HOME/skeb_sniper_data:/app"</code>, <code>-v "$HOME/skeb_sniper_firefox:/root/.mozilla/firefox"</code>, and 
+          <code>-v "$HOME/skeb_sniper_config:/root/.config/skebsniper"</code> mount your working directory, Firefox cookies, and app config 
+          respectively to ensure persistent data. <code>-v /etc/machine-id:/etc/machine-id:ro</code> ensures the container uses the same machine 
+          ID as the host because the application uses your machine ID to derive encryption keys or perform license validation. 
+          Without this, a new container would generate a different machine ID on each run. You may rename the container and directories if needed.</p>
+          <p><strong>Important note:</strong> Make sure your volume mappings are correct and that your user directories contain 
+            all the necessary files. To ensure this, you can first start the container without any mounts, and then copy the required files 
+            from the container to your host directories. Otherwise, the mounted container may miss dependencies if they are not 
+            already present in your user directories.</p>
       <p>Since GUI forwarding is required when running the application on a Linux server, the Docker image includes X11 forwarding, 
         which allows you to display GUI on your local PC. If you are using a Windows PC, we recommend using PuTTY for GUI forwarding. 
         Note that X11 forwarding can be slow, so expect some delay after running the program.</p>
