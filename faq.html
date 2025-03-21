@@ -247,8 +247,8 @@
           <code>-e DISPLAY=$DISPLAY</code> passes the display environment variable, and <code>--network host</code> gives the container full access 
           to the host network, useful for GUI apps. <code>-v $HOME/.Xauthority:/root/.Xauthority</code> enables X11 forwarding for remote GUI display. 
           The volumes <code>-v "$HOME/skeb_sniper_data:/app"</code>, <code>-v "$HOME/skeb_sniper_firefox:/root/.mozilla/firefox"</code>, and 
-          <code>-v "$HOME/skeb_sniper_config:/root/.config/skebsniper"</code> mount your working directory, Firefox cookies, and app config 
-          respectively to ensure persistent data. <code>-v /etc/machine-id:/etc/machine-id:ro</code> ensures the container uses the same machine 
+          <code>-v "$HOME/skeb_sniper_config:/root/.config/skebsniper"</code> mount your working directory, Firefox cookies, and application configuration 
+          respectively to ensure you never lose your data. <code>-v /etc/machine-id:/etc/machine-id:ro</code> ensures the container uses the same machine 
           ID as the host because the application uses your machine ID to derive encryption keys or perform license validation. 
           Without this, a new container would generate a different machine ID on each run. You may rename the container and directories if needed.</p>
           <p><strong>Important note:</strong> Make sure your volume mappings are correct and that your user directories contain 
