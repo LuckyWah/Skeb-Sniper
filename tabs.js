@@ -299,7 +299,7 @@ function renderDownloadSection(downloadContainer, downloadLinks, licenseKey) {
     downloadContainer.appendChild(licenseSection);
 
     // Update instructions to include license key usage
-    instructions.innerHTML = 'Download the Windows or the Linux version below. For Linux users, after downloading the tar file, load it with docker load -i skeb-sniper-linux.tar, then run it with docker run -d skeb-sniper:latest. Ensure Docker is installed. Use the license key above to activate the software.';
+    instructions.innerHTML = 'Download the Windows or the Linux version below. For Linux users, refer to the FAQ section for defailed instructions. Ensure Docker is installed. Use the license key above to activate the software.';
 
     downloadContainer.style.display = "block";
     const purchaseButtonContainer = document.getElementById("purchase-button");
