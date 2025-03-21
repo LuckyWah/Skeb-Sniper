@@ -39,10 +39,10 @@
 
     <details>
       <summary>Do you collect any sensitive data from us?</summary>
-      <p>No, we never collect any sensitive data from you, including your Gmail account or Twitter credentials. However, we do store 
-        the email you used to make the purchase in our database. Your email will be used for license activation and verification.
-        To protect your privacy, all sensitive data is first encrypted and then securely stored locally on your device. For details, 
-        see our Privacy Policy.</p>
+      <p>No, we never collect any sensitive data from you, including your Gmail account or Twitter credentials. We use enterprise-level 
+        encryption to protect your sensitive data, which is then securely stored on your device. To learn how your data is used, 
+        please see our Privacy Policy. Note that while we do not store any sensitive data, we do store the email address of the PayPal 
+        account used for your purchase. This email is used for license activation and verification.</p>
     </details>
 
     <details>
@@ -74,7 +74,7 @@
 
     <details>  
       <summary>What email address is required to activate my license?</summary>  
-      <p>It is the email address associated with your PayPal.</p>  
+      <p>The email you should enter to activate your license is the email address of your PayPal account used to purchase this software.</p>  
     </details>    
 
     <details>  
@@ -87,7 +87,7 @@
     <details>  
       <summary>Will my license expire?</summary>  
       <p>No, once you purchase lifetime access, your license will never expire. You will also have access to future 
-        updates when they become available.</p>  
+        updates when they become available. We'll notify you by email when future updates are available on our website.</p>  
     </details>    
 
     <h3>Software Functionality</h3>
@@ -109,7 +109,7 @@
       <summary>Can I run this application on my own PC?</summary>  
       <p>Yes, you can run the application on your PC, but it is recommended to use a server instead. Running it on a 
           personal computer is not ideal because most users cannot keep their PC running 24/7, and doing so is not good 
-          for the longevity of the hardware.</p>            
+          for your hardware.</p>            
     </details>
 
     <details>
@@ -119,9 +119,10 @@
     </details>
 
     <details>
-      <summary>Do I have to input my Twitter credentials?</summary>
-      <p>Yes, the program requires your credentials to log in. However, it will first attempt to use cookies. 
-        If that fails, it will fall back to using your Twitter credentials.</p>          
+      <summary>Do I have to enter my Twitter credentials?</summary>
+      <p>Yes, the program requires your credentials to log in. While they're not always needed, it's safest to have them available. 
+        When submitting a request, the program will first try to use cookies if you have already logged into your Firefox account.
+        If that fails, it will fall back to your Twitter credentials.</p>          
     </details>
 
     <details>
@@ -136,7 +137,7 @@
     <details>
       <summary>How do I confirm that the program is listening for my emails?</summary>
       <p>You can verify this by checking the log file named "GmailListener.log" in your working directory after running a task.  
-        If you see the messages "Gmail authentication successful!", "Gmail Watch Started!", and "Listening for messages...", 
+        If you see "Gmail authentication successful!", "Gmail Watch Started!", and "Listening for messages...", 
         the program is actively listening for new emails.</p>
     </details>      
 
@@ -160,18 +161,19 @@
 
     <details>
       <summary>I do not use Gmail to receive emails from Skeb. Can I not use Gmail?</summary>
-      <p>Unfortunately, as of now, Skeb Sniper only works with Gmail. Every email API is different and implementing different email APIs 
-        requires lots of time and effort. We use Gmail API because it is the most popular choice. If you prefer not using Gmail, 
-        this program will not work for you.</p>
+      <p>Unfortunately, Skeb Sniper currently only works with Gmail. Each email API is different, and supporting multiple email APIs 
+        would require significant time and effort. Since this software is developed and maintained by a single developer, we currently 
+        lack the resources to support additional email APIs. We chose the Gmail API because it's the most popular choice. 
+        If you prefer not to use Gmail, this program will not function as intended.</p>
     </details>
 
     <details>
       <summary>You advertised the application as "sending an instant request." How fast is "instant"?</summary>
-      <p>According to the developer's tests, using the "Run in Background" feature (not "Test Run," which may take longer to 
-        distinguish scenarios), from the time the artist opens requests on Skeb to the time when the application successfully 
-        sends a request, it takes about 8 seconds. However, the response time may vary depending on factors such as server latency 
-        on Skeb and Google, computer performance, and other external factors. If no errors occur, your request should be sent well 
-        under 1 minute.</p>
+      <p>According to the developer's tests on Windows and Linux servers, using the "Run in Background" feature (not "Test Run," 
+        which may take longer to distinguish scenarios), from the time the artist opens requests on Skeb to the time when 
+        the application successfully sends a request, it takes about 8 seconds. However, the response time may vary depending on factors 
+        such as server latency on Skeb and Google, computer performance. If no errors occur, your request 
+        should be sent well under 1 minute.</p>
     </details>
 
     <details>
@@ -192,17 +194,16 @@
 
     <details> 
       <summary>Do I need to run the application on a server?</summary>  
-      <p>Not necessarily, but we strongly recommend running it on a server since it is a long-running program.  
-      You can run the application on a server or on your PC. If you choose to use a server, you will need to set up 
-      the server yourself, as we do not provide server hosting.</p>        
+      <p>Running the application on a server is not required, but we strongly recommend running it on a server because it is a long-running program.  
+      If you choose to use a server, you will need to set up the server yourself, as we do not provide server hosting.</p>        
     </details>
 
     <details>  
       <summary>How do I choose the right server to run the application?</summary>  
       <p>Your choice of server depends on your technical expertise and budget:</p>  
       <ul>  
-          <li><strong>Windows Version:</strong> Ideal for users with little to no technical experience in computers as  
-            Windows provides a user-friendly GUI that handles all tasks without command-line operations.</li>  
+          <li><strong>Windows Version:</strong> Good for users with little to no technical experience in computers as  
+            Windows provides a user-friendly graphical user interface (GUI) that handles all tasks without command-line operations.</li>  
             <li><strong>Linux Version:</strong> Recommended for users with technical expertise seeking a cost-effective 
               solution. Linux servers are significantly cheaper than Windows servers, but a basic understanding of 
               Linux systems is required to use them effectively.</li>                  
@@ -221,9 +222,9 @@
 
     <details>  
       <summary>Why do you offer a Linux version of the software?</summary>  
-      <p>Our application is a long-running program that continuously monitors emails from Skeb, making it ideal for server deployment 
-        rather than running on a personal computer. However, Windows Server is quite expensive due to Microsoft licensing costs, 
-        whereas Linux is significantly more affordable.</p>  
+      <p>Our application is a long-running program that continuously monitors emails from Skeb, therefore it is better to run 
+        the application on a server than on your own PC. Most people are familiar with Windows, but due to high Microsoft licensing costs, 
+        a Linux server is a much more affordable alternative.</p>  
       <p>For example, on Google Cloud Platform as of March 18, 2025, running the program on Linux requires 2GB of RAM 
         and a 10GB persistent disk, costing approximately <strong>$13</strong> per month. In contrast, a Windows setup requires 
         4GB of RAM and a 50GB persistent disk, costing <strong>$63</strong> per month. This means that using a Linux server reduces 
@@ -278,22 +279,23 @@
     <details>
       <summary>Amount</summary>
       <p><strong>Recommended Amount:</strong> If the amount you entered is below the recommended amount, Skeb may prevent the request from being sent. 
-      You can set a multiplier in the application if you are unsure about the recommended amount.</p>
+        If you are unsure about the recommended amount, you can set a multiplier in the application.</p>
     </details>
     
     <details>
       <summary>Text Validity</summary>
       <ul>
         <li><strong>Language and Translation:</strong> Skeb uses automated translation to bridge language barriers between clients and creators. 
-        To ensure clarity, compose your request in straightforward language, avoiding idiomatic expressions or complex sentences 
+        To ensure clarity, compose your request in a straightforward language and avoid idiomatic expressions or complex sentences 
         that may not translate accurately.</li>
         <li><strong>Prohibited Terms:</strong> Certain words or phrases might be flagged by Skeb's system. For example, 
           mentioning "日本語" ("Japanese") in your request may result in rejection, as Skeb does not accept machine 
           translations. Note that Skeb uses DeepL for translation.</li>        
-        <li><strong>Clarity and Specificity:</strong> Given the limited direct communication with creators, it's essential 
-          to include all pertinent details in your initial request. Be specific while keeping your message concise.</li>
+        <li><strong>Clarity and Specificity:</strong> Given that direct communication with creators after sending the request is prohibited by Skeb, 
+          it's essential to include all necessary details in your request. Be specific about what you want in the artwork to ensure the final result 
+          matches your expectations.</li>
         <li><strong>Character Limit:</strong> Know the maximum character limit set by the artist (usually 1000). 
-          Exceeding this limit may result in text truncation when you use the application send requests.</li>
+          Exceeding this limit may result in text truncation when you use the application to send requests.</li>
       </ul>
     </details>
     
@@ -301,10 +303,10 @@
       <summary>Reference URL</summary>
       <ul>
         <li><strong>Accessibility:</strong> If your request includes a reference URL, ensure that the link is publicly 
-          accessible. For platforms like Google Drive, set the sharing settings to "Anyone with the link can view."</li>
-        <li><strong>Including Reference URL in Text:</strong> The application may not detect the reference URL blank 
-          if your text is too short. Skeb only provides this option when longer text is entered. To ensure your 
-          reference URL is included, always incorporate it within your text.</li>
+          accessible. For platforms like Google Drive, set the sharing settings to "Anyone with the link."</li>
+        <li><strong>Including Reference URL in your Text:</strong> The reference URL input may not appear on Skeb if your message is too short. 
+          Skeb only provides this option when longer text is entered. To ensure your reference URL is included, 
+          always include your reference URL in your text.</li>
       </ul>
     </details>
     
@@ -312,9 +314,10 @@
       <summary>NSFW Content</summary>
       <ul>
         <li><strong>NSFW Setting:</strong> If your request involves NSFW content, make sure to set the NSFW toggle 
-          to "On" when registering your request using the application.</li>
+          to "On" when entering your request using the application.</li>
         <li><strong>Compliance with Guidelines:</strong> Even with the NSFW toggle enabled, certain extreme or prohibited 
-          content may still violate Skeb's Terms of Service. Review Skeb's guidelines before submitting.</li>
+          content may still violate Skeb's Terms of Service. Review <a href="https://lp.skeb.jp/client?locale=en" target="_blank">Skeb's guidelines</a> 
+          before submitting.</li>
       </ul>
     </details>
     
@@ -336,9 +339,9 @@
     
     <details>
       <summary>Additional Note</summary>
-      <p>Here we have covered the essential information needed to use our software. If you have more questions on how to use Skeb, 
-        you may find answers on Reddit. For more details on the rules for sending requests on Skeb, please refer to the  
-        <a href="https://lp.skeb.jp/client?locale=en" target="_blank">official Skeb guidelines</a>.</p>  
+      <p>Even though we have covered the essential information for using our software, you may still encounter issues when submitting a request.
+        If you have more questions on how to use Skeb, you may find the answers on Reddit. For more details on the rules for sending requests 
+        on Skeb, please refer to <a href="https://lp.skeb.jp/client?locale=en" target="_blank">Skeb's guidelines</a>.</p>  
     </details>
     
   </div>
