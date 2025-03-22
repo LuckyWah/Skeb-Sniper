@@ -46,7 +46,8 @@
     </details>
 
     <details>
-      <summary>When I try to authenticate using Gmail OAuth, I get a warning that says Google hasn't verified this app. How can I use it?</summary>
+      <summary>When I try to authenticate using Gmail OAuth, I get a warning that says Google hasn't verified this app. How do I grant 
+        access to the application?</summary>
       <p>
         Our application requires read-only access to Gmail, which triggers Google's security verification process. Unfortunately, 
         Google mandates a CASA (Cloud Application Security Assessment) verification for applications requesting sensitive scopes, such as 
@@ -90,7 +91,7 @@
         updates when they become available. We'll notify you by email when future updates are available on our website.</p>  
     </details>    
 
-    <h3>Software Functionality</h3>
+    <h3>Application Requirements</h3>
     <details>
       <summary>What are the requirements for running this application?</summary>
         <ul>
@@ -113,33 +114,26 @@
     </details>
 
     <details>
-      <summary>How does this program work?</summary>
-      <p>Skeb Sniper is an email driven program, meaning that only when you receive an email from Skeb stating that the artist is open 
-        for requests, the program will send a request to the artist.</p>          
-    </details>
-
-    <details>
-      <summary>Do I have to enter my Twitter credentials?</summary>
+      <summary>Am I required to enter my Twitter credentials?</summary>
       <p>Yes, the program requires your credentials to log in. While they're not always needed, it's safest to have them available. 
         When submitting a request, the program will first try to use cookies if you have already logged into your Firefox account.
         If that fails, it will fall back to your Twitter credentials.</p>          
     </details>
 
     <details>
-      <summary>How do I test the program?</summary>
-      <p>You can test the program by clicking on "Test Run." The program will send you an automated email, 
-        which will trigger the automation tool to send a request to the artist. 
-        We recommend selecting an artist currently open for requests to confirm that the program can log into your account. 
-        If login fails, ensure that Two-Factor Authentication is disabled on Twitter. If you prefer not to send a request right now, 
-        set the amount to a value below the minimum requirement (e.g., 500). If test run fails, please contact the developer.</p>          
+      <summary>I do not use Gmail to receive emails from Skeb. Can I not use Gmail?</summary>
+      <p>Unfortunately, Skeb Sniper currently only works with Gmail. Each email API is different, and supporting multiple email APIs 
+        would require significant time and effort. Since this software is developed and maintained by a single developer, we currently 
+        lack the resources to support additional email APIs. We chose the Gmail API because it's the most popular choice. 
+        If you prefer not to use Gmail, this program will not function as intended.</p>
     </details>
 
+    <h3>Application Functionality</h3>
     <details>
-      <summary>How do I confirm that the program is listening for my emails?</summary>
-      <p>You can verify this by checking the log file named "GmailListener.log" in your working directory after running a task.  
-        If you see "Gmail authentication successful!", "Gmail Watch Started!", and "Listening for messages...", 
-        the program is actively listening for new emails.</p>
-    </details>      
+      <summary>How does this program work?</summary>
+      <p>Skeb Sniper is an email driven program, meaning that only when you receive an email from Skeb stating that the artist is open 
+        for requests, the program will send a request to the artist.</p>          
+    </details>
 
     <details>
       <summary>What does "Run in Background" in task manager do?</summary>
@@ -149,22 +143,6 @@
         the program starts a background process that runs continuously, allowing you to safely disconnect from your server. 
         On Windows, it uses a Windows service, while on Linux, it runs as a daemon managed by supervisord, so you need admin/root privileges to run. 
         The background process automatically shuts down when no tasks are running.</p>          
-    </details>
-
-    <details>
-      <summary>I am running a task for an artist that is currently open in background, but the program does not send a request to the artist. 
-        Why is that?</summary>
-      <p>Skeb Sniper is an email driven program, so if the artist is currently open, no email will be sent to you from Skeb, 
-        thus nothing will trigger the automation tool and no request will be sent. 
-        Only use "Run in Background" for artists that are currently closed and ensure that you have reserved email notification from Skeb.</p>          
-    </details>
-
-    <details>
-      <summary>I do not use Gmail to receive emails from Skeb. Can I not use Gmail?</summary>
-      <p>Unfortunately, Skeb Sniper currently only works with Gmail. Each email API is different, and supporting multiple email APIs 
-        would require significant time and effort. Since this software is developed and maintained by a single developer, we currently 
-        lack the resources to support additional email APIs. We chose the Gmail API because it's the most popular choice. 
-        If you prefer not to use Gmail, this program will not function as intended.</p>
     </details>
 
     <details>
@@ -183,6 +161,31 @@
         depends on the artist and is beyond this program’s control.</p>
     </details>
 
+    <h3>Tutorial</h3>
+    <details>
+      <summary>How do I test the program?</summary>
+      <p>You can test the program by clicking on "Test Run." The program will send you an automated email, 
+        which will trigger the automation tool to send a request to the artist. 
+        We recommend selecting an artist currently open for requests to confirm that the program can log into your account. 
+        If login fails, ensure that Two-Factor Authentication is disabled on Twitter. If you prefer not to send a request right now, 
+        set the amount to a value below the minimum requirement (e.g., 500). If test run fails, please contact the developer.</p>          
+    </details>
+
+    <details>
+      <summary>How do I confirm that the program is listening for my emails?</summary>
+      <p>You can verify this by checking the log file named "GmailListener.log" in your working directory after running a task.  
+        If you see "Gmail authentication successful!", "Gmail Watch Started!", and "Listening for messages...", 
+        the program is actively listening for new emails.</p>
+    </details>      
+
+    <details>
+      <summary>I am running a task for an artist that is currently open in background, but the program does not send a request to the artist. 
+        Why is that?</summary>
+      <p>Skeb Sniper is an email driven program, so if the artist is currently open, no email will be sent to you from Skeb, 
+        thus nothing will trigger the automation tool and no request will be sent. 
+        Only use "Run in Background" for artists that are currently closed and ensure that you have reserved email notification from Skeb.</p>          
+    </details>
+
     <h3>Server</h3>
     <details>   
       <summary>Are the servers for this website and software managed by you?</summary>  
@@ -194,8 +197,8 @@
 
     <details> 
       <summary>Do I need to run the application on a server?</summary>  
-      <p>Running the application on a server is not required, but we strongly recommend running it on a server because it is a long-running program.  
-      If you choose to use a server, you will need to set up the server yourself, as we do not provide server hosting.</p>        
+      <p>Running the application on a server is not required, but we strongly recommend running it on a server because it is a 
+        long-running program. If you choose to use a server, you will need to set up the server yourself, as we do not provide server hosting.</p>        
     </details>
 
     <details>  
@@ -234,6 +237,15 @@
       </p>  
     </details>    
 
+    <h3>Linux-Specific Questions</h3>
+    <details>  
+      <summary>Do you have a tutorial on running the program on a Linux server?</summary>  
+      <p>Currently, we do not provide a tutorial for running our software on a Linux server, as we expect Linux users to be 
+        familiar with basic commands and GUI forwarding. If you are unsure how to set up GUI forwarding, there are video 
+        tutorials available on YouTube that can guide you through the process. If you are unable to get GUI forwarding to 
+        work, consider using the Windows version instead.</p>  
+    </details>    
+
     <details>
       <summary>How do I run the application on a Linux server?</summary>
       <p>Before running the application, make sure Docker is installed and running on your Linux server. Download the shell scripts 
@@ -251,19 +263,23 @@
     <details> 
       <summary>Can the program still launch a browser after disconnecting from my Linux server?</summary>  
       <p>Yes. When you use SSH (e.g., with PuTTY), the application's GUI and Firefox use X11 forwarding. If SSH is not active, 
-        the GUI will be displayed using Xvfb. So regardless of the scenario, the application will be able to launch a browser.</p>        
+        the GUI will be displayed using Xvfb. So regardless of the scenario, the application will always be able to launch a browser.</p>        
     </details>    
 
     <details>  
-      <summary>Do you have a tutorial on running the program on a Linux server?</summary>  
-      <p>Currently, we do not provide a tutorial for running our software on a Linux server, as we expect Linux users to be 
-        familiar with basic commands and GUI forwarding. If you are unsure how to set up GUI forwarding, there are video 
-        tutorials available on YouTube that can guide you through the process. If you are unable to get GUI forwarding to 
-        work, consider using the Windows version instead.</p>  
+      <summary>Why do I get the error "PuTTY X11 proxy: unable to connect to forwarded X server: Network error: Connection refused" 
+        after running <code>setup.sh</code> using PuTTY with X11 forwarding?</summary>  
+      <p>If you’ve successfully connected to your Linux server via SSH using PuTTY, make sure that:</p>
+      <ul>
+        <li>X11 forwarding is enabled on the Linux server.</li>
+        <li>Your X server (e.g., Xming) is running on your Windows PC.</li>
+        <li>No firewall is blocking the X11 connection.</li>
+      </ul>      
+      <p>The shell script <code>setup.sh</code> is designed to automatically resolve any xauth mismatch by updating the container's 
+        xauth to match the host's.</p>
     </details>    
 
     <h3>Tips for How to Send A Successful Request</h3>
-
     <details>
       <summary>Amount</summary>
       <p><strong>Recommended Amount:</strong> If the amount you entered is below the recommended amount, Skeb may prevent the request from being sent. 

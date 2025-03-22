@@ -8,6 +8,10 @@ body {
   color: #333;
 }
 
+code {
+  font-size: 1.2em;
+}
+
 a {
   color: #007acc;
   text-decoration: none;
@@ -162,6 +166,10 @@ a:hover {
       margin: 5px 0 0;
       font-size: 1em;
       color: #555;
+  }
+
+  code {
+    font-size: 1em;
   }
 }
 
