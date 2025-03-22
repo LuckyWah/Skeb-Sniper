@@ -236,34 +236,22 @@
 
     <details>
       <summary>How do I run the application on a Linux server?</summary>
-      <p>Before running the application, ensure that Docker is installed and running on your Linux server. After downloading 
-        the tar file, load it using the following command:</p>
-      <p><code>docker load -i skeb-sniper-linux.tar</code></p>
-      <p>We recommend using the following command to run your Docker container:</p>
-      <p><code>sudo docker run -d --user root --name skeb-sniper-container -e DISPLAY=$DISPLAY --network host -v $HOME/.Xauthority:/root/.Xauthority 
-        -v "$HOME/skeb_sniper_data:/app" -v "$HOME/skeb_sniper_firefox:/root/.mozilla/firefox" -v "$HOME/skeb_sniper_config:/root/.config/skebsniper" 
-        -v /etc/machine-id:/etc/machine-id:ro skeb-sniper</code></p>
-        <p>In this command, <code>sudo</code> grants root privilege to run the program. The <code>-d</code> flag runs the container in detached mode. 
-          <code>--user root</code> sets the container user as root. <code>--name skeb-sniper-container</code> names the container. 
-          <code>-e DISPLAY=$DISPLAY</code> passes the display environment variable, and <code>--network host</code> gives the container full access 
-          to the host network, useful for GUI apps. <code>-v $HOME/.Xauthority:/root/.Xauthority</code> enables X11 forwarding for remote GUI display. 
-          The volumes <code>-v "$HOME/skeb_sniper_data:/app"</code>, <code>-v "$HOME/skeb_sniper_firefox:/root/.mozilla/firefox"</code>, and 
-          <code>-v "$HOME/skeb_sniper_config:/root/.config/skebsniper"</code> mount your working directory, Firefox cookies, and application configuration 
-          respectively to ensure you never lose your data. <code>-v /etc/machine-id:/etc/machine-id:ro</code> ensures the container uses the same machine 
-          ID as the host because the application uses your machine ID to derive encryption keys or perform license validation. 
-          Without this, a new container would generate a different machine ID on each run. You may rename the container and directories if needed.</p>
-          <p><strong>Important note:</strong> Make sure your volume mappings are correct and that your user directories contain 
-            all the necessary files. To ensure this, you can first start the container without any mounts, and then copy the required files 
-            from the container to your host directories. Otherwise, the mounted container may miss dependencies if they are not 
-            already present in your user directories.</p>
-      <p>Since GUI forwarding is required when running the application on a Linux server, the Docker image includes X11 forwarding, 
-        which allows you to display GUI on your local PC. If you are using a Windows PC, we recommend using PuTTY and Xming for GUI forwarding. 
-        Note that X11 forwarding can be slow, so expect some delay after running the program.</p>
-        <p>Finally, launch the GUI with this command <strong>inside</strong> your docker container:</p>
-        <p><code>/app/Skeb_Sniper gui</code></p>
-        <p>In this command, <code>/app/</code> refers to the working directory inside the Docker container, so you should not execute it 
-          outside the container. <code>Skeb_Sniper</code> is the ELF executable of the application, and <code>gui</code> is the argument 
-          used to launch the GUI.</p>
+      <p>Before running the application, make sure Docker is installed and running on your Linux server. Download the shell scripts 
+        <code>setup.sh</code> and <code>run.sh</code> from the Purchase tab.</p>
+      <p>To set up the container, run:</p>
+      <p><code>./setup.sh</code></p>
+      <p>Since the application requires GUI forwarding, the Docker image includes X11 forwarding to display the GUI on your local PC. 
+        If you are using a Windows PC, we recommend using PuTTY and Xming for X11 forwarding. Note that X11 forwarding can be slow, 
+        so expect some delay after running the program.</p>
+      <p>To launch the GUI, run:</p>
+      <p><code>./run.sh</code></p>
+      <p>You can use this command anytime you want to start the GUI.</p>
+    </details>      
+
+    <details> 
+      <summary>Can the program still launch a browser after disconnecting from my Linux server?</summary>  
+      <p>Yes. When you use SSH (e.g., with PuTTY), the application's GUI and Firefox use X11 forwarding. If SSH is not active, 
+        the GUI will be displayed using Xvfb. So regardless of the scenario, the application will be able to launch a browser.</p>        
     </details>    
 
     <details>  
