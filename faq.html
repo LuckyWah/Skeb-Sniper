@@ -223,6 +223,7 @@
       <p>Windows requires more RAM and disk space because it includes a built-in graphical user interface (GUI).</p>  
     </details>    
 
+    <h3>Linux-Specific Questions</h3>
     <details>  
       <summary>Why do you offer a Linux version of the software?</summary>  
       <p>Our application is a long-running program that continuously monitors emails from Skeb, therefore it is better to run 
@@ -237,7 +238,6 @@
       </p>  
     </details>    
 
-    <h3>Linux-Specific Questions</h3>
     <details>  
       <summary>Do you have a tutorial on running the program on a Linux server?</summary>  
       <p>Currently, we do not provide a tutorial for running our software on a Linux server, as we expect Linux users to be 
@@ -259,6 +259,17 @@
       <p><code>./run.sh</code></p>
       <p>You can use this command anytime you want to start the GUI.</p>
     </details>      
+
+    <details> 
+      <summary>Can I use <code>setup.sh</code> on any Linux system, including my Windows Subsystem for Linux (WSL) on my Windows PC?</summary>  
+      <p>
+        Yes, <code>setup.sh</code> will work on any Linux system as long as your Linux system is properly configured with Docker installed, 
+        an X11 environment with <code>DISPLAY</code> set. The shell script loads the Docker image, copy the necessary files to your 
+        local directories, and runs the <code>skeb-sniper-container</code>. Note that WSL’s <code>--network host</code> option may not 
+        fully replicate native Linux networking behavior, but this will not prevent the script from executing successfully on a 
+        properly configured Linux system.
+      </p>      
+    </details>    
 
     <details> 
       <summary>Can the program still launch a browser after disconnecting from my Linux server?</summary>  
