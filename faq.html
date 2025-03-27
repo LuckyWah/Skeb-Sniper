@@ -91,6 +91,39 @@
         updates when they become available. We'll notify you by email when future updates are available on our website.</p>  
     </details>    
 
+    <details>  
+      <summary>Does the application check the license regularly?</summary>  
+      <p>Yes. The application performs hourly license verification while running. If the license is found to be invalid 
+        during a license check, the application will terminate immediately.</p>  
+    </details>    
+    
+    <details>  
+      <summary>Can I use my license on multiple devices at the same time?</summary>  
+      <p>No. Your license is bound to your current device and allows only one active device per user. You can switch to a different device, 
+         but the original session will be automatically terminated once the license becomes invalid on the previous device.</p>  
+    </details>  
+    
+    <h3>Subscription</h3>
+    <details>  
+      <summary>Can I switch plans? Will my remaining days be lost?</summary>  
+      <p>Yes, you can switch plans at any time. Your remaining days will not be lost, which means any unused time from your current plan will 
+        be added to the new one. For example, if you have 3 days left on your monthly plan and switch to the yearly plan, you will 
+        have 368 days in total.</p>  
+    </details>  
+    
+    <details>  
+      <summary>Can I request a refund after payment?</summary>  
+      <p>No. As stated in our Terms of Service, we have a no-refund policy. Once payment is made, we cannot issue refunds. However, 
+        you may cancel anytime during the 7-day free trial to avoid being charged. This policy helps us focus development efforts, 
+        as we are a solo developer.</p>  
+    </details>  
+    
+    <details>  
+      <summary>Will the subscription rate change?</summary>  
+      <p>Yes, the rate is subject to change. If a price adjustment occurs, we will provide at least 30 days' notice so you have time 
+        to decide whether you wish to continue using the application.</p>  
+    </details>    
+
     <h3>Application Requirements</h3>
     <details>
       <summary>What are the requirements for running this application?</summary>
@@ -173,10 +206,9 @@
 
     <details>
       <summary>How do I confirm that the program is listening for my emails?</summary>
-      <p>You can verify this by checking the log file named "GmailListener.log" in your working directory after running a task.  
-        If you see "Gmail authentication successful!", "Gmail Watch Started!", and "Listening for messages...", 
-        the program is actively listening for new emails.</p>
-    </details>      
+      <p>After clicking "Test Run," a pop-up window with a "success" message will confirm that the listener is active.
+         If you are running the task in a background window or as a Windows service, this pop-up will not appear.</p>
+    </details>
 
     <details>
       <summary>I am running a task for an artist that is currently open in background, but the program does not send a request to the artist. 
