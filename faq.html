@@ -208,7 +208,9 @@
         which will trigger the automation tool to send a request to the artist. 
         We recommend selecting an artist currently open for requests to confirm that the program can log into your account. 
         If login fails, ensure that Two-Factor Authentication is disabled on Twitter. If you prefer not to send a request right now, 
-        set the amount to a value below the minimum requirement (e.g., 500). If test run fails, please contact the developer.</p>          
+        set the amount to a value below the minimum requirement (e.g., 500). If you believe that your setup is correct and you still 
+        do not receive a fake email or after receiving the fake email you do not see a browser being launched by the application, 
+        please contact the developer.</p>          
     </details>
 
     <details>
@@ -304,9 +306,7 @@
       <p>
         Yes, <code>setup.sh</code> will work on any Linux system as long as your Linux system is properly configured with Docker installed, 
         an X11 environment with <code>DISPLAY</code> set. The shell script loads the Docker image, copy the necessary files to your 
-        local directories, and runs the <code>skeb-sniper-container</code>. Note that WSL’s <code>--network host</code> option may not 
-        fully replicate native Linux networking behavior, but this will not prevent the script from executing successfully on a 
-        properly configured Linux system.
+        local directories, and runs the container.
       </p>      
     </details>    
 
