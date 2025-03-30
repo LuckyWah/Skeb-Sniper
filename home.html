@@ -9,7 +9,7 @@
     </script>
 </head>
 <body>
-<div id="home" class="tabcontent active">
+  <div id="home" class="tabcontent active">
     <!-- Wrapper for advertisement and carousel with dynamic height -->
     <div id="adAndCarousel" style="overflow: hidden; transition: max-height 0.5s ease;">
       <!-- Advertisement Block with slideUp animation -->
@@ -21,9 +21,11 @@
           miss that coveted commission!</p>
       </div>
       <!-- Interactive Heading that triggers the carousel -->
-      <h2 id="featureHeading" style="text-align:center; color:#007acc; font-size:2em; cursor: pointer;">
-        Discover Advanced Features of Skeb Sniper
-      </h2>
+      <div style="text-align: center;">
+        <h2 id="featureHeading" class="feature-heading" style="margin: 0;">
+          Discover Advanced Features of Skeb Sniper
+        </h2>
+      </div>
       <!-- Feature Carousel (initially hidden off to the right) -->
       <div id="featureCarousel" class="carousel-container" 
           style="opacity:0; transform: translateX(100%); pointer-events: none; transition: all 0.5s ease;">
@@ -79,8 +81,8 @@
           <div class="detail">Stays idle most of the time and only activates when an email from Skeb is received.</div>           
         </div>
         <!-- Carousel Navigation -->
-        <button class="nav-btn prev" onclick="changeSlide(-1)">&lt;</button>
-        <button class="nav-btn next" onclick="changeSlide(1)">&gt;</button>
+        <button class="nav-btn prev" onclick="changeSlide(-1)">❮</button>
+        <button class="nav-btn next" onclick="changeSlide(1)">❯</button>
         <!-- Carousel Dots -->
         <div class="carousel-dots" id="carousel-dots">
           <span class="dot active" onclick="jumpToSlide(0)"></span>
