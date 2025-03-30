@@ -30,6 +30,9 @@ ul {
   padding-left: 20px;
 }
 
+summary {
+  color: #005ea6;
+}
 /* ----------------------------- Navigation Bar ----------------------------- */
 .nav-bar {
   display: flex;
