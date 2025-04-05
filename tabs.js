@@ -94,7 +94,7 @@ window.onload = function () {
     }
 
     let path = window.location.hash.substring(1) || "home"; // Default to "home"
-    const validTabs = ["home", "purchase", "contact", "faq", "tos", "privacy", "release", "about"];
+    const validTabs = ["home", "purchase", "contact", "faq", "trust", "tos", "privacy", "release", "about"];
     openTab(null, validTabs.includes(path) ? path : "home");
 };
 
