@@ -91,11 +91,20 @@
             <summary>v2</summary>
             <details>
                 <summary>v2.0 – 03/26/2025</summary>
-                <p>v2.0 introduced a PayPal-powered subscription system with improved license validation. Each user now has a dedicated 
-                    email listener to receive Skeb notifications independently, so they will never receive notifications meant for others. 
+                <p>Introduced a PayPal-powered subscription system with improved license validation. Each user now has a dedicated 
+                    subscription to receive Skeb notifications independently. 
                     The error-handling system was also improved to provide clearer feedback to the user through the GUI, which helps users 
                     troubleshoot issues more easily.</p>
             </details>
+            <details>
+                <summary>v2.1 – 04/09/2025</summary>
+                <p>Designed and implemented a system to isolate email notifications for each user by applying filters on Pub/Sub subscriptions. 
+                    Enhanced scalability by integrating Outlook notifications, allowing Outlook users to monitor emails from Skeb. 
+                    implemented an email provider switching mechanism, which enables users to switch between Gmail and Outlook. 
+                    Added real-time listener monitoring, so users can easily check whether the application is actively monitoring their emails. 
+                    The email provider switching mechanism and real-time monitoring of the email listener were integrated into the GUI.</p>
+            </details>
+
         </details>        
     </div>
 </div>

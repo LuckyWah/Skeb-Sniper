@@ -12,7 +12,7 @@
   <div id="privacy" class="tabcontent">
     <div class="info-section">
       <h2>Privacy Policy</h2>
-      <p><strong>Last updated:</strong> 03/28/2025</p>
+      <p><strong>Last updated:</strong> 04/09/2025</p>
       <p>This Privacy Policy describes our policies and procedures on the use of your information 
         when you use the application. It also explains your privacy and how we protect your data. 
         By using the application, you agree to this Privacy Policy.</p>
@@ -36,51 +36,54 @@
       <p>We collect the email address used for payment as proof of transaction and store it in our database 
         for license activation and validation. This is the only information we collect from you.</p>      
 
-      <h3>How the Application Accesses Your Gmail Data</h3>
-      <p>The application requires access to Gmail user data through the Gmail API. We use the Gmail <strong>Read-Only</strong> scope to access 
-        the following email information:</p>
-      <ul>
-        <li><strong>History ID:</strong> Prevents processing old emails by ensuring only emails received after the app starts are accessed.</li>
-        <li><strong>Sender:</strong> Filters emails based on the sender by allowing only those from our predefined list.</li>
-        <li><strong>Body:</strong> Retrieves the body of filtered emails for interpretation.</li>
-      </ul>   
-      <p>We do <strong>not</strong> use any other Google API scopes. Therefore, we do <strong>not</strong> modify, delete, or send emails 
-        as it is not permitted in the Read-Only scope.</p>
-    
-      <h3>How the Application Uses Your Gmail Data</h3>
-      <p>The application only accesses and processes your Gmail data in <strong>real-time</strong> for the following purposes:</p>
-      <ul>
-        <li>Detecting new emails by monitoring Gmail metadata via Pub/Sub notifications.</li>
-        <li>Retrieving new emails upon receiving a Pub/Sub notification.</li>
-        <li>Filtering out irrelevant emails by checking if the sender is in the predefined list. If not, the email is ignored.</li>
-        <li>Extracting the subject and body only from relevant emails.</li>
-        <li>Analyzing the email subject and body to interpret its content and categorize it based on the content.</li>
-      </ul>
-      <p>The application does <strong>not</strong> write, store, or transfer your Gmail data as the emails are processed in real-time and discarded 
-      after the above process is complete.</p>
+        <h3>Use of Email Accounts</h3>
 
-      <h3>Gmail Data Retention and Deletion</h3>
-      <p>The application does <strong>not</strong> retain any data, including information about your Gmail account or email contents. 
-        All Gmail data is processed in real-time and is <strong>never</strong> stored or transferred. Therefore, data deletion 
-        is not applicable.</p>
-      <p>If you wish to stop using the application, you can revoke access at any time via your 
-        <a href="https://myaccount.google.com/permissions" target="_blank">Google Account settings</a>. 
-        Revoking access will immediately prevent our application from accessing your Gmail data.</p>      
-
-      <h3>Gmail Token Protection and Security</h3>
-      <p>We prioritize the security of your Gmail account by implementing strict protective measures:</p>
-      <ul>
-        <li>All API requests comply with Google's OAuth 2.0 authentication protocol.</li>
-        <li>We use multi-layer encryption to encrypt your Gmail OAuth token stored on your machine.</li>
-        <li>We do <strong>not</strong> store or transfer your Gmail token.</li>
-      </ul>    
+        <h4>Gmail Access Permissions</h4>
+        <p>The application requires access to Gmail user data through the Gmail API using the <strong>Read-Only</strong> scope. We access:</p>
+        <ul>
+          <li><strong>History ID:</strong> To process only new emails received after the application starts.</li>
+          <li><strong>Sender:</strong> To filter emails based on a predefined list of allowed senders.</li>
+          <li><strong>Body:</strong> To retrieve and interpret the body of relevant emails.</li>
+        </ul>
+        
+        <h4>Outlook Access Permissions</h4>
+        <p>The application requires access to Outlook user data through the Microsoft Graph API. We request the following permissions:</p>
+        <ul>
+          <li><strong>Mail.Read:</strong> To read your email messages.</li>
+          <li><strong>User.Read:</strong> To sign in and read your basic profile information, such as your email address.</li>
+        </ul>
+        
+        <h4>How the Application Uses Your Email Data</h4>
+        <p>The application accesses and processes your Gmail and Outlook data in <strong>real-time</strong> for the following purposes:</p>
+        <ul>
+          <li>Detecting new emails via Pub/Sub notifications.</li>
+          <li>Retrieving and filtering emails based on the sender address.</li>
+          <li>Extracting the subject and body of relevant emails to interpret their content.</li>
+        </ul>
+        <p>Emails are processed immediately and discarded after interpretation. We do <strong>not</strong> modify, delete, store, or transfer your email data.</p>
+        
+        <h4>Data Retention and Deletion</h4>
+        <p>The application does <strong>not</strong> retain any Gmail or Outlook data, including your email messages or account information. All data is processed in real-time and <strong>never</strong> stored. Therefore, data deletion is not applicable.</p>
+        <p>If you wish to stop using the application, you can revoke access at any time:</p>
+        <ul>
+          <li>For Gmail, visit your <a href="https://myaccount.google.com/permissions" target="_blank">Google Account settings</a>.</li>
+          <li>For Outlook, visit your <a href="https://account.live.com/consent/Manage" target="_blank">Microsoft Account settings</a>.</li>
+        </ul>
+        
+        <h4>Token Protection and Security</h4>
+        <p>We prioritize the security of your Gmail and Outlook accounts by implementing strict protective measures:</p>
+        <ul>
+          <li>All API requests comply with Google's and Microsoft's OAuth 2.0 authentication protocols.</li>
+          <li>Your OAuth tokens are encrypted and securely stored on your local machine.</li>
+          <li>We do <strong>not</strong> store or transfer your tokens to any external server.</li>
+        </ul>        
 
       <h3>Changes to This Privacy Policy</h3>
       <p>We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date. 
         Users will be notified of significant changes via email or a notice within the application.</p>
     
         <h3>Contact Us</h3>
-        <p>If you have any questions about this Privacy Policy, please contact us via the "Contact Us" tab or directly email the developer at 
+        <p>If you have any questions about this Privacy Policy, please contact us via the "Contact" tab or directly email the developer at 
            <a href="mailto:danestylewis@gmail.com">danestylewis@gmail.com</a>.
         </p>        
     </div>    
