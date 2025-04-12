@@ -194,6 +194,18 @@
     </details>
 
     <details>
+      <summary>Why does the status of my task show "Running in Background" but the status of the email listener shows "Not Listening"?</summary>
+      <p>
+        The email listener shown on your user interface checks the status of your email listener in real time. When it shows "Not Listening," 
+        it means the application is not listening for new emails. This is a known issue when running the software in the background, 
+        because the background process is separate from the main application, meaning your user interface in your main application 
+        cannot directly communicate with the background process. In some cases, for example, if you manually terminate the background task, 
+        the email listener will shut down, but the task status may not update. For now, if you see your task running but the listener showing 
+        "Not Listening," please terminate the task and rerun it.
+      </p>
+    </details>    
+
+    <details>
       <summary>Does sending a request through this application guarantee that the artist will accept my commission?</summary>
       <p>No, this application is designed to automatically send a request to the artist, replacing the need for manual submission, 
         so you don’t have to wake up at ungodly hours to send the request yourself. However, whether your request will be accepted 
