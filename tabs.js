@@ -479,16 +479,22 @@ async function handleLicenseCheck(subscriptionId, effectivePlan) {
             })
         });
 
+        const licenseErrorMessage = document.getElementById("license-error-message");
+
         if (!response.ok) {
             const errorData = await response.json();
             const errorMessage = errorData.message || "Failed to retrieve license. Please double-check your Subscription ID.";
-            updateDiscountMessage(document.getElementById("discount-message"), errorMessage, "red");
+            licenseErrorMessage.textContent = errorMessage;
+            licenseErrorMessage.style.color = "red";
+            licenseErrorMessage.style.display = "block";
             return;
         }
 
         const data = await response.json();
 
         if (data.success) {
+            licenseErrorMessage.style.display = "none";  // Hide error if success
+
             purchaseState.downloadLinks = data.downloadLinks;
             purchaseState.licenseKey = data.license_key;
             localStorage.setItem("subscriptionCompleted", "true");
@@ -496,14 +502,18 @@ async function handleLicenseCheck(subscriptionId, effectivePlan) {
             localStorage.setItem("licenseKey", data.license_key);
             localStorage.setItem("subscriptionId", subscriptionId);
             renderDownloadSection(document.getElementById("download-container"), purchaseState.downloadLinks, purchaseState.licenseKey);
-            updateDiscountMessage(document.getElementById("discount-message"), "License retrieved successfully! Download below.", "green");
         } else {
             const errorMessage = data.message || "Failed to retrieve license. Please double-check your Subscription ID.";
-            updateDiscountMessage(document.getElementById("discount-message"), errorMessage, "red");
+            licenseErrorMessage.textContent = errorMessage;
+            licenseErrorMessage.style.color = "red";
+            licenseErrorMessage.style.display = "block";
         }
     } catch (error) {
         console.error("Error retrieving license:", error);
-        updateDiscountMessage(document.getElementById("discount-message"), "Network error. Please try again or contact support.", "red");
+        const licenseErrorMessage = document.getElementById("license-error-message");
+        licenseErrorMessage.textContent = "Network error. Please try again or contact support.";
+        licenseErrorMessage.style.color = "red";
+        licenseErrorMessage.style.display = "block";
     }
 }
 
