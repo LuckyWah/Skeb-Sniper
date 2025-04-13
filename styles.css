@@ -38,10 +38,12 @@ summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #f5f5f5;
-  border-bottom: 1px solid #ddd;
+  background: white;
+  border-bottom: 2px solid #ddd;
   padding: 10px 10px;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 /* Navigation Tabs (Horizontal for PC) */

@@ -14,11 +14,9 @@
     <div id="adAndCarousel" style="overflow: hidden; transition: max-height 0.5s ease;">
       <!-- Advertisement Block with slideUp animation -->
       <div class="advertisement" style="transform: translateY(20px); opacity: 0; animation: slideUp 1s forwards;">
-        <p>Ever wake up to find that your favorite artist’s commission slot has vanished? We know how frustrating it is to wait for months 
-          only to miss your chance because the slot filled up while you were asleep.</p>
-        <p>Worry no more! Skeb Sniper levels the playing field for Western users by automating the commission request process for Japanese 
-          artists who often open slots while you sleep. By acting only when Skeb sends an email notification, Skeb Sniper ensures you never 
-          miss that coveted commission!</p>
+        <p>Have you ever woken up to find that your favorite artist’s commission slot has vanished? We know how frustrating it is to wait for months 
+          only to miss your chance because the slot filled up while you were asleep. But worry no more! Our software levels the playing field 
+          for Western users by automatically sending requests to artists right after they open!</p>
       </div>
       <!-- Interactive Heading that triggers the carousel -->
       <div style="text-align: center;">
@@ -31,7 +29,7 @@
           style="opacity:0; transform: translateX(100%); pointer-events: none; transition: all 0.5s ease;">
         <!-- Slide 1 -->
         <div class="slide active">
-          <h2>Event-Driven Commission Status Monitoring</h2>
+          <h2>Email-Triggered Monitoring</h2>
           <div class="detail">Never visits Skeb to monitor the artist's commission status.</div>
           <div class="detail">Only visits Skeb once to submit your request after your artist opens requests.</div>
           <div class="detail">Instantly sends a request to your artist right after Skeb sends an email notification to your inbox.</div>
@@ -67,7 +65,7 @@
         </div>
         <!-- Slide 6 -->
         <div class="slide">
-          <h2>Reliable Background Operation</h2>
+          <h2>Reliable Background Service</h2>
           <div class="detail">Runs as a Windows Service on Windows and a Daemon on Linux, ensuring continuous operation after 
             disconnecting from the server.</div>
           <div class="detail">Automatically restarts after crashes, network issues, or system reboots.</div>
@@ -80,6 +78,13 @@
           <div class="detail">Only processes emails from Skeb, ignoring all irrelevant emails.</div>
           <div class="detail">Stays idle most of the time and only activates when an email from Skeb is received.</div>           
         </div>
+        <!-- Slide 8 -->
+        <div class="slide">
+          <h2>Efficient Email Notification Handling</h2>
+          <div class="detail">Supports popular email providers like Gmail and Outlook.</div>
+          <div class="detail">Real-time email listener status updates via the user interface.</div>
+          <div class="detail">Isolates email notifications so you only receive your own alerts, never others'.</div>
+        </div>             
         <!-- Carousel Navigation -->
         <button class="nav-btn prev" onclick="changeSlide(-1)">❮</button>
         <button class="nav-btn next" onclick="changeSlide(1)">❯</button>
@@ -91,7 +96,8 @@
           <span class="dot" onclick="jumpToSlide(3)"></span>
           <span class="dot" onclick="jumpToSlide(4)"></span>
           <span class="dot" onclick="jumpToSlide(5)"></span>
-          <span class="dot" onclick="jumpToSlide(6)"></span>          
+          <span class="dot" onclick="jumpToSlide(6)"></span>   
+          <span class="dot" onclick="jumpToSlide(7)"></span>           
         </div>
       </div>
     </div>
