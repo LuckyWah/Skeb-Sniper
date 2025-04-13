@@ -474,11 +474,20 @@ async function handleLicenseCheck(subscriptionId, effectivePlan) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 subscriptionId: subscriptionId, 
-                plan: effectivePlan || 'monthly', // Default to monthly if unknown
+                plan: effectivePlan || 'monthly',
                 couponCode: ""
             })
         });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            const errorMessage = errorData.message || "Failed to retrieve license. Please double-check your Subscription ID.";
+            updateDiscountMessage(document.getElementById("discount-message"), errorMessage, "red");
+            return;
+        }
+
         const data = await response.json();
+
         if (data.success) {
             purchaseState.downloadLinks = data.downloadLinks;
             purchaseState.licenseKey = data.license_key;
@@ -489,11 +498,12 @@ async function handleLicenseCheck(subscriptionId, effectivePlan) {
             renderDownloadSection(document.getElementById("download-container"), purchaseState.downloadLinks, purchaseState.licenseKey);
             updateDiscountMessage(document.getElementById("discount-message"), "License retrieved successfully! Download below.", "green");
         } else {
-            updateDiscountMessage(document.getElementById("discount-message"), "Failed to retrieve license: " + data.message, "red");
+            const errorMessage = data.message || "Failed to retrieve license. Please double-check your Subscription ID.";
+            updateDiscountMessage(document.getElementById("discount-message"), errorMessage, "red");
         }
     } catch (error) {
         console.error("Error retrieving license:", error);
-        updateDiscountMessage(document.getElementById("discount-message"), "Error retrieving license. Please try again or contact support.", "red");
+        updateDiscountMessage(document.getElementById("discount-message"), "Network error. Please try again or contact support.", "red");
     }
 }
 
