@@ -325,7 +325,7 @@ function renderPayPalButtons(purchaseButtonContainer) {
             planId = 'P-22X515193L502430DM7RQSKY';
             planDescription = 'First 3 months free, then $10/month';
         } else {
-            planId = 'P-1G972221PT997630GM7RO5WQ';
+            planId = 'P-38M666889H159984WM76HWKI';
             planDescription = '30-day free trial, then $10/month';
         }
     } else {
