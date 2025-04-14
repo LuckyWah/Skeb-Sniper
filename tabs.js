@@ -252,36 +252,21 @@ function renderDownloadSection(downloadContainer, downloadLinks, licenseKey) {
     const downloadBtnLinux = downloadContainer.querySelector("#download-btn-linux");
     const instructions = downloadContainer.querySelector("p");
 
-    const handleDownload = async (url, filename) => {
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Failed to download ${filename}: ${response.statusText}`);
-            }
-            const blob = await response.blob();
-            const downloadUrl = window.URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.href = downloadUrl;
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(downloadUrl);
-        } catch (error) {
-            console.error(error);
-            alert(`Error downloading ${filename}. Please try again or contact support.`);
-        }
-    };
-
+    // Set up Windows download link
     if (downloadBtnWindows) {
-        downloadBtnWindows.onclick = () => handleDownload(downloadLinks.windows, "skeb-sniper-windows.exe");
+        downloadBtnWindows.href = downloadLinks.windows; // e.g., "/api/download-windows?userId=123"
+        downloadBtnWindows.download = "skeb-sniper-windows.exe"; // Suggest filename
         downloadBtnWindows.style.display = "inline-block";
     }
+
+    // Set up Linux download link
     if (downloadBtnLinux) {
-        downloadBtnLinux.onclick = () => handleDownload(downloadLinks.linux, "skeb-sniper-linux.tar");
+        downloadBtnLinux.href = downloadLinks.linux; // e.g., "/api/download-linux?userId=123"
+        downloadBtnLinux.download = "skeb-sniper-linux.tar";
         downloadBtnLinux.style.display = "inline-block";
     }
 
+    // License section (unchanged)
     const licenseSection = document.createElement("div");
     licenseSection.id = "license-section";
     licenseSection.className = "license-section";
@@ -305,6 +290,7 @@ function renderDownloadSection(downloadContainer, downloadLinks, licenseKey) {
     licenseSection.appendChild(copyButton);
     downloadContainer.appendChild(licenseSection);
 
+    // Instructions and UI updates
     instructions.innerHTML = 'Download the Windows or Linux version below. For Linux users, refer to the FAQ section for detailed instructions. Ensure Docker is installed. Use the license key above to activate the software.';
     downloadContainer.style.display = "block";
     document.getElementById("purchase-button").style.display = "none";
