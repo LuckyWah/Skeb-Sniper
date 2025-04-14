@@ -214,6 +214,21 @@
 
     <h3>Tutorial</h3>
     <details>
+      <summary>Do I need to install Firefox for Windows if I already have Firefox?</summary>
+      <p>
+        Yes, you should install Firefox even if you already have it on your system. Every user may install Firefox 
+        in a different directory, and the program does not know where your existing installation is located. 
+        There is a known issue where the program may not work properly with preinstalled versions of Firefox due to 
+        problems such as incompatibility, which can prevent Geckodriver, a tool that allows the program to control Firefox, 
+        from functioning normally.
+        If you run the program using "Test Run" and you see Firefox being launched but does not navigate to the artist's URL, 
+        it is likely that your Geckodriver is incompatible with your Firefox. You can check the monitor log for the 
+        corresponding artist to confirm. If this happens, you may uninstall your current Firefox and reinstall it 
+        using our installer.
+      </p>
+    </details>    
+
+    <details>
       <summary>How do I test the program?</summary>
       <p>You can test the program by clicking on "Test Run." The program will send you an automated email, 
         which will trigger the automation tool to send a request to the artist. 
