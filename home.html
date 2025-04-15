@@ -10,96 +10,151 @@
 </head>
 <body>
   <div id="home" class="tabcontent active">
-    <!-- Wrapper for advertisement and carousel with dynamic height -->
     <div id="adAndCarousel" style="overflow: hidden; transition: max-height 0.5s ease;">
       <!-- Advertisement Block with slideUp animation -->
-      <div class="advertisement" style="transform: translateY(20px); opacity: 0; animation: slideUp 1s forwards;">
-        <p>Have you ever woken up to find that your favorite artist’s commission slot has vanished? We know how frustrating it is to wait for months 
+      <div class="advertisement slide-up">
+        <h2 class="ad-title">Tired of Missing Commission Slots?</h2>
+        <p>
+          Have you ever woken up to find that your favorite artist’s commission slot has vanished? We know how frustrating it is to wait for months 
           only to miss your chance because the slot filled up while you were asleep. But worry no more! Our software levels the playing field 
-          for Western users by automatically sending requests to artists right after they open!</p>
-      </div>
-      <!-- Interactive Heading that triggers the carousel -->
-      <div style="text-align: center;">
-        <h2 id="featureHeading" class="feature-heading" style="margin: 0;">
+          for Western users by automatically sending requests to artists right after they open!
+        </p>
+      </div>    
+      <div class="features-section">
+        <h2 id="featureHeading" class="feature-heading">
           Discover Advanced Features of Skeb Sniper
         </h2>
+        <div class="features-container">
+          <div class="feature-card">
+            <h3>Email-Triggered Monitoring</h3>
+            <ul>
+              <li>Never visits Skeb to monitor the artist's commission status.</li>
+              <li>Only visits Skeb once to submit your request after your artist opens requests.</li>
+              <li>Instantly sends a request to your artist right after Skeb sends an email notification to your inbox.</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <h3>Fully Automated Request Submission</h3>
+            <ul>
+              <li>Automated user authentication and log-in.</li>
+              <li>Automated verification with Skeb by extracting verification codes from emails.</li>
+              <li>Embedded locking mechanism ensuring that each request is sent only once.</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <h3>ToS-Compliant and Ethical</h3>
+            <ul>
+              <li>Only one request to Skeb is made per artist, imposing less server load than manual checks.</li>
+              <li>Only official emails from Skeb are processed.</li>
+              <li>No data is collected from Skeb.</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <h3>User-Centric Designs</h3>
+            <ul>
+              <li>Includes an installer for Windows and a prebuilt Docker image for Linux.</li>
+              <li>A user-friendly GUI is included in the app to handle every task.</li>
+              <li>Instructions are provided in the GUI's "Help" tab.</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <h3>Privacy and Security</h3>
+            <ul>
+              <li>Your data is encrypted with user-specific and machine-specific mechanisms to prevent attacks.</li>
+              <li>Data is stored only on your local machine.</li>
+              <li>Your data is never collected or transmitted.</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <h3>Reliable Background Service</h3>
+            <ul>
+              <li>Runs as a Windows Service on Windows and a Daemon on Linux for continuous operation.</li>
+              <li>Automatically restarts after crashes, network issues, or system reboots.</li>
+              <li>Automatically refreshes the Gmail and Outlook token if it expires.</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <h3>Ultra-Lightweight Design</h3>
+            <ul>
+              <li>No webpage is launched to monitor artists, ensuring minimal network usage.</li>
+              <li>Only processes emails from Skeb, ignoring irrelevant ones.</li>
+              <li>Remains idle most of the time and only activates when an email from Skeb is received.</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <h3>Efficient Email Notification Handling</h3>
+            <ul>
+              <li>Supports popular email providers like Gmail and Outlook.</li>
+              <li>Real-time email listener status updates via the interface.</li>
+              <li>Isolates email notifications so you only receive your own alerts.</li>
+            </ul>
+          </div>
+        </div>
+      </div>  
+  
+      <!-- Comparison Table -->
+      <div class="features-section">
+        <h2 class="feature-heading">Our Software vs Our Competitors</h2>
+        <div class="features-comparison-table-wrapper">
+          <table class="features-comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Our Software</th>
+                <th>Other Competitors</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Fully Automated Workflow</td>
+                <td>Automatically sends requests as soon as artists open commissions even when you're asleep.</td>
+                <td>Usually requires visiting the website manually or only provides notifications when an artist opens commissions.</td>
+              </tr>
+              <tr>
+                <td>Email API Integration</td>
+                <td>Integration with Gmail and Outlook using OAuth2, featuring auto-refresh and a robust webhook server for receiving push notifications.</td>
+                <td>Often lacks integration with major email providers or relies on polling emails from your inbox.</td>
+              </tr>
+              <tr>
+                <td>Privacy and Security</td>
+                <td>All sensitive data, including your password, is encrypted, stored locally, and never transmitted. Encryption is user- and machine-specific.</td>
+                <td>Often stores sensitive data in plain text or lacks any sophisticated encryption mechanism, making it vulnerable to attacks.</td>
+              </tr>
+              <tr>
+                <td>User-Friendly GUI</td>
+                <td>Clean graphical user interface with a dashboard for managing tasks in real time.</td>
+                <td>Relies on command-line interfaces. Not user-friendly.</td>
+              </tr>
+              <tr>
+                <td>Reliable Background Operation</td>
+                <td>Runs as a Windows Service or Linux Daemon and automatically restarts after crashes, network issues, or system reboots.</td>
+                <td>Must be restarted manually and may silently fail without notice.</td>
+              </tr>
+              <tr>
+                <td>Cross-Platform</td>
+                <td>Supports Windows, Linux, and macOS and comes wiht a prebuilt Docker image with all necessary dependencies for Linux/macOS users.</td>
+                <td>Often limited to Windows, with poor or no support for other platforms.</td>
+              </tr>
+              <tr>
+                <td>Setup Automation</td>
+                <td>Includes an installer for Windows and shell scripts to automate setup on Linux.</td>
+                <td>Requires manual installation with no automation or guided setup.</td>
+              </tr>
+              <tr>
+                <td>Comprehensive Documentation</td>
+                <td>FAQ, Trust Center, Release Log, ToS, Privacy Policy, and Contact publicly available on the website.</td>
+                <td>Often lacks publicly available documentation or official policies.</td>
+              </tr>
+              <tr>
+                <td>Licensing</td>
+                <td>Robust licensing system with server-side validation and device binding to prevent sharing.</td>
+                <td>Basic or no licensing system.</td>
+              </tr>
+            </tbody>                      
+          </table>
+        </div>
       </div>
-      <!-- Feature Carousel (initially hidden off to the right) -->
-      <div id="featureCarousel" class="carousel-container" 
-          style="opacity:0; transform: translateX(100%); pointer-events: none; transition: all 0.5s ease;">
-        <!-- Slide 1 -->
-        <div class="slide active">
-          <h2>Email-Triggered Monitoring</h2>
-          <div class="detail">Never visits Skeb to monitor the artist's commission status.</div>
-          <div class="detail">Only visits Skeb once to submit your request after your artist opens requests.</div>
-          <div class="detail">Instantly sends a request to your artist right after Skeb sends an email notification to your inbox.</div>
-        </div>
-        <!-- Slide 2 -->
-        <div class="slide">
-          <h2>Fully Automated Request Submission</h2>
-          <div class="detail">Automated user authentication and log-in.</div>
-          <div class="detail">Automated verification with Skeb by extracting verification codes from Skeb through emails.</div>
-          <div class="detail">Embedded locking mechanism ensuring that each request is sent only once.</div>
-        </div>
-        <!-- Slide 3 -->
-        <div class="slide">
-          <h2>ToS-Compliant and Ethical</h2>
-          <div class="detail">Only one request to Skeb is made per artist, which imposes less server load on Skeb than manual checks.</div>
-          <div class="detail">Only official emails from Skeb are processed.</div>
-          <div class="detail">No data is collected from Skeb.</div>
-        </div>
-        <!-- Slide 4 -->
-        <div class="slide">
-          <h2>User-Centric Designs</h2>
-          <div class="detail">Distribution includes an installer for Windows and a prebuilt Docker image for Linux.</div>
-          <div class="detail">A user-friendly GUI is included in the app to handle every task.</div>
-          <div class="detail">Instructions are included in the GUI's "Help" tab.</div>
-        </div>
-        <!-- Slide 5 -->
-        <div class="slide">
-          <h2>Privacy and Security</h2>
-          <div class="detail">Your data is encrypted with user-specific and machine-specific encryption mechanism to prevent 
-            any possible attacks.</div>
-          <div class="detail">Your data is only stored in your local machine.</div>
-          <div class="detail">Your data is never collected or transmitted.</div>
-        </div>
-        <!-- Slide 6 -->
-        <div class="slide">
-          <h2>Reliable Background Service</h2>
-          <div class="detail">Runs as a Windows Service on Windows and a Daemon on Linux, ensuring continuous operation after 
-            disconnecting from the server.</div>
-          <div class="detail">Automatically restarts after crashes, network issues, or system reboots.</div>
-          <div class="detail">Automatically refreshes the Gmail and Outlook token if it expires.</div>
-        </div>
-        <!-- Slide 7 -->
-        <div class="slide">
-          <h2>Ultra-Lightweight Design</h2>
-          <div class="detail">No webpage is launched to monitor artists, ensuring minimal network usage.</div>
-          <div class="detail">Only processes emails from Skeb, ignoring all irrelevant emails.</div>
-          <div class="detail">Stays idle most of the time and only activates when an email from Skeb is received.</div>           
-        </div>
-        <!-- Slide 8 -->
-        <div class="slide">
-          <h2>Efficient Email Notification Handling</h2>
-          <div class="detail">Supports popular email providers like Gmail and Outlook.</div>
-          <div class="detail">Real-time email listener status updates via the user interface.</div>
-          <div class="detail">Isolates email notifications so you only receive your own alerts, never others'.</div>
-        </div>             
-        <!-- Carousel Navigation -->
-        <button class="nav-btn prev" onclick="changeSlide(-1)">❮</button>
-        <button class="nav-btn next" onclick="changeSlide(1)">❯</button>
-        <!-- Carousel Dots -->
-        <div class="carousel-dots" id="carousel-dots">
-          <span class="dot active" onclick="jumpToSlide(0)"></span>
-          <span class="dot" onclick="jumpToSlide(1)"></span>
-          <span class="dot" onclick="jumpToSlide(2)"></span>
-          <span class="dot" onclick="jumpToSlide(3)"></span>
-          <span class="dot" onclick="jumpToSlide(4)"></span>
-          <span class="dot" onclick="jumpToSlide(5)"></span>
-          <span class="dot" onclick="jumpToSlide(6)"></span>   
-          <span class="dot" onclick="jumpToSlide(7)"></span>           
-        </div>
-      </div>
+
     </div>
     <div class="video-wrapper">
       <iframe class="youtube-video" src="https://www.youtube.com/embed/svQg0Mrl9fo" 
