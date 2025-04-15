@@ -172,17 +172,19 @@ summary {
 }
 
 /* ----------------------------- Feature Comparison  ----------------------------- */
-.features-comparison-table-wrapper {
+.table-scroll {
   overflow-x: auto;
+  width: 100%;
   margin-top: 20px;
 }
 
 .features-comparison-table {
-  width: 100%;
+  min-width: 700px; /* ensures it doesn't shrink too small */
   border-collapse: collapse;
   table-layout: fixed;
   font-size: 0.95em;
   background-color: white;
+  width: 100%;
 }
 
 .features-comparison-table thead {
