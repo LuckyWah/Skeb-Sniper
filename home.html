@@ -92,68 +92,141 @@
         </div>
       </div>  
   
-      <!-- Comparison Table -->
+      <!-- Comparison -->
       <div class="features-section">
-        <h2 class="feature-heading">Our Software vs Our Competitors</h2>
-        <div class="table-scroll">
-          <table class="features-comparison-table">
-            <thead>
-              <tr>
-                <th>Feature</th>
-                <th>Our Software</th>
-                <th>Other Competitors</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Fully Automated Workflow</td>
-                <td>Automatically sends requests as soon as artists open commissions even when you're asleep.</td>
-                <td>Usually requires visiting the website manually or only provides notifications when an artist opens commissions.</td>
-              </tr>
-              <tr>
-                <td>Email API Integration</td>
-                <td>Integration with Gmail and Outlook using OAuth2, featuring auto-refresh and a robust webhook server for receiving push notifications.</td>
-                <td>Often lacks integration with major email providers or relies on polling emails from your inbox.</td>
-              </tr>
-              <tr>
-                <td>Privacy and Security</td>
-                <td>All sensitive data, including your password, is encrypted, stored locally, and never transmitted. Encryption is user- and machine-specific.</td>
-                <td>Often stores sensitive data in plain text or lacks any sophisticated encryption mechanism, making it vulnerable to attacks.</td>
-              </tr>
-              <tr>
-                <td>User-Friendly GUI</td>
-                <td>Clean graphical user interface with a dashboard for managing tasks in real time.</td>
-                <td>Relies on command-line interfaces. Not user-friendly.</td>
-              </tr>
-              <tr>
-                <td>Reliable Background Operation</td>
-                <td>Runs as a Windows Service or Linux Daemon and automatically restarts after crashes, network issues, or system reboots.</td>
-                <td>Must be restarted manually and may silently fail without notice.</td>
-              </tr>
-              <tr>
-                <td>Cross-Platform</td>
-                <td>Supports Windows, Linux, and macOS and comes wiht a prebuilt Docker image with all necessary dependencies for Linux/macOS users.</td>
-                <td>Often limited to Windows, with poor or no support for other platforms.</td>
-              </tr>
-              <tr>
-                <td>Setup Automation</td>
-                <td>Includes an installer for Windows and shell scripts to automate setup on Linux.</td>
-                <td>Requires manual installation with no automation or guided setup.</td>
-              </tr>
-              <tr>
-                <td>Comprehensive Documentation</td>
-                <td>FAQ, Trust Center, Release Log, ToS, Privacy Policy, and Contact publicly available on the website.</td>
-                <td>Often lacks publicly available documentation or official policies.</td>
-              </tr>
-              <tr>
-                <td>Licensing</td>
-                <td>Robust licensing system with server-side validation and device binding to prevent sharing.</td>
-                <td>Basic or no licensing system.</td>
-              </tr>
-            </tbody>                      
-          </table>
+        <h2 class="feature-heading">Our Software vs Other Competitors</h2>
+    
+        <!-- Feature Box: Fully Automated Workflow -->
+        <div class="feature-box-container">
+          <div class="feature-box">
+            <h3 class="feature-title">Fully Automated Workflow</h3>
+            <div class="feature-content">
+              <div class="feature-card our-software">
+                <h4 class="card-title">Our Software</h4>
+                <p>Automatically sends requests as soon as artists open commissions, even while you're asleep.</p>
+              </div>
+              <div class="feature-card other-competitor">
+                <h4 class="card-title">Other Competitors</h4>
+                <p>Usually requires manual website visits or only provides notifications when an artist opens commissions.</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="feature-box">
+            <h3 class="feature-title">Email API Integration</h3>
+            <div class="feature-content">
+              <div class="feature-card our-software">
+                <h4 class="card-title">Our Software</h4>
+                <p>Integrates with Gmail and Outlook using OAuth2, with auto-refresh and a robust webhook for push notifications.</p>
+              </div>
+              <div class="feature-card other-competitor">
+                <h4 class="card-title">Other Competitors</h4>
+                <p>Often lacks integration with major email providers or relies on simple inbox polling.</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="feature-box">
+            <h3 class="feature-title">Privacy and Security</h3>
+            <div class="feature-content">
+              <div class="feature-card our-software">
+                <h4 class="card-title">Our Software</h4>
+                <p>Encrypts all sensitive data (including your password), stores it locally, and never transmits it. Encryption is both user‐ and machine‐specific.</p>
+              </div>
+              <div class="feature-card other-competitor">
+                <h4 class="card-title">Other Competitors</h4>
+                <p>Often stores data in plain text or uses minimal encryption, making it vulnerable to attacks.</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="feature-box">
+            <h3 class="feature-title">User-Friendly GUI</h3>
+            <div class="feature-content">
+              <div class="feature-card our-software">
+                <h4 class="card-title">Our Software</h4>
+                <p>Offers a clean, graphical interface with a real-time dashboard for managing tasks.</p>
+              </div>
+              <div class="feature-card other-competitor">
+                <h4 class="card-title">Other Competitors</h4>
+                <p>Often rely on command-line interfaces or poorly designed UIs.</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="feature-box">
+            <h3 class="feature-title">Reliable Background Operation</h3>
+            <div class="feature-content">
+              <div class="feature-card our-software">
+                <h4 class="card-title">Our Software</h4>
+                <p>Runs as a Windows Service or Linux Daemon and automatically restarts after crashes, network issues, or reboots.</p>
+              </div>
+              <div class="feature-card other-competitor">
+                <h4 class="card-title">Other Competitors</h4>
+                <p>Often require manual restarts and may silently fail without notice.</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="feature-box">
+            <h3 class="feature-title">Cross-Platform</h3>
+            <div class="feature-content">
+              <div class="feature-card our-software">
+                <h4 class="card-title">Our Software</h4>
+                <p>Supports Windows, Linux, and macOS and includes a prebuilt Docker image with all necessary dependencies for Linux/macOS users.</p>
+              </div>
+              <div class="feature-card other-competitor">
+                <h4 class="card-title">Other Competitors</h4>
+                <p>Often limited to Windows or require complex manual setups on other platforms.</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="feature-box">
+            <h3 class="feature-title">Setup Automation</h3>
+            <div class="feature-content">
+              <div class="feature-card our-software">
+                <h4 class="card-title">Our Software</h4>
+                <p>Includes an installer for Windows and shell scripts to automate setup on Linux/macOS.</p>
+              </div>
+              <div class="feature-card other-competitor">
+                <h4 class="card-title">Other Competitors</h4>
+                <p>Requires manual installation with no automation or guided setup.</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="feature-box">
+            <h3 class="feature-title">Comprehensive Documentation</h3>
+            <div class="feature-content">
+              <div class="feature-card our-software">
+                <h4 class="card-title">Our Software</h4>
+                <p>Publicly available FAQ, Trust Center, Release Log, ToS, Privacy Policy, and Contact info.</p>
+              </div>
+              <div class="feature-card other-competitor">
+                <h4 class="card-title">Other Competitors</h4>
+                <p>Often have minimal or outdated documentation and policies.</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="feature-box">
+            <h3 class="feature-title">Licensing</h3>
+            <div class="feature-content">
+              <div class="feature-card our-software">
+                <h4 class="card-title">Our Software</h4>
+                <p>Uses a robust licensing system with server-side validation and device binding to prevent unauthorized sharing.</p>
+              </div>
+              <div class="feature-card other-competitor">
+                <h4 class="card-title">Other Competitors</h4>
+                <p>Tends to offer basic or no licensing mechanisms.</p>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
+
     </div>
     <div class="features-section">
       <h2 class="feature-heading">Learn How to Use Skeb Sniper</h2>
