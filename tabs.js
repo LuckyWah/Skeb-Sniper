@@ -323,14 +323,14 @@ function renderPayPalButtons(purchaseButtonContainer) {
         if (isCouponValid) {
             effectivePlan = 'monthly-free-3-months';
             planId = 'P-22X515193L502430DM7RQSKY';
-            planDescription = 'First 3 months free, then $10/month';
+            planDescription = 'First 3 months free, then $5/month';
         } else {
             planId = 'P-38M666889H159984WM76HWKI';
-            planDescription = '30-day free trial, then $10/month';
+            planDescription = '30-day free trial, then $5/month';
         }
     } else {
         planId = 'P-9MY49149LD6839715M7QJAYA';
-        planDescription = '$100/year';
+        planDescription = '$50/year';
     }
 
     purchaseState.effectivePlan = effectivePlan;
