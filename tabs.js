@@ -185,10 +185,14 @@ function toggleChat() {
 }
 
 function formatMessage(text) {
-    text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    text = text.replace(/_([^_]+)_/g, '<em>$1</em>');
+    // Handle inline code
+    text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+    // Bold (**bold**)
+    text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    // Italic (_italic_)
+    text = text.replace(/_(.+?)_/g, '<em>$1</em>');
     return text;
-}
+  }
 
 async function sendMessage() {
     const input = document.getElementById('input');
