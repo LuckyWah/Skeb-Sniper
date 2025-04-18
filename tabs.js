@@ -178,6 +178,53 @@ function initFeatureCardLayout() {
     });
   }
   
+// ------------------------------------ Chatbot ------------------------------------
+function toggleChat() {
+  const box = document.getElementById('chatbox');
+  box.style.display = box.style.display === 'none' || !box.style.display ? 'block' : 'none';
+}
+
+async function sendMessage() {
+  const input = document.getElementById('input');
+  const chat = document.getElementById('chat');
+  const message = input.value.trim();
+  if (!message) return;
+
+  const userMsg = document.createElement('div');
+  userMsg.className = 'message user';
+  userMsg.textContent = message;
+  chat.appendChild(userMsg);
+  chat.scrollTop = chat.scrollHeight;
+  input.value = '';
+
+  try {
+    const res = await fetch('https://download.kasorashibainu.com/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message })
+    });
+    const data = await res.json();
+    const botMsg = document.createElement('div');
+    botMsg.className = 'message bot';
+    botMsg.textContent = data.response || '[No response]';
+    chat.appendChild(botMsg);
+    chat.scrollTop = chat.scrollHeight;
+  } catch (err) {
+    const errorMsg = document.createElement('div');
+    errorMsg.className = 'message bot';
+    errorMsg.textContent = 'Error contacting chatbot';
+    chat.appendChild(errorMsg);
+    chat.scrollTop = chat.scrollHeight;
+  }
+}
+
+function handleKey(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      sendMessage();
+    }
+  }
+  
 // ------------------------------------ Form handler ------------------------------------
 function attachFormHandler() {
     const Form = document.getElementById("Form");
