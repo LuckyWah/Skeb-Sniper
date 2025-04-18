@@ -143,8 +143,8 @@ summary {
   border-radius: 6px;
 }
 .message { margin: 8px 0; }
-.user { text-align: right; font-weight: bold; }
-.bot { text-align: left; font-style: italic; }
+.user { text-align: right;}
+.bot { text-align: left;}
 
 .chat-container input[type="text"] {
   width: calc(100% - 90px);
