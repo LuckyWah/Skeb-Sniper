@@ -185,7 +185,7 @@ function toggleChat() {
 }
 
 function formatMessage(text) {
-    text = text.replace(/\*([^*]+)\*/g, '<strong>$1</strong>');
+    text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     text = text.replace(/_([^_]+)_/g, '<em>$1</em>');
     return text;
 }
