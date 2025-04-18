@@ -226,7 +226,7 @@ async function sendMessage() {
         
         const botMsg = document.createElement('div');
         botMsg.className = 'message bot';
-        botMsg.innerHTML = formatMessage(data.response || '[No response]');
+        botMsg.innerHTML = formatMessage(data.response || "You've reached the limit. Please come back later.");
         chat.appendChild(botMsg);
         chat.scrollTop = chat.scrollHeight;
     } catch (err) {
