@@ -180,50 +180,67 @@ function initFeatureCardLayout() {
   
 // ------------------------------------ Chatbot ------------------------------------
 function toggleChat() {
-  const box = document.getElementById('chatbox');
-  box.style.display = box.style.display === 'none' || !box.style.display ? 'block' : 'none';
+    const box = document.getElementById('chatbox');
+    box.style.display = box.style.display === 'none' || !box.style.display ? 'block' : 'none';
+}
+
+function formatMessage(text) {
+    text = text.replace(/\*([^*]+)\*/g, '<strong>$1</strong>');
+    text = text.replace(/_([^_]+)_/g, '<em>$1</em>');
+    return text;
 }
 
 async function sendMessage() {
-  const input = document.getElementById('input');
-  const chat = document.getElementById('chat');
-  const message = input.value.trim();
-  if (!message) return;
+    const input = document.getElementById('input');
+    const chat = document.getElementById('chat');
+    const message = input.value.trim();
+    if (!message) return;
 
-  const userMsg = document.createElement('div');
-  userMsg.className = 'message user';
-  userMsg.textContent = message;
-  chat.appendChild(userMsg);
-  chat.scrollTop = chat.scrollHeight;
-  input.value = '';
+    const userMsg = document.createElement('div');
+    userMsg.className = 'message user';
+    userMsg.textContent = message;
+    chat.appendChild(userMsg);
+    chat.scrollTop = chat.scrollHeight;
+    input.value = '';
 
-  try {
-    const res = await fetch('https://download.kasorashibainu.com/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message })
-    });
-    const data = await res.json();
-    const botMsg = document.createElement('div');
-    botMsg.className = 'message bot';
-    botMsg.textContent = data.response || '[No response]';
-    chat.appendChild(botMsg);
+    const loadingId = 'loading-' + Date.now();
+    const loadingMsg = document.createElement('div');
+    loadingMsg.className = 'message loading';
+    loadingMsg.id = loadingId;
+    loadingMsg.textContent = 'Trying to respond...';
+    chat.appendChild(loadingMsg);
     chat.scrollTop = chat.scrollHeight;
-  } catch (err) {
-    const errorMsg = document.createElement('div');
-    errorMsg.className = 'message bot';
-    errorMsg.textContent = 'Error contacting chatbot';
-    chat.appendChild(errorMsg);
-    chat.scrollTop = chat.scrollHeight;
-  }
+
+    try {
+        const res = await fetch('https://download.kasorashibainu.com/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+        const data = await res.json();
+        document.getElementById(loadingId).remove();
+        
+        const botMsg = document.createElement('div');
+        botMsg.className = 'message bot';
+        botMsg.innerHTML = formatMessage(data.response || '[No response]');
+        chat.appendChild(botMsg);
+        chat.scrollTop = chat.scrollHeight;
+    } catch (err) {
+        document.getElementById(loadingId).remove();
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'message error';
+        errorMsg.textContent = 'Error contacting chatbot';
+        chat.appendChild(errorMsg);
+        chat.scrollTop = chat.scrollHeight;
+    }
 }
 
 function handleKey(event) {
     if (event.key === 'Enter') {
-      event.preventDefault();
-      sendMessage();
+        event.preventDefault();
+        sendMessage();
     }
-  }
+}
   
 // ------------------------------------ Form handler ------------------------------------
 function attachFormHandler() {
