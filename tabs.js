@@ -62,7 +62,10 @@ function openTab(evt, tabName) {
             if (fetchedContent) {
                 targetTab.innerHTML = fetchedContent.innerHTML;
                 targetTab.classList.add("active");
-                if (tabName === "home") initializeCarousel();
+                if (tabName === "home") {
+                    initializeCarousel();
+                    initFeatureCardLayout();
+                }
                 if (tabName === "contact") attachFormHandler();
                 if (tabName === "purchase") initializePurchaseTab();
             } else {
@@ -152,6 +155,29 @@ function initializeCarousel() {
     }
 }
 
+// ------------------------------------ Feature Card Width Adjustment ------------------------------------
+function initFeatureCardLayout() {
+    const containers = document.querySelectorAll('.features-container, .feature-box-container');
+    containers.forEach(container => {
+      const updateWidth = () => {
+        const containerWidth = container.offsetWidth;
+        const gap = 20;
+        const min = 300;
+        const max = 350;
+  
+        const maxCount = Math.floor((containerWidth + gap) / (min + gap));
+        const minCount = Math.ceil((containerWidth + gap) / (max + gap));
+        const count = Math.max(1, Math.min(maxCount, minCount));
+        const itemWidth = (containerWidth - (count - 1) * gap) / count;
+  
+        container.style.setProperty('--card-width', `${itemWidth}px`);
+      };
+  
+      updateWidth();
+      window.addEventListener('resize', updateWidth);
+    });
+  }
+  
 // ------------------------------------ Form handler ------------------------------------
 function attachFormHandler() {
     const Form = document.getElementById("Form");
