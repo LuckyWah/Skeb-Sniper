@@ -104,13 +104,15 @@ summary {
 /* ----------------------------- Chatbot ----------------------------- */
 .chat-toggle {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 0.2vh;
+  right: 0.2vw;
   background: none;
   border: none;
   padding: 0;
-  width: 150px;
-  height: 150px;
+  width: 12vw;
+  height: 12vw;
+  max-width: 60px;
+  max-height: 60px;
   cursor: pointer;
   z-index: 1;
 }
@@ -124,19 +126,23 @@ summary {
 .chat-container {
   display: none;
   position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 320px;
+  bottom: 9vh;
+  right: 1vw;
+  width: 80vw;
+  max-width: 600px;
   background: #fff;
-  padding: 15px;
+  padding: 5px 10px 10px 10px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
-.chat-container.active {
-  display: flex;
-  flex-direction: column;
+.chat-container h4 {
+  font-size: 1.5em;
+  margin: 0;
+  text-align: center;
+  color: #007bff;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .messages {
@@ -159,7 +165,7 @@ summary {
 
 .message.user {
   align-self: flex-end;
-  background-color: #007bff;
+  background-color: #007BFF;
   color: white;
   padding: 8px 12px;
   border-radius: 15px 15px 0 15px;
@@ -196,7 +202,7 @@ summary {
   background-color: #f8d7da;
   color: #721c24;
   padding: 8px 12px;
-  border-radius: 10px;
+  border-radius: 15px 15px 15px 0;
   max-width: 90%;
   width: fit-content;
   text-align: left;

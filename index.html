@@ -10,12 +10,13 @@
 </head>
 <body>
   <!-- Chatbot Button -->
-  <button class="chat-toggle" onclick="toggleChat()" style="display: none;">
+  <button class="chat-toggle" onclick="toggleChat()">
     <img src="chatbox.png" alt="Ask Skeb Sniper Assistant" class="chat-icon">
   </button>
 
   <!-- Chatbox Panel -->
-  <div class="chat-container" id="chatbox" style="display: none;">
+  <div class="chat-container" id="chatbox">
+    <h4>Ask Skeb Sniper Assistant</h4>
     <div class="messages" id="chat"></div>
     <div class="chat-input-area">
       <input type="text" id="input" placeholder="Ask something..." onkeydown="handleKey(event)">
@@ -25,7 +26,7 @@
 
   <!-- Navigation Bar -->
   <div class="nav-bar">
-    <!-- Hamburger Menu Button (Only for Mobile) -->
+    <!-- Hamburger Menu Button -->
     <button class="menu-toggle">☰</button>
 
     <!-- Branding -->
