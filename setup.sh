@@ -58,7 +58,7 @@ docker rm skeb-sniper-container 2>/dev/null
 
 # Run the container
 echo "Starting skeb-sniper container..."
-sudo docker run -d --name skeb-sniper-container \
+sudo docker run -d --restart=always --name skeb-sniper-container \
   --network host \
   -e DISPLAY="$DISPLAY" \
   -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
