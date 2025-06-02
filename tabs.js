@@ -523,7 +523,7 @@ async function handleCouponClick() {
             const data = await response.json();
             if (data.valid) {
                 purchaseState.isCouponValid = true;
-                updateDiscountMessage(discountMessage, "Coupon applied: First 3 months free, then $10/month!", "green");
+                updateDiscountMessage(discountMessage, "Coupon applied: First 3 months free, then $5/month!", "green");
                 markCouponAsUsed(couponCode);
             } else {
                 purchaseState.isCouponValid = false;
